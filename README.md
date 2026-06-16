@@ -8,54 +8,78 @@ Dự án này tuân theo cấu trúc chuẩn của WordPress. Dưới đây là 
 
 ### Thư mục cấu hình và mã nguồn chính
 - **`/wp-content/`**: Đây là thư mục quan trọng nhất mà bạn sẽ thường xuyên làm việc. Nó chứa tất cả dữ liệu tùy biến của web.
-  - **`/wp-content/themes/`**: Chứa giao diện (theme) của sàn thương mại điện tử. Nếu có tùy chỉnh giao diện (code CSS, JS, PHP), bạn sẽ làm việc trong thư mục theme đang kích hoạt hoặc child-theme.
-  - **`/wp-content/plugins/`**: Chứa các plugin hỗ trợ (ví dụ: WooCommerce để làm sàn TMĐT, Elementor để kéo thả giao diện, v.v.). Khi bạn cài thêm plugin trên local, mã nguồn của nó sẽ nằm ở đây và được đẩy lên Github để các thành viên khác có thể kéo về sử dụng chung.
-  - **`/wp-content/uploads/`**: Chứa hình ảnh sản phẩm, bài viết... *(Thư mục này đã được loại bỏ khỏi Git qua file `.gitignore` để tránh phình to dung lượng kho chứa, do đó khi tải về ở máy khác, bạn cần tự đồng bộ hình ảnh hoặc dùng chung database/hosting)*.
+  - **`/wp-content/themes/`**: Chứa giao diện (theme) của sàn thương mại điện tử. Nếu có tùy chỉnh giao diện (code CSS, JS, PHP), bạn sẽ làm việc trong thư mục theme đang kích hoạt.
+  - **`/wp-content/plugins/`**: Chứa các plugin hỗ trợ (WooCommerce, Elementor, Contact Form 7...). Mã nguồn của plugin đã được đồng bộ lên Git nên cả team không cần cài lại.
+  - **`/wp-content/uploads/`**: Chứa hình ảnh sản phẩm, bài viết... *(Thư mục này được Git theo dõi để đồng bộ ảnh sản phẩm cho cả team)*.
 
 ### Các thành phần khác
-- **`wp-config.php`**: File cấu hình kết nối database. File này **không được đẩy lên Github** (đã loại trừ trong `.gitignore`) để bảo mật thông tin. Mỗi thành viên sẽ dựa vào `wp-config-sample.php` để tạo một `wp-config.php` riêng trên máy (local) của mình.
-- Các file `wp-admin`, `wp-includes` và các file `.php` ở thư mục gốc: Đây là mã nguồn lõi của WordPress. Bạn **không nên** chỉnh sửa bất cứ code nào trong này.
+- **`wp-config.php`**: File cấu hình kết nối database. File này **không được đẩy lên Github** để bảo mật thông tin.
+
+---
 
 ## Quy trình làm việc nhóm (Workflow)
 
+### 1. Dành cho người mới Clone dự án về (Developer)
 1. **Clone dự án về máy:**
    ```bash
    git clone <link-repo>
    ```
-2. **Cấu hình Local:**
-   - Đảm bảo bạn đã cài XAMPP/MAMP/Laragon.
-   - Copy file `wp-config-sample.php` thành `wp-config.php` và điền thông tin database local của bạn.
-   - Import file CSDL (`.sql`) dự án vào database local của bạn (nếu có chia sẻ DB).
-3. **Thêm tính năng / Plugin:**
-   - Cài đặt cấu hình Plugin hoặc thêm tính năng trong Code ở `wp-content/themes` hay `wp-content/plugins`.
-   - Commit code và đẩy lên nhánh của bạn, sau đó tạo Pull Request.
+2. **Cấu hình Database (Làm 1 lần duy nhất):**
+   - Đảm bảo bạn đã bật XAMPP (Apache & MySQL).
+   - Truy cập `http://localhost/phpmyadmin` và tạo một Database trống tên là `dat_san`.
+   - Truy cập `http://localhost/wordpress`. Hệ thống sẽ yêu cầu cài đặt WordPress.
+   - **Lưu ý quan trọng ở bước cài đặt Database:**
+     - Tên Database: `dat_san`
+     - Tên người dùng: `root`
+     - Mật khẩu: **(Để trống hoàn toàn)**
+     - Máy chủ: `localhost`
+3. **Cập nhật dữ liệu từ trưởng nhóm:**
+   - Xóa các bảng mặc định trong Database `dat_san` vừa tạo.
+   - Nhấn tab **Import** (Nhập), chọn file `.sql` mới nhất trong thư mục `database-sync/` của mã nguồn và nhấn **Go**.
 
-## Quy trình nhập sản phẩm và đồng bộ (Dành cho Team chạy Local)
+---
+
+## Quy trình nhập sản phẩm và đồng bộ (Dành cho Data Entry)
 
 Vì dự án chạy local trên máy từng người, nhưng **chỉ có 1 bạn phụ trách nhập sản phẩm**, chúng ta sẽ áp dụng quy trình đồng bộ bằng Git như sau:
 
-### 1. Dành cho người nhập sản phẩm (Data Entry)
-- Khởi động XAMPP/Laragon, vào `wp-admin` và thêm sản phẩm, thêm ảnh bình thường.
-- (Hình ảnh tải lên sẽ tự động được lưu vào `wp-content/uploads/` và được Git theo dõi).
+- Bạn phụ trách nhập liệu vào `wp-admin` thêm sản phẩm, thêm ảnh.
 - **Sau khi nhập xong một đợt:**
-  1. Vào phpMyAdmin (thường là `http://localhost/phpmyadmin`).
-  2. Chọn Database của dự án -> Nhấn tab **Export** (Xuất) -> Định dạng SQL -> Nhấn **Go**.
-  3. Copy file `.sql` vừa tải về, đặt tên theo ngày (VD: `data_sanpham_20-11.sql`) và lưu vào thư mục `database-sync/` của dự án.
+  1. Vào phpMyAdmin (`http://localhost/phpmyadmin`).
+  2. Chọn Database `dat_san` -> Nhấn **Export** -> Nhấn **Go**.
+  3. Đổi tên file `.sql` vừa tải về theo ngày (VD: `data_sanpham_20-11.sql`) và lưu đè vào thư mục `database-sync/` của dự án.
   4. Mở Terminal, gõ các lệnh sau để đẩy lên Github:
      ```bash
      git add .
-     git commit -m "Cập nhật sản phẩm và file database ngày 20-11"
+     git commit -m "Cập nhật sản phẩm và file database ngày..."
      git push
      ```
 
-### 2. Dành cho các thành viên khác (Developer)
-Khi bạn cần code tính năng mới, hãy lấy sản phẩm mới nhất về máy của bạn:
-- **Bước 1:** Kéo code và ảnh mới về:
-  ```bash
-  git pull origin main
-  ```
-- **Bước 2:** Cập nhật lại Database (chỉ làm khi thấy file `.sql` mới trong thư mục `database-sync/`):
-  1. Vào phpMyAdmin ở máy bạn.
-  2. Xóa tất cả các bảng (tables) cũ trong Database của dự án (hoặc Drop database rồi tạo lại).
-  3. Nhấn tab **Import** (Nhập) -> Chọn file `.sql` mới nhất trong thư mục `database-sync/` -> Nhấn **Go** để nạp dữ liệu.
-*(Lưu ý: Nếu tên Database hoặc URL (VD: `localhost/wordpress`) của các máy khác nhau, bạn có thể phải sửa lại table `wp_options` trong phpMyAdmin hoặc dùng lệnh search-replace, tốt nhất cả team nên cài XAMPP và dùng chung tên thư mục giống hệt nhau là `wordpress`).*
+---
+
+## Hướng dẫn thiết lập và sử dụng Plugins (Cho Team)
+
+Dự án sử dụng các Plugin cốt lõi sau để xây dựng sàn TMĐT:
+
+### 1. WooCommerce (Xử lý Bán hàng)
+- **Truy cập:** Menu `WooCommerce` bên trái màn hình Admin.
+- **Cấu hình Tiền tệ:** Vào `WooCommerce -> Cài đặt (Settings) -> Chung (General)`, cuộn xuống dưới cùng chọn Tiền tệ là **Đồng Việt Nam (₫)**.
+- **Cấu hình Thanh toán:** Vào tab `Thanh toán (Payments)`. Hãy bật **Trả tiền mặt khi nhận hàng (COD)** và **Chuyển khoản ngân hàng** để dễ dàng test tính năng đặt hàng trong quá trình làm đồ án.
+- **Thêm Sản phẩm:** Vào menu `Sản phẩm -> Thêm mới`. Điền tên, giá (Giá bán thường / Giá khuyến mãi), và tải Ảnh đại diện sản phẩm lên.
+
+### 2. Elementor (Thiết kế Giao diện)
+- **Sử dụng để làm Trang chủ:**
+  1. Vào `Trang (Pages) -> Thêm trang mới`. Đặt tên là `Trang chủ`.
+  2. Bấm nút màu xanh **"Sửa với Elementor"**.
+  3. Kéo thả các khối tính năng (Text, Ảnh, Danh sách sản phẩm) từ menu bên trái vào màn hình.
+  4. Lưu lại.
+  5. Vào `Cài đặt (Settings) -> Đọc (Reading)`. Ở phần "Bố cục trang chủ", chọn Trang tĩnh và trỏ về trang `Trang chủ` vừa tạo.
+
+### 3. Contact Form 7 (Tạo Form Liên hệ)
+- Truy cập menu `Form Liên Hệ (Contact) -> Thêm mới`.
+- Tạo các trường thông tin muốn khách hàng điền (Tên, SĐT, Lời nhắn).
+- Copy đoạn Shortcode (mã code ngắn trong ngoặc vuông `[contact-form-7...]`) dán vào trang Liên Hệ bằng Elementor hoặc trình soạn thảo của WordPress.
+
+### 4. Loco Translate (Dịch thuật)
+- Nếu theme hoặc plugin hiện tiếng Anh (Ví dụ: nút "Add to cart"), vào menu `Loco Translate`.
+- Chọn Plugin/Theme cần dịch, chọn ngôn ngữ Tiếng Việt và bắt đầu tìm từ tiếng Anh để thay bằng tiếng Việt.
