@@ -17,13 +17,15 @@ Dự án này tuân theo cấu trúc chuẩn của WordPress. Dưới đây là 
 
 ---
 
-## Quy trình làm việc nhóm (Workflow)
+## 🔥 Hướng dẫn Tải code và Cấu hình dự án (Dành cho Đồng nghiệp)
 
-### 1. Dành cho người mới Clone dự án về (Developer)
-1. **Clone dự án về máy:**
-   - Mở terminal trong thư mục `htdocs` của XAMPP và gõ:
+Nếu bạn là thành viên mới hoặc cần tải code về máy tính khác để làm việc, hãy làm đúng theo 3 bước sau đây để hệ thống chạy được:
+
+### Bước 1: Tải mã nguồn về máy (Clone)
+1. Mở Terminal (hoặc Git Bash) bên trong thư mục `htdocs` của XAMPP.
+2. Gõ lệnh sau để tải toàn bộ mã nguồn về:
    ```bash
-   git clone <link-repo>
+   git clone https://github.com/son3005/Thuong-mai-dien-tu.git
    ```
 2. **Cấu hình Database (Làm 1 lần duy nhất):**
    - *Lưu ý: Vì lý do bảo mật, file `wp-config.php` không được đẩy lên Git. Khi bạn mới clone về sẽ không có file này.*
