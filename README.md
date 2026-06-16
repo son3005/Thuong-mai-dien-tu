@@ -21,21 +21,26 @@ Dự án này tuân theo cấu trúc chuẩn của WordPress. Dưới đây là 
 
 ### 1. Dành cho người mới Clone dự án về (Developer)
 1. **Clone dự án về máy:**
+   - Mở terminal trong thư mục `htdocs` của XAMPP và gõ:
    ```bash
    git clone <link-repo>
    ```
 2. **Cấu hình Database (Làm 1 lần duy nhất):**
+   - *Lưu ý: Vì lý do bảo mật, file `wp-config.php` không được đẩy lên Git. Khi bạn mới clone về sẽ không có file này.*
    - Đảm bảo bạn đã bật XAMPP (Apache & MySQL).
    - Truy cập `http://localhost/phpmyadmin` và tạo một Database trống tên là `dat_san`.
-   - Truy cập `http://localhost/wordpress`. Hệ thống sẽ yêu cầu cài đặt WordPress.
-   - **Lưu ý quan trọng ở bước cài đặt Database:**
+   - Truy cập `http://localhost/tên-thư-mục-chứa-code` (ví dụ `http://localhost/wordpress`).
+   - Lúc này, WordPress sẽ phát hiện thiếu file config và tự động hiện màn hình cài đặt. 
+   - **Điền thông tin kết nối như sau (quan trọng):**
      - Tên Database: `dat_san`
      - Tên người dùng: `root`
-     - Mật khẩu: **(Để trống hoàn toàn)**
+     - Mật khẩu: **(Xóa trắng, không nhập gì cả)**
      - Máy chủ: `localhost`
-3. **Cập nhật dữ liệu từ trưởng nhóm:**
-   - Xóa các bảng mặc định trong Database `dat_san` vừa tạo.
-   - Nhấn tab **Import** (Nhập), chọn file `.sql` mới nhất trong thư mục `database-sync/` của mã nguồn và nhấn **Go**.
+   - Bấm "Gửi". WordPress sẽ tự động sinh ra file `wp-config.php` mới trên máy của bạn.
+3. **Cập nhật dữ liệu sản phẩm từ nhóm:**
+   - Quay lại phpMyAdmin, chọn Database `dat_san` vừa tạo.
+   - Nếu có sẵn các bảng (tables) nào, hãy **Check all** và chọn **Drop** để xóa trắng.
+   - Nhấn tab **Import** (Nhập), chọn file `.sql` mới nhất trong thư mục `database-sync/` của dự án và nhấn **Go**.
 
 ---
 
