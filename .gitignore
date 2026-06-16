@@ -1,0 +1,32 @@
+# WordPress Core
+wp-config.php
+wp-config-local.php
+
+# WordPress Uploads
+# ĐÃ MỞ KHÓA: Cho phép đẩy thư mục uploads lên Git để đồng bộ ảnh sản phẩm cho cả team
+# wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/backup-db/
+
+# Ignore log files and database backups
+*.log
+*.tar.gz
+*.zip
+
+# Bỏ qua tất cả file .sql NGOẠI TRỪ các file trong thư mục database-sync
+*.sql
+!database-sync/*.sql
+
+# Development folders
+node_modules/
+vendor/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
