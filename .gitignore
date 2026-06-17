@@ -19,8 +19,9 @@ wp-content/backup-db/
 !database-sync/*.sql
 
 # Development folders
-node_modules/
-vendor/
+# Đã mở khóa: Cần đẩy thư mục vendor và node_modules của các plugin có sẵn (như WooCommerce) lên mạng.
+# node_modules/
+# vendor/
 
 # OS generated files
 .DS_Store
