@@ -1,6 +1,6 @@
-# E-commerce WordPress Project
+# Hệ thống thương mại điện tử kinh doanh trà và phụ kiện pha trà
 
-Dự án này là mã nguồn của hệ thống sàn thương mại điện tử đơn giản sử dụng nền tảng WordPress và các Plugin liên quan.
+Dự án này là mã nguồn của hệ thống thương mại điện tử kinh doanh trà và phụ kiện pha trà, được xây dựng trên nền tảng WordPress và WooCommerce.
 
 ## Cấu trúc thư mục dự án
 
@@ -30,17 +30,17 @@ Nếu bạn là thành viên mới hoặc cần tải code về máy tính khác
 2. **Cấu hình Database (Làm 1 lần duy nhất):**
    - *Lưu ý: Vì lý do bảo mật, file `wp-config.php` không được đẩy lên Git. Khi bạn mới clone về sẽ không có file này.*
    - Đảm bảo bạn đã bật XAMPP (Apache & MySQL).
-   - Truy cập `http://localhost/phpmyadmin` và tạo một Database trống tên là `dat_san`.
+   - Truy cập `http://localhost/phpmyadmin` và tạo một Database trống tên là `tea_store`.
    - Truy cập `http://localhost/tên-thư-mục-chứa-code` (ví dụ `http://localhost/wordpress`).
    - Lúc này, WordPress sẽ phát hiện thiếu file config và tự động hiện màn hình cài đặt. 
    - **Điền thông tin kết nối như sau (quan trọng):**
-     - Tên Database: `dat_san`
+     - Tên Database: `tea_store`
      - Tên người dùng: `root`
      - Mật khẩu: **(Xóa trắng, không nhập gì cả)**
      - Máy chủ: `localhost`
    - Bấm "Gửi". WordPress sẽ tự động sinh ra file `wp-config.php` mới trên máy của bạn.
 3. **Cập nhật dữ liệu sản phẩm từ nhóm:**
-   - Quay lại phpMyAdmin, chọn Database `dat_san` vừa tạo.
+   - Quay lại phpMyAdmin, chọn Database `tea_store` vừa tạo.
    - Nếu có sẵn các bảng (tables) nào, hãy **Check all** và chọn **Drop** để xóa trắng.
    - Nhấn tab **Import** (Nhập), chọn file `.sql` mới nhất trong thư mục `database-sync/` của dự án và nhấn **Go**.
 
@@ -53,7 +53,7 @@ Vì dự án chạy local trên máy từng người, nhưng **chỉ có 1 bạn
 - Bạn phụ trách nhập liệu vào `wp-admin` thêm sản phẩm, thêm ảnh.
 - **Sau khi nhập xong một đợt:**
   1. Vào phpMyAdmin (`http://localhost/phpmyadmin`).
-  2. Chọn Database `dat_san` -> Nhấn **Export** -> Nhấn **Go**.
+  2. Chọn Database `tea_store` -> Nhấn **Export** -> Nhấn **Go**.
   3. Đổi tên file `.sql` vừa tải về theo ngày (VD: `data_sanpham_20-11.sql`) và lưu đè vào thư mục `database-sync/` của dự án.
   4. Mở Terminal, gõ các lệnh sau để đẩy lên Github:
      ```bash
