@@ -1,92 +1,134 @@
-# Hệ thống thương mại điện tử kinh doanh trà và phụ kiện pha trà
+# 🍃 Sen Việt Tea - Hướng Dẫn Cài Đặt & Đồng Bộ Nhóm (Local Development)
 
-Dự án này là mã nguồn của hệ thống thương mại điện tử kinh doanh trà và phụ kiện pha trà, được xây dựng trên nền tảng WordPress và WooCommerce.
+Chào mừng đội ngũ phát triển **Sen Việt Tea**. Dự án này được xây dựng trên nền tảng WordPress và WooCommerce, sử dụng Custom Theme tối giản theo phong cách Zen & Modern Premium E-Commerce.
 
-## Cấu trúc thư mục dự án
-
-Dự án này tuân theo cấu trúc chuẩn của WordPress. Dưới đây là giải thích về các thư mục và tệp tin quan trọng mà team cần chú ý khi làm việc chung:
-
-### Thư mục cấu hình và mã nguồn chính
-- **`/wp-content/`**: Đây là thư mục quan trọng nhất mà bạn sẽ thường xuyên làm việc. Nó chứa tất cả dữ liệu tùy biến của web.
-  - **`/wp-content/themes/`**: Chứa giao diện (theme) của sàn thương mại điện tử. Nếu có tùy chỉnh giao diện (code CSS, JS, PHP), bạn sẽ làm việc trong thư mục theme đang kích hoạt.
-  - **`/wp-content/plugins/`**: Chứa các plugin hỗ trợ (WooCommerce, Elementor, Contact Form 7...). Mã nguồn của plugin đã được đồng bộ lên Git nên cả team không cần cài lại.
-  - **`/wp-content/uploads/`**: Chứa hình ảnh sản phẩm, bài viết... *(Thư mục này được Git theo dõi để đồng bộ ảnh sản phẩm cho cả team)*.
-
-### Các thành phần khác
-- **`wp-config.php`**: File cấu hình kết nối database. File này **không được đẩy lên Github** để bảo mật thông tin.
+Tài liệu này hướng dẫn cách cài đặt môi trường cục bộ (Localhost) và quy trình phối hợp chỉnh sửa đồng bộ giữa 4 thành viên trong nhóm.
 
 ---
 
-## 🔥 Hướng dẫn Tải code và Cấu hình dự án (Dành cho Đồng nghiệp)
+## Ⅰ. Yêu Cầu Hệ Thống (Prerequisites)
+Để chạy dự án, mỗi thành viên cần cài đặt sẵn trên máy cá nhân:
+* **Môi trường Web Server:** XAMPP (khuyến nghị), Laragon, hoặc MAMP.
+* **PHP Version:** 7.4 hoặc 8.0+.
+* **Cơ sở dữ liệu:** MySQL / MariaDB (tên cơ sở dữ liệu cục bộ: `tea_store`).
+* **WordPress:** Phiên bản 6.0+.
+* **WooCommerce:** Phiên bản mới nhất.
+* **Thư viện PHP:** Cần mở rộng kích hoạt thư viện GD (`extension=gd` trong `php.ini`) để WordPress và WooCommerce có thể nén và xử lý hình ảnh định dạng WebP mượt mà.
 
-Nếu bạn là thành viên mới hoặc cần tải code về máy tính khác để làm việc, hãy làm đúng theo 3 bước sau đây để hệ thống chạy được:
+---
 
-### Bước 1: Tải mã nguồn về máy (Clone)
-1. Mở Terminal (hoặc Git Bash) bên trong thư mục `htdocs` của XAMPP.
-2. Gõ lệnh sau để tải toàn bộ mã nguồn về:
-   ```bash
-   git clone https://github.com/son3005/Thuong-mai-dien-tu.git
+## Ⅱ. Quy Trình Cài Đặt Cho Thành Viên Mới (New Member Setup)
+
+Nếu bạn là thành viên mới thiết lập môi trường local từ đầu, hãy làm theo các bước sau:
+
+### Bước 1: Sao chép Mã nguồn (Codebase)
+1. Copy toàn bộ thư mục dự án `wordpress` vào thư mục gốc của Web Server cục bộ (ví dụ: `C:\xampp\htdocs\wordpress\` trên Windows).
+2. Kiểm tra thư mục theme tùy chỉnh đã nằm đúng vị trí: `wp-content/themes/sen-viet-tea/`.
+
+### Bước 2: Thiết lập Cơ sở dữ liệu (Database)
+1. Mở trình duyệt, truy cập `http://localhost/phpmyadmin/`.
+2. Tạo một cơ sở dữ liệu mới với tên là: `tea_store` (bộ mã: `utf8mb4_unicode_ci`).
+3. Import file sao lưu cơ sở dữ liệu (`.sql` - nếu trưởng nhóm cung cấp) hoặc thực hiện cài đặt WordPress mới thông qua cổng cấu hình mặc định tại `http://localhost/wordpress/`.
+4. Nếu cài đặt mới, hãy chỉnh sửa file `wp-config.php` ở thư mục gốc để kết nối DB:
+   ```php
+   define( 'DB_NAME', 'tea_store' );
+   define( 'DB_USER', 'root' );
+   define( 'DB_PASSWORD', '' ); // Mật khẩu của XAMPP mặc định để trống
+   define( 'DB_HOST', 'localhost' );
    ```
-2. **Cấu hình Database (Làm 1 lần duy nhất):**
-   - *Lưu ý: Vì lý do bảo mật, file `wp-config.php` không được đẩy lên Git. Khi bạn mới clone về sẽ không có file này.*
-   - Đảm bảo bạn đã bật XAMPP (Apache & MySQL).
-   - Truy cập `http://localhost/phpmyadmin` và tạo một Database trống tên là `tea_store`.
-   - Truy cập `http://localhost/tên-thư-mục-chứa-code` (ví dụ `http://localhost/wordpress`).
-   - Lúc này, WordPress sẽ phát hiện thiếu file config và tự động hiện màn hình cài đặt. 
-   - **Điền thông tin kết nối như sau (quan trọng):**
-     - Tên Database: `tea_store`
-     - Tên người dùng: `root`
-     - Mật khẩu: **(Xóa trắng, không nhập gì cả)**
-     - Máy chủ: `localhost`
-   - Bấm "Gửi". WordPress sẽ tự động sinh ra file `wp-config.php` mới trên máy của bạn.
-3. **Cập nhật dữ liệu sản phẩm từ nhóm:**
-   - Quay lại phpMyAdmin, chọn Database `tea_store` vừa tạo.
-   - Nếu có sẵn các bảng (tables) nào, hãy **Check all** và chọn **Drop** để xóa trắng.
-   - Nhấn tab **Import** (Nhập), chọn file `.sql` mới nhất trong thư mục `database-sync/` của dự án và nhấn **Go**.
+
+### Bước 3: Kích hoạt Theme & Plugin
+1. Đăng nhập vào trang quản trị WP Admin: `http://localhost/wordpress/wp-admin/`.
+2. Đi tới mục **Giao diện (Appearance) -> Giao diện (Themes)**, tìm và bấm **Kích hoạt (Activate)** theme **Sen Việt Tea**.
+3. Đi tới mục **Plugin**, cài đặt và kích hoạt plugin **WooCommerce**.
 
 ---
 
-## Quy trình nhập sản phẩm và đồng bộ (Dành cho Data Entry)
+## Ⅲ. QUY TRÌNH PHỐI HỢP & ĐỒNG BỘ ĐỘI NGŨ (SYNC WORKFLOW)
 
-Vì dự án chạy local trên máy từng người, nhưng **chỉ có 1 bạn phụ trách nhập sản phẩm**, chúng ta sẽ áp dụng quy trình đồng bộ bằng Git như sau:
+Vì dự án chạy hoàn toàn trên môi trường Local cá nhân, nhóm cần tuân thủ 3 bước đồng bộ dưới đây để đảm bảo code và dữ liệu luôn trùng khớp:
 
-- Bạn phụ trách nhập liệu vào `wp-admin` thêm sản phẩm, thêm ảnh.
-- **Sau khi nhập xong một đợt:**
-  1. Vào phpMyAdmin (`http://localhost/phpmyadmin`).
-  2. Chọn Database `tea_store` -> Nhấn **Export** -> Nhấn **Go**.
-  3. Đổi tên file `.sql` vừa tải về theo ngày (VD: `data_sanpham_20-11.sql`) và lưu đè vào thư mục `database-sync/` của dự án.
-  4. Mở Terminal, gõ các lệnh sau để đẩy lên Github:
-     ```bash
-     git add .
-     git commit -m "Cập nhật sản phẩm và file database ngày..."
-     git push
-     ```
+### 1. Đồng bộ Giao diện (Code - Theme Files)
+* **Người quản lý chính:** **Thành viên 2 (Dev)** chịu trách nhiệm chỉnh sửa code trong thư mục theme `wp-content/themes/sen-viet-tea/`.
+* **Cách đồng bộ:**
+  - Nhóm nên sử dụng **Git** (GitHub/GitLab) tạo 1 repository riêng cho thư mục theme này.
+  - Khi Thành viên 2 sửa đổi CSS hoặc PHP, họ sẽ push lên repository. Các thành viên khác chỉ cần chạy `git pull` trong thư mục theme để cập nhật giao diện mới nhất.
+  - *Cách thủ công (nếu không dùng Git):* Thành viên 2 nén thư mục theme `sen-viet-tea` gửi cho cả nhóm ghi đè vào máy local của mình.
+
+### 2. Đồng bộ Nội dung (Dữ liệu Sản phẩm, Bài viết, Menu)
+* **Người quản lý chính:** **Thành viên 1 (Content)** nhập toàn bộ sản phẩm demo, bài viết blog, thuộc tính và cấu hình menu trên máy local của mình.
+* **Cách đồng bộ:**
+  - Sau khi thêm mới sản phẩm/bài viết, Thành viên 1 vào **Công cụ (Tools) -> Xuất ra (Export)** -> Chọn xuất **Tất cả nội dung** để tải về 1 file `.xml`.
+  - Thành viên 1 gửi file `.xml` này cho cả nhóm qua Zalo/Drive.
+  - Các thành viên khác tải file về, vào **Công cụ (Tools) -> Nhập vào (Import) -> WordPress** trên máy local của mình, tải file lên và tích chọn "Tải về và nhập các file đính kèm" để dữ liệu đồng bộ ngay lập tức mà không phải tự tay nhập lại.
+
+### 3. Đồng bộ Hình ảnh thư viện (Media Library Uploads)
+* **Cách đồng bộ:**
+  - File `.xml` chỉ chứa text và link ảnh. Để ảnh hiển thị đầy đủ, Thành viên 1 cần nén thư mục hình ảnh uploads: `wp-content/uploads/` trên máy mình gửi cho cả nhóm.
+  - Mọi người giải nén và ghi đè vào thư mục `wp-content/uploads/` trên máy local của mình.
 
 ---
 
-## Hướng dẫn thiết lập và sử dụng Plugins (Cho Team)
+## Ⅳ. BẢN ĐỒ PHÂN CHIA NHIỆM VỤ CHO 4 THÀNH VIÊN
 
-Dự án sử dụng các Plugin cốt lõi sau để xây dựng sàn TMĐT:
+Để tiến trình trơn tru, công việc được phân chia cụ thể như sau:
 
-### 1. WooCommerce (Xử lý Bán hàng)
-- **Truy cập:** Menu `WooCommerce` bên trái màn hình Admin.
-- **Cấu hình Tiền tệ:** Vào `WooCommerce -> Cài đặt (Settings) -> Chung (General)`, cuộn xuống dưới cùng chọn Tiền tệ là **Đồng Việt Nam (₫)**.
-- **Cấu hình Thanh toán:** Vào tab `Thanh toán (Payments)`. Hãy bật **Trả tiền mặt khi nhận hàng (COD)** và **Chuyển khoản ngân hàng** để dễ dàng test tính năng đặt hàng trong quá trình làm đồ án.
-- **Thêm Sản phẩm:** Vào menu `Sản phẩm -> Thêm mới`. Điền tên, giá (Giá bán thường / Giá khuyến mãi), và tải Ảnh đại diện sản phẩm lên.
+1. **Thành viên 1 (Content / Admin):**
+   - Đảm bảo tạo đủ **12 sản phẩm demo** để bố cục lưới đẹp mắt.
+   - Biên tập nội dung các trang chính: *Giới thiệu (Về chúng tôi)*, các bài viết *Kiến thức Trà*, trang *Liên hệ*.
+   - Thực hiện quy trình xuất file `.xml` dữ liệu định kỳ để đồng bộ cho cả nhóm.
+2. **Thành viên 2 (Dev / Front-End):**
+   - Viết code tinh chỉnh CSS cho bảng giỏ hàng, bố cục trang Thanh toán thành 2 cột và trang tin tức trong file [style.css](file:///d:/Develop/xampp/htdocs/wordpress/wp-content/themes/sen-viet-tea/style.css).
+   - Thêm thông tin MST doanh nghiệp và logo Bộ Công Thương vào [footer.php](file:///d:/Develop/xampp/htdocs/wordpress/wp-content/themes/sen-viet-tea/footer.php).
+3. **Thành viên 3 (Designer / Media):**
+   - Tối ưu kích thước toàn bộ ảnh sản phẩm về tỷ lệ vuông `1:1` để hiển thị cân đối.
+   - Nén ảnh chất lượng cao (định dạng WebP, dung lượng < 150KB) trước khi chuyển cho Thành viên 1 tải lên.
+4. **Thành viên 4 (QA / Tester):**
+   - Kiểm tra hiển thị giao diện mượt mà trên desktop/mobile.
+   - Thử nghiệm quy trình mua hàng cục bộ (Thêm giỏ -> Điền form Thanh toán -> Đặt hàng thành công) xem có lỗi phát sinh không.
 
-### 2. Elementor (Thiết kế Giao diện)
-- **Sử dụng để làm Trang chủ:**
-  1. Vào `Trang (Pages) -> Thêm trang mới`. Đặt tên là `Trang chủ`.
-  2. Bấm nút màu xanh **"Sửa với Elementor"**.
-  3. Kéo thả các khối tính năng (Text, Ảnh, Danh sách sản phẩm) từ menu bên trái vào màn hình.
-  4. Lưu lại.
-  5. Vào `Cài đặt (Settings) -> Đọc (Reading)`. Ở phần "Bố cục trang chủ", chọn Trang tĩnh và trỏ về trang `Trang chủ` vừa tạo.
+---
 
-### 3. Contact Form 7 (Tạo Form Liên hệ)
-- Truy cập menu `Form Liên Hệ (Contact) -> Thêm mới`.
-- Tạo các trường thông tin muốn khách hàng điền (Tên, SĐT, Lời nhắn).
-- Copy đoạn Shortcode (mã code ngắn trong ngoặc vuông `[contact-form-7...]`) dán vào trang Liên Hệ bằng Elementor hoặc trình soạn thảo của WordPress.
+## Ⅴ. HƯỚNG DẪN THÊM SẢN PHẨM & CẤU HÌNH THUỘC TÍNH (PRODUCT SETUP GUIDE)
 
-### 4. Loco Translate (Dịch thuật)
-- Nếu theme hoặc plugin hiện tiếng Anh (Ví dụ: nút "Add to cart"), vào menu `Loco Translate`.
-- Chọn Plugin/Theme cần dịch, chọn ngôn ngữ Tiếng Việt và bắt đầu tìm từ tiếng Anh để thay bằng tiếng Việt.
+Quy trình chuẩn dành cho **Thành viên 1 (Content)** và **Thành viên 3 (Designer)** để đảm bảo mọi sản phẩm tải lên đều đẹp mắt và đồng bộ:
+
+### 1. Chuẩn bị Hình ảnh sản phẩm (Lưu ở đâu, cấu trúc thế nào?)
+* **Định dạng & Dung lượng:** Bắt buộc lưu dưới định dạng **WebP** (.webp), chất lượng nén 90%, dung lượng **< 150KB** để trang web tải nhanh nhất.
+* **Kích thước & Tỷ lệ:** Ảnh đại diện bắt buộc phải là **hình vuông (tỉ lệ 1:1)**, kích thước chuẩn là **800x800 px**.
+* **Cấu trúc lưu trữ Offline (Trước khi upload):** 
+  - Các ảnh sản phẩm gốc chưa upload nên được Designer lưu trong thư mục: `wp-content/themes/sen-viet-tea/assets/images/products/` trên máy local để cả nhóm dễ dàng đồng bộ, lưu trữ và quản lý nguồn ảnh gốc của dự án.
+  - Khi tải lên WordPress, ảnh sẽ tự động được lưu trong thư mục hệ thống `wp-content/uploads/`.
+
+### 2. Các thuộc tính bắt buộc khai báo (Product Attributes)
+Trước khi thêm sản phẩm, nhóm cần khai báo thuộc tính dùng chung trong **Sản phẩm (Products) -> Các thuộc tính (Attributes)**:
+1. **Trọng lượng (weight):**
+   - *Tên:* Trọng lượng
+   - *Đường dẫn (slug):* `weight`
+   - *Các giá trị (terms):* `100g`, `200g`, `500g` (hoặc `Hộp 100g`, `Gói 200g`).
+2. **Quy cách đóng gói (packaging):**
+   - *Tên:* Quy cách
+   - *Đường dẫn (slug):* `packaging`
+   - *Các giá trị (terms):* `Túi hút chân không`, `Hộp giấy Zen`, `Hộp thiếc Premium`.
+
+### 3. Quy trình thêm sản phẩm mẫu (Step-by-Step Upload)
+1. Vào **Sản phẩm (Products) -> Thêm mới (Add New)**.
+2. **Tiêu đề & Nội dung:**
+   - *Tiêu đề:* Nhập tên sản phẩm thanh lịch (Ví dụ: *Trà Đinh Ngọc Cao Cấp Thái Nguyên*).
+   - *Mô tả chi tiết (Long Description):* Viết triết lý sản phẩm, câu chuyện đồi chè, hương vị đặc trưng, có thể chèn thêm ảnh nước trà hoặc ảnh đồi chè.
+3. **Phân loại danh mục (Categories):** Ở cột bên phải, tích chọn danh mục tương ứng (Ví dụ: *Trà Thái Nguyên*).
+4. **Cấu hình dữ liệu sản phẩm (Product Data):**
+   - **Trường hợp A - Sản phẩm đơn giản (Nếu chỉ bán một mức trọng lượng duy nhất):**
+     - Đặt giá bán thường (Regular Price) và giá khuyến mãi (Sale Price) nếu có.
+     - Vào tab **Các thuộc tính (Attributes)** -> Chọn thuộc tính (Ví dụ: "Trọng lượng") -> Chọn giá trị tương ứng (Ví dụ: "100g") -> Bấm *Lưu thuộc tính*.
+   - **Trường hợp B - Sản phẩm có biến thể (Nếu giá thay đổi theo trọng lượng 100g/200g/500g):**
+     - Chọn kiểu dữ liệu là **Sản phẩm biến thể (Variable Product)**.
+     - Vào tab **Các thuộc tính (Attributes)** -> Chọn "Trọng lượng" -> Chọn các giá trị (100g, 200g, 500g) -> Tích chọn **Dùng cho nhiều biến thể (Used for variations)** -> Bấm *Lưu thuộc tính*.
+     - Vào tab **Các biến thể (Variations)** -> Bấm **Tạo biến thể từ tất cả thuộc tính** -> Điền giá bán, số lượng kho cho từng biến thể trọng lượng cụ thể.
+5. **Mô tả ngắn sản phẩm (Short Description):** Nhập mô tả ngắn 3-4 dòng tóm tắt hương vị trà.
+6. **Đặt ảnh đại diện sản phẩm (Set Product Image):** Upload file ảnh `.webp` hình vuông đã chuẩn bị ở Bước 1 vào mục **Ảnh sản phẩm (Product image)** ở cột bên phải.
+7. **Đăng bài (Publish):** Bấm nút Đăng bài để sản phẩm hiển thị trên website.
+
+---
+
+*Tài liệu này được soạn thảo để hướng dẫn quy trình đồng bộ nội bộ, chúc nhóm hoàn thiện sản phẩm Sen Việt Tea tốt nhất!*

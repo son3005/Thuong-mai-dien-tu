@@ -2,7 +2,7 @@
 
 <main id="primary" class="site-main">
     <!-- Hero Banner -->
-    <section class="hero-section" style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-banner.png') center/cover no-repeat;">
+    <section class="hero-section" style="background: url('<?php echo get_template_directory_uri(); ?>/assets/images/hero-banner.webp') center/cover no-repeat;">
         <div class="hero-overlay"></div>
         <div class="hero-content fade-in-up">
             <span class="hero-eyebrow">🍃 Thủ Công · Tự Nhiên · Tinh Tế</span>

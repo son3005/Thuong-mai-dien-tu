@@ -13,8 +13,8 @@
         <!-- Site Branding / Logo -->
         <div class="site-branding">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                <?php if ( file_exists( get_template_directory() . '/assets/images/logo.png' ) ) : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo( 'name' ); ?>">
+                <?php if ( file_exists( get_template_directory() . '/assets/images/logo.webp' ) ) : ?>
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.webp" alt="<?php bloginfo( 'name' ); ?>">
                 <?php else : ?>
                     <span class="site-title"><?php bloginfo( 'name' ); ?></span>
                 <?php endif; ?>
