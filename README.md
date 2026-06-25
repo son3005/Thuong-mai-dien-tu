@@ -29,12 +29,22 @@ Nếu bạn là thành viên mới thiết lập môi trường local từ đầ
 1. Mở trình duyệt, truy cập `http://localhost/phpmyadmin/`.
 2. Tạo một cơ sở dữ liệu mới với tên là: `tea_store` (bộ mã: `utf8mb4_unicode_ci`).
 3. Import file sao lưu cơ sở dữ liệu (`.sql` - nếu trưởng nhóm cung cấp) hoặc thực hiện cài đặt WordPress mới thông qua cổng cấu hình mặc định tại `http://localhost/wordpress/`.
-4. Nếu cài đặt mới, hãy chỉnh sửa file `wp-config.php` ở thư mục gốc để kết nối DB:
+4. Chỉnh sửa file `wp-config.php` ở thư mục gốc để kết nối DB và tự động đồng bộ URL (giúp dự án chạy bình thường bất kể bạn đổi tên thư mục hay chạy cổng port khác):
    ```php
    define( 'DB_NAME', 'tea_store' );
    define( 'DB_USER', 'root' );
    define( 'DB_PASSWORD', '' ); // Mật khẩu của XAMPP mặc định để trống
    define( 'DB_HOST', 'localhost' );
+
+   // Tự động cấu hình URL dựa trên tên thư mục và host cục bộ (Cần thiết cho cả nhóm đồng bộ)
+   if ( isset( $_SERVER['HTTP_HOST'] ) ) {
+       $http_protocol = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ) ? 'https' : 'http';
+       define( 'WP_HOME', $http_protocol . '://' . $_SERVER['HTTP_HOST'] . '/' . basename( __DIR__ ) );
+       define( 'WP_SITEURL', $http_protocol . '://' . $_SERVER['HTTP_HOST'] . '/' . basename( __DIR__ ) );
+   } else {
+       define( 'WP_HOME', 'http://localhost/' . basename( __DIR__ ) );
+       define( 'WP_SITEURL', $http_protocol . '://' . $_SERVER['HTTP_HOST'] . '/' . basename( __DIR__ ) );
+   }
    ```
 
 ### Bước 3: Kích hoạt Theme & Plugin

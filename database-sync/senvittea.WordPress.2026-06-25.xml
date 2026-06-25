@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/7.0" created="2026-06-25 10:19" -->
+	<!-- generator="WordPress/7.0" created="2026-06-25 14:54" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -27,13 +27,13 @@
 
 <channel>
 	<title>Sen Việt Tea</title>
-	<link>http://localhost/wordpress</link>
+	<link>http://localhost/Thuong-mai-dien-tu</link>
 	<description></description>
-	<pubDate>Thu, 25 Jun 2026 10:19:50 +0000</pubDate>
+	<pubDate>Thu, 25 Jun 2026 14:54:15 +0000</pubDate>
 	<language>vi</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
-	<wp:base_site_url>http://localhost/wordpress</wp:base_site_url>
-	<wp:base_blog_url>http://localhost/wordpress</wp:base_blog_url>
+	<wp:base_site_url>http://localhost/Thuong-mai-dien-tu</wp:base_site_url>
+	<wp:base_blog_url>http://localhost/Thuong-mai-dien-tu</wp:base_blog_url>
 
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[admin@gmail.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
@@ -192,7 +192,7 @@
 
 		<item>
 		<title><![CDATA[Trang mẫu]]></title>
-		<link>http://localhost/wordpress/trang-mau/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/trang-mau/</link>
 		<pubDate>Thu, 25 Jun 2026 06:50:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/?page_id=2</guid>
@@ -246,7 +246,7 @@
 							</item>
 					<item>
 		<title><![CDATA[Chính sách bảo mật]]></title>
-		<link>http://localhost/wordpress/?page_id=3</link>
+		<link>http://localhost/Thuong-mai-dien-tu/?page_id=3</link>
 		<pubDate>Thu, 25 Jun 2026 06:50:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/?page_id=3</guid>
@@ -346,7 +346,7 @@
 							</item>
 					<item>
 		<title><![CDATA[woocommerce-placeholder]]></title>
-		<link>http://localhost/wordpress/woocommerce-placeholder/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/woocommerce-placeholder/</link>
 		<pubDate>Thu, 25 Jun 2026 06:53:10 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/wp-content/uploads/2026/06/woocommerce-placeholder.webp</guid>
@@ -367,7 +367,7 @@
 		<wp:post_type><![CDATA[attachment]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[http://localhost/wordpress/wp-content/uploads/woocommerce-placeholder.webp]]></wp:attachment_url>
+						<wp:attachment_url><![CDATA[http://localhost/Thuong-mai-dien-tu/wp-content/uploads/woocommerce-placeholder.webp]]></wp:attachment_url>
 											<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
 		<wp:meta_value><![CDATA[woocommerce-placeholder.webp]]></wp:meta_value>
@@ -379,7 +379,7 @@
 							</item>
 					<item>
 		<title><![CDATA[Shop]]></title>
-		<link>http://localhost/wordpress/shop/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/shop/</link>
 		<pubDate>Thu, 25 Jun 2026 06:53:11 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/shop/</guid>
@@ -403,7 +403,7 @@
 														</item>
 					<item>
 		<title><![CDATA[Cart]]></title>
-		<link>http://localhost/wordpress/cart/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/cart/</link>
 		<pubDate>Thu, 25 Jun 2026 06:53:11 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/cart/</guid>
@@ -515,7 +515,7 @@
 														</item>
 					<item>
 		<title><![CDATA[Refund and Returns Policy]]></title>
-		<link>http://localhost/wordpress/?page_id=13</link>
+		<link>http://localhost/Thuong-mai-dien-tu/?page_id=13</link>
 		<pubDate></pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/?page_id=13</guid>
@@ -678,7 +678,7 @@
 														</item>
 					<item>
 		<title><![CDATA[Trang chủ]]></title>
-		<link>http://localhost/wordpress/2026/06/25/trang-chu/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/trang-chu/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/trang-chu/</guid>
@@ -735,7 +735,7 @@
 							</item>
 					<item>
 		<title><![CDATA[Sản phẩm]]></title>
-		<link>http://localhost/wordpress/2026/06/25/san-pham/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/san-pham/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/san-pham/</guid>
@@ -792,7 +792,7 @@
 							</item>
 					<item>
 		<title><![CDATA[]]></title>
-		<link>http://localhost/wordpress/2026/06/25/27/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/27/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/27/</guid>
@@ -849,7 +849,7 @@
 							</item>
 					<item>
 		<title><![CDATA[Kiến thức]]></title>
-		<link>http://localhost/wordpress/2026/06/25/kien-thuc/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/kien-thuc/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/kien-thuc/</guid>
@@ -906,7 +906,7 @@
 							</item>
 					<item>
 		<title><![CDATA[]]></title>
-		<link>http://localhost/wordpress/2026/06/25/29/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/29/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/29/</guid>
@@ -962,173 +962,8 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[product_tra_non_tom_1782371401270.png]]></title>
-		<link>http://localhost/wordpress/?attachment_id=31</link>
-		<pubDate>Thu, 25 Jun 2026 07:13:24 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost/wordpress/?attachment_id=31</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>31</wp:post_id>
-		<wp:post_date><![CDATA[2026-06-25 07:13:24]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-06-25 07:13:24]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[product_tra_non_tom_1782371401270-png]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>14</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_non_tom_1782371401270.png]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/06/product_tra_non_tom_1782371401270.png]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:45:"2026/06/product_tra_non_tom_1782371401270.png";s:8:"filesize";i:804438;s:5:"sizes";a:0:{}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[product_tra_o_long_1782371412656.png]]></title>
-		<link>http://localhost/wordpress/?attachment_id=32</link>
-		<pubDate>Thu, 25 Jun 2026 07:13:24 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost/wordpress/?attachment_id=32</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>32</wp:post_id>
-		<wp:post_date><![CDATA[2026-06-25 07:13:24]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-06-25 07:13:24]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[product_tra_o_long_1782371412656-png]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>15</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_o_long_1782371412656.png]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/06/product_tra_o_long_1782371412656.png]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:44:"2026/06/product_tra_o_long_1782371412656.png";s:8:"filesize";i:821694;s:5:"sizes";a:0:{}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[product_tra_lai_1782371424431.png]]></title>
-		<link>http://localhost/wordpress/?attachment_id=33</link>
-		<pubDate>Thu, 25 Jun 2026 07:13:24 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost/wordpress/?attachment_id=33</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>33</wp:post_id>
-		<wp:post_date><![CDATA[2026-06-25 07:13:24]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-06-25 07:13:24]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[product_tra_lai_1782371424431-png]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>16</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_lai_1782371424431.png]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/06/product_tra_lai_1782371424431.png]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:41:"2026/06/product_tra_lai_1782371424431.png";s:8:"filesize";i:791791;s:5:"sizes";a:0:{}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[product_tra_sen_1782371436673.png]]></title>
-		<link>http://localhost/wordpress/?attachment_id=34</link>
-		<pubDate>Thu, 25 Jun 2026 07:13:24 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost/wordpress/?attachment_id=34</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>34</wp:post_id>
-		<wp:post_date><![CDATA[2026-06-25 07:13:24]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-06-25 07:13:24]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[product_tra_sen_1782371436673-png]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>17</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_sen_1782371436673.png]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/06/product_tra_sen_1782371436673.png]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:41:"2026/06/product_tra_sen_1782371436673.png";s:8:"filesize";i:757794;s:5:"sizes";a:0:{}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[product_am_tu_sa_1782371446152.png]]></title>
-		<link>http://localhost/wordpress/?attachment_id=35</link>
-		<pubDate>Thu, 25 Jun 2026 07:13:24 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost/wordpress/?attachment_id=35</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>35</wp:post_id>
-		<wp:post_date><![CDATA[2026-06-25 07:13:24]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2026-06-25 07:13:24]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2026-06-25 07:13:24]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[product_am_tu_sa_1782371446152-png]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>18</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[http://localhost/wordpress/wp-content/uploads/2026/06/product_am_tu_sa_1782371446152.png]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2026/06/product_am_tu_sa_1782371446152.png]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:42:"2026/06/product_am_tu_sa_1782371446152.png";s:8:"filesize";i:740453;s:5:"sizes";a:0:{}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[]]></title>
-		<link>http://localhost/wordpress/2026/06/25/38/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/38/</link>
 		<pubDate>Thu, 25 Jun 2026 09:43:21 +0000</pubDate>
 		<dc:creator><![CDATA[]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/38/</guid>
@@ -1185,7 +1020,7 @@
 							</item>
 					<item>
 		<title><![CDATA[]]></title>
-		<link>http://localhost/wordpress/2026/06/25/39/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/39/</link>
 		<pubDate>Thu, 25 Jun 2026 09:43:21 +0000</pubDate>
 		<dc:creator><![CDATA[]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/39/</guid>
@@ -1242,7 +1077,7 @@
 							</item>
 					<item>
 		<title><![CDATA[]]></title>
-		<link>http://localhost/wordpress/2026/06/25/40/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/40/</link>
 		<pubDate>Thu, 25 Jun 2026 09:43:21 +0000</pubDate>
 		<dc:creator><![CDATA[]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/40/</guid>
@@ -1299,7 +1134,7 @@
 							</item>
 					<item>
 		<title><![CDATA[]]></title>
-		<link>http://localhost/wordpress/2026/06/25/41/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/41/</link>
 		<pubDate>Thu, 25 Jun 2026 09:43:21 +0000</pubDate>
 		<dc:creator><![CDATA[]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/41/</guid>
@@ -1355,8 +1190,173 @@
 		</wp:postmeta>
 							</item>
 					<item>
+		<title><![CDATA[Bộ Ấm Trà Tử Sa Bát Tràng]]></title>
+		<link>http://localhost/Thuong-mai-dien-tu/?attachment_id=42</link>
+		<pubDate>Thu, 25 Jun 2026 10:26:49 +0000</pubDate>
+		<dc:creator><![CDATA[]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/wordpress/wp-content/uploads/2026/06/product_am_tu_sa_1782371446152.webp</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>42</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-25 10:26:49]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-25 10:26:49]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-06-25 10:26:49]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-06-25 10:26:49]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[bo-am-tra-tu-sa-bat-trang-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>18</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost/Thuong-mai-dien-tu/wp-content/uploads/2026/06/product_am_tu_sa_1782371446152.webp]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/06/product_am_tu_sa_1782371446152.webp]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:43:"2026/06/product_am_tu_sa_1782371446152.webp";s:8:"filesize";i:153644;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:43:"product_am_tu_sa_1782371446152-300x300.webp";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:19972;}s:9:"thumbnail";a:5:{s:4:"file";s:43:"product_am_tu_sa_1782371446152-150x150.webp";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:7416;}s:12:"medium_large";a:5:{s:4:"file";s:43:"product_am_tu_sa_1782371446152-768x768.webp";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:69650;}s:21:"woocommerce_thumbnail";a:6:{s:4:"file";s:43:"product_am_tu_sa_1782371446152-600x600.webp";s:5:"width";i:600;s:6:"height";i:600;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:50440;s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:5:{s:4:"file";s:43:"product_am_tu_sa_1782371446152-800x800.webp";s:5:"width";i:800;s:6:"height";i:800;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:69702;}s:29:"woocommerce_gallery_thumbnail";a:5:{s:4:"file";s:43:"product_am_tu_sa_1782371446152-100x100.webp";s:5:"width";i:100;s:6:"height";i:100;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:3898;}}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Trà Lài Ướp Hương Tự Nhiên]]></title>
+		<link>http://localhost/Thuong-mai-dien-tu/?attachment_id=43</link>
+		<pubDate>Thu, 25 Jun 2026 10:26:50 +0000</pubDate>
+		<dc:creator><![CDATA[]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_lai_1782371424431.webp</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>43</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-25 10:26:50]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-25 10:26:50]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-06-25 10:26:50]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-06-25 10:26:50]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[tra-lai-uop-huong-tu-nhien-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>16</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost/Thuong-mai-dien-tu/wp-content/uploads/2026/06/product_tra_lai_1782371424431.webp]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/06/product_tra_lai_1782371424431.webp]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:42:"2026/06/product_tra_lai_1782371424431.webp";s:8:"filesize";i:184346;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:42:"product_tra_lai_1782371424431-300x300.webp";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:26504;}s:9:"thumbnail";a:5:{s:4:"file";s:42:"product_tra_lai_1782371424431-150x150.webp";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:9650;}s:12:"medium_large";a:5:{s:4:"file";s:42:"product_tra_lai_1782371424431-768x768.webp";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:90688;}s:21:"woocommerce_thumbnail";a:6:{s:4:"file";s:42:"product_tra_lai_1782371424431-600x600.webp";s:5:"width";i:600;s:6:"height";i:600;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:67022;s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:5:{s:4:"file";s:42:"product_tra_lai_1782371424431-800x800.webp";s:5:"width";i:800;s:6:"height";i:800;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:94474;}s:29:"woocommerce_gallery_thumbnail";a:5:{s:4:"file";s:42:"product_tra_lai_1782371424431-100x100.webp";s:5:"width";i:100;s:6:"height";i:100;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:4850;}}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Trà Nõn Tôm Thái Nguyên]]></title>
+		<link>http://localhost/Thuong-mai-dien-tu/?attachment_id=44</link>
+		<pubDate>Thu, 25 Jun 2026 10:26:51 +0000</pubDate>
+		<dc:creator><![CDATA[]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_non_tom_1782371401270.webp</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>44</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-25 10:26:51]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-25 10:26:51]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-06-25 10:26:51]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-06-25 10:26:51]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[tra-non-tom-thai-nguyen-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>14</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost/Thuong-mai-dien-tu/wp-content/uploads/2026/06/product_tra_non_tom_1782371401270.webp]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/06/product_tra_non_tom_1782371401270.webp]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:46:"2026/06/product_tra_non_tom_1782371401270.webp";s:8:"filesize";i:200080;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:46:"product_tra_non_tom_1782371401270-300x300.webp";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:23476;}s:9:"thumbnail";a:5:{s:4:"file";s:46:"product_tra_non_tom_1782371401270-150x150.webp";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:7482;}s:12:"medium_large";a:5:{s:4:"file";s:46:"product_tra_non_tom_1782371401270-768x768.webp";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:91946;}s:21:"woocommerce_thumbnail";a:6:{s:4:"file";s:46:"product_tra_non_tom_1782371401270-600x600.webp";s:5:"width";i:600;s:6:"height";i:600;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:65746;s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:5:{s:4:"file";s:46:"product_tra_non_tom_1782371401270-800x800.webp";s:5:"width";i:800;s:6:"height";i:800;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:96328;}s:29:"woocommerce_gallery_thumbnail";a:5:{s:4:"file";s:46:"product_tra_non_tom_1782371401270-100x100.webp";s:5:"width";i:100;s:6:"height";i:100;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:3686;}}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Trà Ô Long Mộc Châu Thượng Hạng]]></title>
+		<link>http://localhost/Thuong-mai-dien-tu/?attachment_id=45</link>
+		<pubDate>Thu, 25 Jun 2026 10:26:52 +0000</pubDate>
+		<dc:creator><![CDATA[]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_o_long_1782371412656.webp</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>45</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-25 10:26:52]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-25 10:26:52]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-06-25 10:26:52]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-06-25 10:26:52]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[tra-o-long-moc-chau-thuong-hang-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>15</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost/Thuong-mai-dien-tu/wp-content/uploads/2026/06/product_tra_o_long_1782371412656.webp]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/06/product_tra_o_long_1782371412656.webp]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:45:"2026/06/product_tra_o_long_1782371412656.webp";s:8:"filesize";i:206962;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:45:"product_tra_o_long_1782371412656-300x300.webp";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:24222;}s:9:"thumbnail";a:5:{s:4:"file";s:45:"product_tra_o_long_1782371412656-150x150.webp";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:7808;}s:12:"medium_large";a:5:{s:4:"file";s:45:"product_tra_o_long_1782371412656-768x768.webp";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:96872;}s:21:"woocommerce_thumbnail";a:6:{s:4:"file";s:45:"product_tra_o_long_1782371412656-600x600.webp";s:5:"width";i:600;s:6:"height";i:600;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:68716;s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:5:{s:4:"file";s:45:"product_tra_o_long_1782371412656-800x800.webp";s:5:"width";i:800;s:6:"height";i:800;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:100608;}s:29:"woocommerce_gallery_thumbnail";a:5:{s:4:"file";s:45:"product_tra_o_long_1782371412656-100x100.webp";s:5:"width";i:100;s:6:"height";i:100;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:3974;}}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Trà Sen Tây Hồ Cổ Truyền]]></title>
+		<link>http://localhost/Thuong-mai-dien-tu/?attachment_id=46</link>
+		<pubDate>Thu, 25 Jun 2026 10:26:53 +0000</pubDate>
+		<dc:creator><![CDATA[]]></dc:creator>
+		<guid isPermaLink="false">http://localhost/wordpress/wp-content/uploads/2026/06/product_tra_sen_1782371436673.webp</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>46</wp:post_id>
+		<wp:post_date><![CDATA[2026-06-25 10:26:53]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2026-06-25 10:26:53]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2026-06-25 10:26:53]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2026-06-25 10:26:53]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[tra-sen-tay-ho-co-truyen-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>17</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost/Thuong-mai-dien-tu/wp-content/uploads/2026/06/product_tra_sen_1782371436673.webp]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2026/06/product_tra_sen_1782371436673.webp]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:1024;s:6:"height";i:1024;s:4:"file";s:42:"2026/06/product_tra_sen_1782371436673.webp";s:8:"filesize";i:159336;s:5:"sizes";a:6:{s:6:"medium";a:5:{s:4:"file";s:42:"product_tra_sen_1782371436673-300x300.webp";s:5:"width";i:300;s:6:"height";i:300;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:19684;}s:9:"thumbnail";a:5:{s:4:"file";s:42:"product_tra_sen_1782371436673-150x150.webp";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:7246;}s:12:"medium_large";a:5:{s:4:"file";s:42:"product_tra_sen_1782371436673-768x768.webp";s:5:"width";i:768;s:6:"height";i:768;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:71380;}s:21:"woocommerce_thumbnail";a:6:{s:4:"file";s:42:"product_tra_sen_1782371436673-600x600.webp";s:5:"width";i:600;s:6:"height";i:600;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:50798;s:9:"uncropped";b:0;}s:18:"woocommerce_single";a:5:{s:4:"file";s:42:"product_tra_sen_1782371436673-800x800.webp";s:5:"width";i:800;s:6:"height";i:800;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:74544;}s:29:"woocommerce_gallery_thumbnail";a:5:{s:4:"file";s:42:"product_tra_sen_1782371436673-100x100.webp";s:5:"width";i:100;s:6:"height";i:100;s:9:"mime-type";s:10:"image/webp";s:8:"filesize";i:3968;}}s:10:"image_meta";a:13:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}s:3:"alt";s:0:"";}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
 		<title><![CDATA[Chào tất cả mọi người!]]></title>
-		<link>http://localhost/wordpress/2026/06/25/chao-moi-nguoi/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/chao-moi-nguoi/</link>
 		<pubDate>Thu, 25 Jun 2026 06:50:24 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/?p=1</guid>
@@ -1399,7 +1399,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 					</item>
 					<item>
 		<title><![CDATA[Điều hướng]]></title>
-		<link>http://localhost/wordpress/2026/06/25/navigation/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/navigation/</link>
 		<pubDate>Thu, 25 Jun 2026 06:50:25 +0000</pubDate>
 		<dc:creator><![CDATA[]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/navigation/</guid>
@@ -1423,7 +1423,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Checkout]]></title>
-		<link>http://localhost/wordpress/checkout/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/checkout/</link>
 		<pubDate>Thu, 25 Jun 2026 06:53:11 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/checkout/</guid>
@@ -1529,7 +1529,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[My account]]></title>
-		<link>http://localhost/wordpress/my-account/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/my-account/</link>
 		<pubDate>Thu, 25 Jun 2026 06:53:11 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/my-account/</guid>
@@ -1553,7 +1553,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Trà Nõn Tôm Thái Nguyên]]></title>
-		<link>http://localhost/wordpress/product/tra-non-tom-thai-nguyen/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/product/tra-non-tom-thai-nguyen/</link>
 		<pubDate>Thu, 25 Jun 2026 06:57:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/product/tra-non-tom-thai-nguyen/</guid>
@@ -1594,12 +1594,12 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[31]]></wp:meta_value>
+		<wp:meta_value><![CDATA[44]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
 		<title><![CDATA[Trà Ô Long Mộc Châu Thượng Hạng]]></title>
-		<link>http://localhost/wordpress/product/tra-o-long-moc-chau-thuong-hang/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/product/tra-o-long-moc-chau-thuong-hang/</link>
 		<pubDate>Thu, 25 Jun 2026 06:57:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/product/tra-o-long-moc-chau-thuong-hang/</guid>
@@ -1640,12 +1640,12 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[32]]></wp:meta_value>
+		<wp:meta_value><![CDATA[45]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
 		<title><![CDATA[Trà Lài Ướp Hương Tự Nhiên]]></title>
-		<link>http://localhost/wordpress/product/tra-lai-uop-huong-tu-nhien/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/product/tra-lai-uop-huong-tu-nhien/</link>
 		<pubDate>Thu, 25 Jun 2026 06:57:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/product/tra-lai-uop-huong-tu-nhien/</guid>
@@ -1686,12 +1686,12 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[33]]></wp:meta_value>
+		<wp:meta_value><![CDATA[43]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
 		<title><![CDATA[Trà Sen Tây Hồ Cổ Truyền]]></title>
-		<link>http://localhost/wordpress/product/tra-sen-tay-ho-co-truyen/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/product/tra-sen-tay-ho-co-truyen/</link>
 		<pubDate>Thu, 25 Jun 2026 06:57:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/product/tra-sen-tay-ho-co-truyen/</guid>
@@ -1732,12 +1732,12 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[34]]></wp:meta_value>
+		<wp:meta_value><![CDATA[46]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
 		<title><![CDATA[Bộ Ấm Trà Tử Sa Bát Tràng]]></title>
-		<link>http://localhost/wordpress/product/bo-am-tra-tu-sa-bat-trang/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/product/bo-am-tra-tu-sa-bat-trang/</link>
 		<pubDate>Thu, 25 Jun 2026 06:57:48 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/product/bo-am-tra-tu-sa-bat-trang/</guid>
@@ -1778,12 +1778,12 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[35]]></wp:meta_value>
+		<wp:meta_value><![CDATA[42]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
 		<title><![CDATA[Về chúng tôi]]></title>
-		<link>http://localhost/wordpress/ve-chung-toi/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/ve-chung-toi/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/ve-chung-toi/</guid>
@@ -1807,7 +1807,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Kiến thức Trà]]></title>
-		<link>http://localhost/wordpress/kien-thuc-tra/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/kien-thuc-tra/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/kien-thuc-tra/</guid>
@@ -1831,7 +1831,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Liên hệ]]></title>
-		<link>http://localhost/wordpress/lien-he/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/lien-he/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/lien-he/</guid>
@@ -1855,7 +1855,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Hướng dẫn mua hàng]]></title>
-		<link>http://localhost/wordpress/huong-dan-mua-hang/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/huong-dan-mua-hang/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/huong-dan-mua-hang/</guid>
@@ -1879,7 +1879,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Trang chủ]]></title>
-		<link>http://localhost/wordpress/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/</link>
 		<pubDate>Thu, 25 Jun 2026 06:59:40 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/trang-chu/</guid>
@@ -1903,7 +1903,7 @@ Hình đại diện của người bình luận đến từ <a href="https://gra
 														</item>
 					<item>
 		<title><![CDATA[Custom Styles]]></title>
-		<link>http://localhost/wordpress/2026/06/25/wp-global-styles-twentytwentytwo/</link>
+		<link>http://localhost/Thuong-mai-dien-tu/2026/06/25/wp-global-styles-twentytwentytwo/</link>
 		<pubDate>Thu, 25 Jun 2026 07:26:29 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://localhost/wordpress/2026/06/25/wp-global-styles-twentytwentytwo/</guid>
