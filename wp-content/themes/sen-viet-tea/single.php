@@ -4,6 +4,16 @@ get_header();
 
 <main id="primary" class="site-main container" style="padding: var(--spacing-xl) 0;">
     <div style="max-width: 800px; margin: 0 auto;">
+        <nav class="woocommerce-breadcrumb" style="margin-bottom: 24px; font-size: 14px; color: var(--color-text-light);">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: inherit;">Trang chủ</a> &nbsp;/&nbsp;
+            <?php 
+            $blog_page_id = get_option( 'page_for_posts' );
+            if ( $blog_page_id ) {
+                echo '<a href="' . esc_url( get_permalink( $blog_page_id ) ) . '" style="color: inherit;">' . get_the_title( $blog_page_id ) . '</a> &nbsp;/&nbsp; ';
+            }
+            ?>
+            <span style="color: var(--color-text);"><?php the_title(); ?></span>
+        </nav>
         <?php
         while ( have_posts() ) :
             the_post();

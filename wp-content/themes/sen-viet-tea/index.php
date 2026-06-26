@@ -14,34 +14,32 @@ get_header();
             <?php
         endif;
 
+        echo '<div class="woocommerce"><ul class="products">';
         /* Start the Loop */
         while ( have_posts() ) :
             the_post();
             ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="margin-bottom: var(--spacing-lg);">
-                <header class="entry-header">
-                    <?php
-                    if ( is_singular() ) :
-                        the_title( '<h1 class="entry-title" style="color: var(--color-primary);">', '</h1>' );
-                    else :
-                        the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" style="color: var(--color-primary);">', '</a></h2>' );
-                    endif;
-                    ?>
-                </header><!-- .entry-header -->
-
-                <div class="entry-content">
-                    <?php
-                    if ( is_singular() ) {
-                        the_content();
+            <li <?php post_class('product'); ?>>
+                <a href="<?php echo esc_url( get_permalink() ); ?>" class="woocommerce-LoopProduct-link woocommerce-loop-product__title">
+                    <?php 
+                    if ( has_post_thumbnail() ) {
+                        the_post_thumbnail( 'medium_large' );
                     } else {
-                        the_excerpt();
-                        echo '<a href="' . esc_url( get_permalink() ) . '" class="btn btn-outline" style="margin-top: var(--spacing-sm);">' . __( 'Đọc thêm', 'sen-viet-tea' ) . '</a>';
+                        echo '<div style="width:100%; aspect-ratio:1/1; background:var(--color-border-light); display:flex; align-items:center; justify-content:center; color:var(--color-text-muted); font-weight:600; letter-spacing:2px;">SEN VIỆT TEA</div>';
                     }
                     ?>
-                </div><!-- .entry-content -->
-            </article><!-- #post-<?php the_ID(); ?> -->
+                    <h2 class="woocommerce-loop-product__title"><?php the_title(); ?></h2>
+                </a>
+                
+                <div style="padding: 0 20px 16px; color: var(--color-text-light); font-size: 14px; line-height: 1.6; text-align: center; flex-grow: 1;">
+                    <?php echo wp_trim_words( get_the_excerpt(), 15, '...' ); ?>
+                </div>
+
+                <a href="<?php echo esc_url( get_permalink() ); ?>" class="button add_to_cart_button" style="text-align: center; justify-content: center;"><?php _e( 'ĐỌC XEM', 'sen-viet-tea' ); ?></a>
+            </li>
             <?php
         endwhile;
+        echo '</ul></div>';
 
         the_posts_navigation();
 

@@ -85,12 +85,12 @@ function sen_viet_tea_custom_cart_button_text() {
 add_action( 'woocommerce_single_product_summary', 'sen_viet_tea_brewing_instructions', 25 );
 function sen_viet_tea_brewing_instructions() {
     echo '<div class="tea-brewing-guide" style="background: var(--color-bg); padding: 15px; border-radius: var(--border-radius); border: 1px solid var(--color-border); margin: 20px 0;">';
-    echo '<h4 style="margin-top: 0; color: var(--color-secondary);"><span style="margin-right:8px;">🍵</span>Hướng dẫn pha chuẩn</h4>';
+    echo '<h4 style="margin-top: 0; color: var(--color-secondary);">Hướng dẫn pha chuẩn</h4>';
     echo '<ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9em;">';
-    echo '<li>🌡️ Nhiệt độ: <b>80°C - 90°C</b></li>';
-    echo '<li>⏳ Thời gian: <b>30 - 45 giây</b></li>';
-    echo '<li>⚖️ Lượng trà: <b>5g / 150ml</b></li>';
-    echo '<li>🔁 Số lần hãm: <b>4 - 5 lần</b></li>';
+    echo '<li>Nhiệt độ: <b>80°C - 90°C</b></li>';
+    echo '<li>Thời gian: <b>30 - 45 giây</b></li>';
+    echo '<li>Lượng trà: <b>5g / 150ml</b></li>';
+    echo '<li>Số lần hãm: <b>4 - 5 lần</b></li>';
     echo '</ul>';
     echo '</div>';
 }
@@ -101,10 +101,10 @@ function sen_viet_tea_brewing_instructions() {
 add_action( 'woocommerce_after_add_to_cart_form', 'sen_viet_tea_trust_badges', 15 );
 function sen_viet_tea_trust_badges() {
     echo '<div class="trust-badges">';
-    echo '<div class="trust-badge-item">✅ 100% Trà Tự Nhiên</div>';
-    echo '<div class="trust-badge-item">🚚 Giao Hàng Toàn Quốc</div>';
-    echo '<div class="trust-badge-item">🛡️ Đổi Trả 7 Ngày</div>';
-    echo '<div class="trust-badge-item">🎁 Hỗ Trợ Đóng Quà</div>';
+    echo '<div class="trust-badge-item">100% Trà Tự Nhiên</div>';
+    echo '<div class="trust-badge-item">Giao Hàng Toàn Quốc</div>';
+    echo '<div class="trust-badge-item">Đổi Trả 7 Ngày</div>';
+    echo '<div class="trust-badge-item">Hỗ Trợ Đóng Quà</div>';
     echo '</div>';
 }
 
@@ -180,3 +180,103 @@ function sen_viet_tea_theme_wrapper_end() {
     }
 }
 
+/**
+ * Xóa Sidebar mặc định của WooCommerce
+ */
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+
+/**
+ * Xóa Tiêu đề Shop và Breadcrumbs
+ */
+add_filter( 'woocommerce_show_page_title', '__return_false' );
+add_action( 'init', 'sen_viet_tea_remove_shop_title_breadcrumbs' );
+function sen_viet_tea_remove_shop_title_breadcrumbs() {
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+}
+
+/**
+ * Giao diện 2 cột mới (Sidebar bên trái)
+ */
+add_action('after_setup_theme', function() {
+    remove_action( 'woocommerce_before_main_content', 'sen_viet_tea_theme_wrapper_start', 10 );
+    remove_action( 'woocommerce_after_main_content', 'sen_viet_tea_theme_wrapper_end', 10 );
+    
+    add_action( 'woocommerce_before_main_content', 'sen_viet_tea_theme_wrapper_start_v2', 10 );
+    add_action( 'woocommerce_after_main_content', 'sen_viet_tea_theme_wrapper_end_v2', 10 );
+}, 20);
+
+function sen_viet_tea_theme_wrapper_start_v2() {
+    if ( is_singular( 'product' ) ) {
+        echo '<main id="primary" class="site-main container product-single-container" style="padding: var(--spacing-lg) 24px;">';
+    } else {
+        echo '<main id="primary" class="site-main container shop-archive-container" style="padding: var(--spacing-lg) 24px;">';
+        echo '<div class="shop-layout-grid shop-grid-v2">';
+        
+        // Output Sidebar
+        echo '<aside class="shop-sidebar-column" style="background: var(--color-white); padding: 32px 24px; border-radius: var(--radius-lg); border: 1px solid var(--color-border-light); box-shadow: var(--shadow-sm); height: fit-content;">';
+        
+        // 1. Search Box
+        echo '<div class="widget widget_search" style="margin-bottom: 40px;">';
+        echo '<h3 class="widget-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px solid var(--color-border-light); padding-bottom: 12px;">Tìm kiếm</h3>';
+        echo '<div class="sidebar-search-wrapper">';
+        get_product_search_form();
+        echo '</div>';
+        echo '</div>';
+        
+        // 2. Custom Sorting List
+        $current_orderby = isset( $_GET['orderby'] ) ? wc_clean( wp_unslash( $_GET['orderby'] ) ) : 'menu_order';
+        $sort_options = array(
+            'menu_order' => 'Sắp xếp mặc định',
+            'popularity' => 'Phổ biến nhất',
+            'rating'     => 'Đánh giá cao',
+            'date'       => 'Mới nhất',
+            'price'      => 'Giá từ thấp đến cao',
+            'price-desc' => 'Giá từ cao xuống thấp',
+        );
+        
+        echo '<div class="widget widget_sorting" style="margin-bottom: 40px;">';
+        echo '<h3 class="widget-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px solid var(--color-border-light); padding-bottom: 12px;">Sắp xếp theo</h3>';
+        echo '<ul style="list-style: none; padding: 0; margin: 0;">';
+        foreach ( $sort_options as $id => $name ) {
+            $is_active = ( $current_orderby === $id ) ? 'font-weight: 700; color: var(--color-primary); background: var(--color-primary-light); border-radius: var(--radius-md); padding: 8px 12px;' : 'color: var(--color-text); padding: 8px 12px;';
+            $url = add_query_arg( 'orderby', $id );
+            echo '<li style="margin-bottom: 4px;"><a href="' . esc_url( $url ) . '" style="display: block; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; ' . $is_active . '">' . esc_html( $name ) . '</a></li>';
+        }
+        echo '</ul>';
+        echo '</div>';
+
+        // 3. Category Filter
+        echo '<div class="widget widget_product_categories" style="margin-bottom: 0;">';
+        echo '<h3 class="widget-title" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; color: var(--color-primary); margin-bottom: 20px; border-bottom: 2px solid var(--color-border-light); padding-bottom: 12px;">Danh mục trà</h3>';
+        echo '<ul class="custom-cat-list" style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem;">';
+        $uncat = get_term_by('slug', 'uncategorized', 'product_cat');
+        $exclude = $uncat ? $uncat->term_id : '';
+        
+        wp_list_categories( array(
+            'taxonomy'   => 'product_cat',
+            'hide_empty' => 0,
+            'title_li'   => '',
+            'exclude'    => $exclude,
+        ) );
+        echo '</ul>';
+        echo '</div>';
+        
+        echo '</aside>';
+
+        echo '<div class="shop-products-column">';
+    }
+}
+
+function sen_viet_tea_theme_wrapper_end_v2() {
+    if ( is_singular( 'product' ) ) {
+        echo '</main>';
+    } else {
+        echo '</div><!-- .shop-products-column --></div></main>';
+    }
+}
+
+// Remove the old top sorting dropdown and the old top search bar
+add_action('wp', function() {
+    remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+    remove_action( 'woocommerce_before_shop_loop', 'sen_viet_tea_add_search_to_shop', 15 );
+});
