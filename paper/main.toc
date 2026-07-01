@@ -1,0 +1,21 @@
+\babel@toc {vietnamese}{}\relax 
+\contentsline {chapter}{NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN}{i}{section*.1}%
+\contentsline {chapter}{NHẬN XÉT CỦA GIẢNG VIÊN PHẢN BIỆN}{ii}{section*.3}%
+\contentsline {chapter}{LỜI CAM ĐOAN}{iii}{chapter*.5}%
+\contentsline {chapter}{LỜI CẢM ƠN}{iv}{chapter*.6}%
+\contentsline {chapter}{TÓM LƯỢC}{v}{chapter*.7}%
+\contentsline {chapter}{DANH MỤC CÁC TỪ VIẾT TẮT VÀ THUẬT NGỮ}{vii}{chapter*.10}%
+\contentsline {chapter}{DANH MỤC HÌNH VẼ}{viii}{section*.11}%
+\contentsline {chapter}{DANH MỤC BẢNG BIỂU}{ix}{section*.13}%
+\contentsline {chapter}{LỜI MỞ ĐẦU}{x}{chapter*.15}%
+\contentsline {section}{\numberline {1.}Lý do chọn đề tài}{x}{section.0.1}%
+\contentsline {section}{\numberline {2.}Mục tiêu nghiên cứu}{x}{section.0.2}%
+\contentsline {section}{\numberline {3.}Đối tượng và phạm vi nghiên cứu}{x}{section.0.3}%
+\contentsline {section}{\numberline {4.}Phương pháp nghiên cứu}{x}{section.0.4}%
+\contentsline {section}{\numberline {5.}Cấu trúc của đồ án}{x}{section.0.5}%
+\contentsline {chapter}{\numberline {1}KHẢO SÁT THỊ TRƯỜNG VÀ XÁC ĐỊNH MÔ HÌNH KINH DOANH}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}PHÂN TÍCH CHỨC NĂNG VÀ THIẾT KẾ HỆ THỐNG}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}TRIỂN KHAI XÂY DỰNG WEBSITE TRÊN WORDPRESS}{3}{chapter.3}%
+\contentsline {chapter}{\numberline {4}CẤU HÌNH CÁC TÍNH NĂNG THƯƠNG MẠI ĐIỆN TỬ}{4}{chapter.4}%
+\contentsline {chapter}{\numberline {5}ĐÁNH GIÁ KẾT QUẢ VÀ KẾ HOẠCH TIẾP THEO}{5}{chapter.5}%
+\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{6}{section*.16}%
