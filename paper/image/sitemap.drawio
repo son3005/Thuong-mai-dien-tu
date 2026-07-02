@@ -1,0 +1,124 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.1.1 Chrome/132.0.6834.210 Electron/34.3.3 Safari/537.36" version="26.1.1">
+  <diagram id="sitemap_diagram" name="Sitemap">
+    <mxGraphModel dx="1247" dy="727" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="home" value="Trang chủ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=13;fontColor=#1B5E20;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="490" y="70" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="shop" value="Sản phẩm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0D47A1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="140" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="blog" value="Kiến thức" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0D47A1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="320" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="about" value="Về chúng tôi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0D47A1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="490" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="guide" value="Hướng dẫn mua hàng" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0D47A1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="660" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="contact" value="Liên hệ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0D47A1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="830" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_tn" value="Trà Thái Nguyên" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=1.5;fontSize=12;fontColor=#E65100" parent="1" vertex="1">
+          <mxGeometry x="10" y="490" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_uh" value="Trà Ướp Hoa" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=1.5;fontSize=12;fontColor=#E65100" parent="1" vertex="1">
+          <mxGeometry x="150" y="490" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_ds" value="Trà Đặc Sản Khác" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=1.5;fontSize=12;fontColor=#E65100" parent="1" vertex="1">
+          <mxGeometry x="290" y="490" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cat_pk" value="Phụ Kiện Trà" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=1.5;fontSize=12;fontColor=#E65100" parent="1" vertex="1">
+          <mxGeometry x="440" y="490" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="post_detail" value="Chi tiết bài viết" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#90A4AE;strokeWidth=1.5;fontSize=12;fontColor=#37474F" parent="1" vertex="1">
+          <mxGeometry x="335" y="280" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pdp" value="Chi tiết sản phẩm" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFD54F;strokeWidth=2;fontSize=13;fontColor=#F57F17" parent="1" vertex="1">
+          <mxGeometry x="600" y="490" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cart" value="Giỏ hàng" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFD54F;strokeWidth=2;fontSize=13;fontColor=#F57F17" parent="1" vertex="1">
+          <mxGeometry x="600" y="610" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="checkout" value="Thanh toán" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFD54F;strokeWidth=2;fontSize=13;fontColor=#F57F17" parent="1" vertex="1">
+          <mxGeometry x="600" y="720" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="account" value="&lt;span style=&quot;color: rgb(13, 71, 161); font-weight: 700;&quot;&gt;Tài khoản cá nhân&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0000FF;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="180" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_home_shop" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="shop" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_home_blog" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="blog" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_home_about" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="about" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_home_guide" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="guide" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_home_contact" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="contact" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_shop_tn" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#FF9800;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="shop" target="cat_tn" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="360" />
+              <mxPoint x="75" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_shop_uh" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#FF9800;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="shop" target="cat_uh" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="410" />
+              <mxPoint x="220" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_shop_ds" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#FF9800;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="shop" target="cat_ds" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="360" />
+              <mxPoint x="355" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_shop_pk" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#FF9800" parent="1" source="shop" target="cat_pk" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="360" />
+              <mxPoint x="505" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_blog_post" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#90A4AE" parent="1" source="blog" target="post_detail" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_shop_pdp" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#FF9800;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" target="pdp" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="239.96" as="sourcePoint" />
+            <mxPoint x="760" y="450" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="360" />
+              <mxPoint x="680" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_pdp_cart" value="Thêm vào giỏ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#FF9800;fontColor=#E65100;fontSize=11;labelBackgroundColor=#FFFFFF" parent="1" source="pdp" target="cart" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cart_checkout" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="cart" target="checkout" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_home_account" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="account" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
