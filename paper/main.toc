@@ -1,0 +1,37 @@
+\babel@toc {vietnamese}{}\relax 
+\contentsline {chapter}{NHẬN XÉT CỦA GIẢNG VIÊN HƯỚNG DẪN}{i}{section*.1}%
+\contentsline {chapter}{NHẬN XÉT CỦA GIẢNG VIÊN PHẢN BIỆN}{ii}{section*.3}%
+\contentsline {chapter}{LỜI CAM ĐOAN}{iii}{chapter*.5}%
+\contentsline {chapter}{LỜI CẢM ƠN}{iv}{chapter*.6}%
+\contentsline {chapter}{TÓM LƯỢC}{v}{chapter*.7}%
+\contentsline {chapter}{DANH MỤC CÁC TỪ VIẾT TẮT VÀ THUẬT NGỮ}{viii}{chapter*.10}%
+\contentsline {chapter}{DANH MỤC HÌNH VẼ}{ix}{section*.11}%
+\contentsline {chapter}{DANH MỤC BẢNG BIỂU}{x}{section*.13}%
+\contentsline {chapter}{LỜI MỞ ĐẦU}{xi}{chapter*.15}%
+\contentsline {section}{\numberline {1.}Lý do chọn đề tài}{xi}{section.0.1}%
+\contentsline {section}{\numberline {2.}Mục tiêu nghiên cứu}{xi}{section.0.2}%
+\contentsline {section}{\numberline {3.}Đối tượng và phạm vi nghiên cứu}{xi}{section.0.3}%
+\contentsline {section}{\numberline {4.}Phương pháp nghiên cứu}{xi}{section.0.4}%
+\contentsline {section}{\numberline {5.}Cấu trúc của đồ án}{xi}{section.0.5}%
+\contentsline {chapter}{\numberline {1}KHẢO SÁT THỊ TRƯỜNG VÀ XÁC ĐỊNH MÔ HÌNH KINH DOANH}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}PHÂN TÍCH CHỨC NĂNG VÀ THIẾT KẾ HỆ THỐNG}{2}{chapter.2}%
+\contentsline {section}{\numberline {1.}Yêu cầu chức năng của Website TMĐT}{2}{section.2.1}%
+\contentsline {subsection}{\numberline {1.1.}Phân hệ phía khách hàng}{2}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {1.2.}Phân hệ phía quản trị}{3}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.}Sơ đồ cấu trúc Website}{3}{section.2.2}%
+\contentsline {section}{\numberline {3.}Quy trình nghiệp vụ chính}{4}{section.2.3}%
+\contentsline {section}{\numberline {4.}Bảng tự đánh giá chất lượng}{7}{section.2.4}%
+\contentsline {chapter}{\numberline {3}TRIỂN KHAI XÂY DỰNG WEBSITE TRÊN WORDPRESS}{8}{chapter.3}%
+\contentsline {chapter}{\numberline {4}CẤU HÌNH WOOCOMMERCE VÀ CÁC TÍNH NĂNG BÁN HÀNG}{9}{chapter.4}%
+\contentsline {section}{\numberline {1.}Danh mục và Sản phẩm}{9}{section.4.1}%
+\contentsline {subsection}{\numberline {1.1.}Chia danh mục sản phẩm (Categories)}{9}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {1.2.}Đưa sản phẩm lên web}{9}{subsection.4.1.2}%
+\contentsline {section}{\numberline {2.}Vận chuyển và Thuế (Shipping \& Taxes)}{10}{section.4.2}%
+\contentsline {subsection}{\numberline {2.1.}Phí ship (Shipping Zones)}{10}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {2.2.}Cấu hình Thuế}{10}{subsection.4.2.2}%
+\contentsline {section}{\numberline {3.}Cổng thanh toán (Payment Gateways)}{10}{section.4.3}%
+\contentsline {subsection}{\numberline {3.1.}Thanh toán khi nhận hàng (COD)}{10}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {3.2.}Thanh toán qua PayPal}{10}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.}Khuyến mãi và Mã giảm giá (Coupons)}{10}{section.4.4}%
+\contentsline {chapter}{\numberline {5}ĐÁNH GIÁ KẾT QUẢ VÀ KẾ HOẠCH TIẾP THEO}{12}{chapter.5}%
+\contentsline {chapter}{TÀI LIỆU THAM KHẢO}{13}{section*.20}%

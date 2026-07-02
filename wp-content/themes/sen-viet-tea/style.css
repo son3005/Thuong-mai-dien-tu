@@ -194,14 +194,14 @@ img {
 }
 
 .site-branding img {
-    max-height: 65px;
+    max-height: 145px;
     width: auto;
     transition: var(--transition-fast);
 }
 
 .site-branding .site-title {
     font-family: var(--font-heading);
-    font-size: var(--font-size-lg);
+    font-size: 32px;
     color: var(--color-primary);
     font-weight: 700;
     margin: 0;
@@ -227,9 +227,9 @@ img {
 
 .main-navigation a {
     color: var(--color-text);
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 1.5px;
     padding: 8px 0;
     position: relative;
@@ -334,14 +334,14 @@ img {
 .header-actions a {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-weight: 500;
+    gap: 10px;
+    font-weight: 600;
     color: var(--color-text);
-    padding: 8px 16px;
+    padding: 12px 24px;
     border-radius: var(--radius-full);
     background: var(--color-primary-light);
     transition: var(--transition-fast);
-    font-size: var(--font-size-sm);
+    font-size: 20px;
 }
 
 .header-actions a:hover {
@@ -1215,7 +1215,7 @@ img {
     .footer-widgets { grid-template-columns: 1fr; gap: 32px; }
     .trust-badges { grid-template-columns: 1fr; }
     .section-heading h2 { font-size: var(--font-size-lg); }
-    .site-branding img { max-height: 48px; }
+    .site-branding img { max-height: 145px; }
 }
 
 /* ==========================================================================

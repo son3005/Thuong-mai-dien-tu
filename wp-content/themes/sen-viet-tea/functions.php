@@ -8,6 +8,183 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * ===================================================
+ * DỊCH WOOCOMMERCE SANG TIẾNG VIỆT (gettext filter)
+ * ===================================================
+ */
+add_filter( 'gettext', 'sen_viet_tea_translate_wc_strings', 20, 3 );
+function sen_viet_tea_translate_wc_strings( $translated, $text, $domain ) {
+    if ( 'woocommerce' !== $domain ) {
+        return $translated;
+    }
+
+    $strings = array(
+        // --- Giỏ hàng (Cart) ---
+        'Cart'                          => 'Giỏ hàng',
+        'Product'                       => 'Sản phẩm',
+        'Price'                         => 'Đơn giá',
+        'Quantity'                      => 'Số lượng',
+        'Subtotal'                      => 'Tạm tính',
+        'Total'                         => 'Tổng cộng',
+        'Cart totals'                   => 'Tổng giỏ hàng',
+        'CART TOTALS'                   => 'TỔNG GIỎ HÀNG',
+        'Proceed to checkout'           => 'Tiến hành thanh toán',
+        'Proceed to Checkout'           => 'Tiến hành thanh toán',
+        'Update cart'                   => 'Cập nhật giỏ hàng',
+        'Coupon code'                   => 'Mã giảm giá',
+        'Apply coupon'                  => 'Áp dụng',
+        'Coupon:'                       => 'Mã giảm giá:',
+        'Remove item'                   => 'Xóa sản phẩm',
+        'Thumbnail image'               => 'Hình thu nhỏ',
+        'Add coupon'                    => 'Thêm mã giảm giá',
+        'Add coupons'                   => 'Thêm mã giảm giá',
+        'Estimated total'               => 'Tổng ước tính',
+        'Estimated for'                 => 'Ước tính cho',
+        'Shipping'                      => 'Vận chuyển',
+        'Calculate shipping'            => 'Tính phí vận chuyển',
+        'Apply'                         => 'Áp dụng',
+        'No shipping options were found.' => 'Không tìm thấy tùy chọn vận chuyển.',
+        'Enter your address to view shipping options.' => 'Nhập địa chỉ để xem tùy chọn vận chuyển.',
+        'Free!'                         => 'Miễn phí!',
+        'Free shipping'                 => 'Miễn phí vận chuyển',
+
+        // --- Checkout ---
+        'Checkout'                      => 'Thanh toán',
+        'Billing details'               => 'Thông tin thanh toán',
+        'Order notes'                   => 'Ghi chú đơn hàng',
+        'Notes about your order, e.g. special notes for delivery.' => 'Ghi chú về đơn hàng, ví dụ: ghi chú đặc biệt cho việc giao hàng.',
+        'Place order'                   => 'Đặt hàng',
+        'Your order'                    => 'Đơn hàng của bạn',
+        'Order summary'                 => 'Tóm tắt đơn hàng',
+        'First name'                    => 'Tên',
+        'Last name'                     => 'Họ',
+        'Company name (optional)'       => 'Tên công ty (tùy chọn)',
+        'Country / Region'              => 'Quốc gia / Khu vực',
+        'Street address'                => 'Địa chỉ',
+        'Apartment, suite, unit, etc. (optional)' => 'Căn hộ, tòa nhà, v.v. (tùy chọn)',
+        'Town / City'                   => 'Thành phố',
+        'State / County'                => 'Tỉnh / Thành phố',
+        'Postcode / ZIP'                => 'Mã bưu chính',
+        'Phone'                         => 'Số điện thoại',
+        'Email address'                 => 'Địa chỉ email',
+        'Have a coupon?'                => 'Có mã giảm giá?',
+        'Click here to enter your code' => 'Nhấp vào đây để nhập mã',
+        'I have read and agree to the website'  => 'Tôi đã đọc và đồng ý với',
+        'terms and conditions'          => 'điều khoản và điều kiện',
+
+        // --- Sản phẩm (Product) ---
+        'Add to cart'                   => 'Thêm vào giỏ',
+        'Out of stock'                  => 'Hết hàng',
+        'In stock'                      => 'Còn hàng',
+        'Sale!'                         => 'Khuyến mãi!',
+        'Reviews'                       => 'Đánh giá',
+        'Description'                   => 'Mô tả',
+        'Additional information'        => 'Thông tin thêm',
+        'Related products'              => 'Sản phẩm liên quan',
+        'You may also like&hellip;'     => 'Bạn có thể thích&hellip;',
+        'SKU:'                          => 'SKU:',
+        'Category:'                     => 'Danh mục:',
+        'Categories:'                   => 'Danh mục:',
+        'Tag:'                          => 'Thẻ:',
+        'Tags:'                         => 'Thẻ:',
+        'Per page'                      => 'Mỗi trang',
+        'Sort by latest'                => 'Mới nhất',
+        'Sort by price: low to high'    => 'Giá tăng dần',
+        'Sort by price: high to low'    => 'Giá giảm dần',
+        'Sort by popularity'            => 'Phổ biến nhất',
+        'Sort by average rating'        => 'Đánh giá cao nhất',
+        'Default sorting'               => 'Sắp xếp mặc định',
+        'Showing all %d results'        => 'Hiển thị tất cả %d sản phẩm',
+        'No products were found matching your selection.' => 'Không tìm thấy sản phẩm phù hợp.',
+
+        // --- Tài khoản ---
+        'My account'                    => 'Tài khoản của tôi',
+        'Login'                         => 'Đăng nhập',
+        'Logout'                        => 'Đăng xuất',
+        'Register'                      => 'Đăng ký',
+        'Username or email address'     => 'Tên đăng nhập hoặc email',
+        'Password'                      => 'Mật khẩu',
+        'Remember me'                   => 'Ghi nhớ đăng nhập',
+        'Lost your password?'           => 'Quên mật khẩu?',
+        'Orders'                        => 'Đơn hàng',
+        'Account details'               => 'Thông tin tài khoản',
+        'Addresses'                     => 'Địa chỉ',
+        'Dashboard'                     => 'Tổng quan',
+
+        // --- Checkout chi tiết ---
+        'You must be logged in to checkout.' => 'Bạn phải đăng nhập để thanh toán.',
+        'Your order'                    => 'Đơn hàng của bạn',
+        'Product'                       => 'Sản phẩm',
+        'Subtotal'                      => 'Tạm tính',
+        'Shipping'                      => 'Vận chuyển',
+        'Total'                         => 'Tổng cộng',
+        'Payment'                       => 'Thanh toán',
+        'Payment method'                => 'Phương thức thanh toán',
+        'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.' => 'Không có phương thức thanh toán nào khả dụng. Vui lòng liên hệ chúng tôi.',
+        'Please fill in your details above to see available payment methods.' => 'Vui lòng điền thông tin để xem phương thức thanh toán.',
+        'Place order'                   => 'Đặt hàng',
+        'Place Order'                   => 'Đặt hàng',
+        'I have read and agree to the website %s'  => 'Tôi đã đọc và đồng ý với %s của website',
+        'terms and conditions'          => 'điều khoản và điều kiện',
+        'Have a coupon?'                => 'Có mã giảm giá?',
+        'Click here to enter your code' => 'Nhấp vào đây để nhập mã',
+        'Apply coupon'                  => 'Áp dụng mã',
+        'Coupon code'                   => 'Mã giảm giá',
+        'Return to cart'                => 'Quay lại giỏ hàng',
+        'Order #%s'                     => 'Đơn hàng #%s',
+        'Thank you. Your order has been received.' => 'Cảm ơn bạn! Đơn hàng đã được tiếp nhận.',
+        'Order number:'                 => 'Mã đơn hàng:',
+        'Date:'                         => 'Ngày đặt:',
+        'Email:'                        => 'Email:',
+        'Total:'                        => 'Tổng cộng:',
+        'Payment method:'               => 'Phương thức thanh toán:',
+        'Order details'                 => 'Chi tiết đơn hàng',
+        'Billing address'               => 'Địa chỉ thanh toán',
+        'Shipping address'              => 'Địa chỉ giao hàng',
+        'Ship to a different address?'  => 'Giao đến địa chỉ khác?',
+        'Order notes'                   => 'Ghi chú đơn hàng',
+        'Notes about your order, e.g. special notes for delivery.' => 'Ghi chú về đơn hàng, ví dụ: ghi chú đặc biệt cho việc giao hàng.',
+        'Company name (optional)'       => 'Tên công ty (tùy chọn)',
+        'Apartment, suite, unit, etc. (optional)' => 'Số căn hộ, tòa nhà (tùy chọn)',
+        'Town / City'                   => 'Thành phố',
+        'State / County'                => 'Tỉnh / Thành',
+        'Postcode / ZIP'                => 'Mã bưu chính',
+        'Country / Region'              => 'Quốc gia / Khu vực',
+        'Phone'                         => 'Số điện thoại',
+        'Email address'                 => 'Địa chỉ email',
+        'First name'                    => 'Tên',
+        'Last name'                     => 'Họ',
+        'Street address'                => 'Địa chỉ',
+        'Woo'                           => 'Woo',
+    );
+
+    return isset( $strings[ $text ] ) ? $strings[ $text ] : $translated;
+}
+
+/**
+ * ===================================================
+ * FIX LỖI MOJIBAKE (Double-encoded UTF-8)
+ * Áp dụng toàn cục cho mọi nội dung the_content
+ * ===================================================
+ */
+add_filter( 'the_content', 'sen_viet_tea_fix_mojibake', 1 );
+add_filter( 'woocommerce_short_description', 'sen_viet_tea_fix_mojibake', 1 );
+add_filter( 'get_the_excerpt', 'sen_viet_tea_fix_mojibake', 1 );
+
+function sen_viet_tea_fix_mojibake( $content ) {
+    if ( empty( $content ) ) {
+        return $content;
+    }
+    // Phát hiện Mojibake: UTF-8 bị encode thêm 1 lần như Latin-1
+    // Ví dụ: "Việt" → "Viá»‡t" hoặc "Viêt" → ký tự Ã + ký tự Latin
+    if ( preg_match( '/Ã[€-ÿ]|Â[€-ÿ]|á»|Ä\x83|Æ°/', $content ) ) {
+        $content = mb_convert_encoding( $content, 'ISO-8859-1', 'UTF-8' );
+    }
+    return $content;
+}
+
+
+/**
  * Setup theme supports
  */
 function sen_viet_tea_setup() {
@@ -67,8 +244,177 @@ function sen_viet_tea_scripts() {
 add_action( 'wp_enqueue_scripts', 'sen_viet_tea_scripts' );
 
 /**
+ * Đổi tiêu đề trang Cart/Checkout sang tiếng Việt
+ */
+add_filter( 'woocommerce_page_title', 'sen_viet_tea_page_titles' );
+add_filter( 'the_title', 'sen_viet_tea_page_titles', 10, 2 );
+function sen_viet_tea_page_titles( $title, $post_id = null ) {
+    $map = array(
+        'Cart'     => 'Giỏ hàng',
+        'Checkout' => 'Thanh toán',
+        'My account' => 'Tài khoản',
+    );
+    return isset( $map[ $title ] ) ? $map[ $title ] : $title;
+}
+
+/**
+ * Dịch WooCommerce Block Cart/Checkout strings sang tiếng Việt
+ * (Block-based cart dùng JS nên cần override bằng JavaScript)
+ * Chạy trên mọi trang để đảm bảo bắt được mọi block.
+ */
+add_action( 'wp_footer', 'sen_viet_tea_block_cart_translations' );
+function sen_viet_tea_block_cart_translations() {
+    ?>
+    <script>
+    (function() {
+        'use strict';
+
+        var translations = {
+            'Cart':                    'Giỏ hàng',
+            'PRODUCT':                 'SẢN PHẨM',
+            'Product':                 'Sản phẩm',
+            'TOTAL':                   'TỔNG',
+            'Total':                   'Tổng cộng',
+            'CART TOTALS':             'TỔNG GIỎ HÀNG',
+            'Cart totals':             'Tổng giỏ hàng',
+            'Add coupons':             'Thêm mã giảm giá',
+            'Add a coupon':            'Thêm mã giảm giá',
+            'Enter code':              'Nhập mã giảm giá',
+            'Apply':                   'Áp dụng',
+            'Estimated total':         'Tổng ước tính',
+            'Proceed to Checkout':     'Tiến hành thanh toán',
+            'Proceed to checkout':     'Tiến hành thanh toán',
+            'Remove item':             'Xóa',
+            'Quantity:':               'Số lượng:',
+            'Subtotal':                'Tạm tính',
+            'Shipping':                'Vận chuyển',
+            'Free!':                   'Miễn phí!',
+            'Coupon code':             'Mã giảm giá',
+            'Update':                  'Cập nhật',
+            'Update cart':             'Cập nhật giỏ hàng',
+            'Checkout':                'Thanh toán',
+            'Order summary':           'Tóm tắt đơn hàng',
+            'Place Order':             'Đặt hàng',
+            'Place order':             'Đặt hàng',
+            'Billing address':         'Địa chỉ thanh toán',
+            'Billing details':         'Thông tin thanh toán',
+            'Contact information':     'Thông tin liên hệ',
+            'Email address':           'Địa chỉ email',
+            'First name':              'Tên',
+            'Last name':               'Họ',
+            'Phone':                   'Điện thoại',
+            'Your order':              'Đơn hàng của bạn',
+
+            // --- Block Checkout fields (từ screenshot) ---
+            'Country/Region':          'Quốc gia/Khu vực',
+            'Address':                 'Địa chỉ',
+            'Street address':          'Địa chỉ đường',
+            '+ Add apartment, suite, etc.': '+ Thêm căn hộ, tòa nhà,...',
+            'Add apartment, suite, etc.':   'Thêm căn hộ, tòa nhà,...',
+            'Postal code (optional)':  'Mã bưu chính (tùy chọn)',
+            'Postal code':             'Mã bưu chính',
+            'City':                    'Thành phố',
+            'Phone (optional)':        'Điện thoại (tùy chọn)',
+            'Payment options':         'Phương thức thanh toán',
+            'Payment methods':         'Phương thức thanh toán',
+            'There are no payment methods available. Please contact us for help placing your order.':
+                                       'Hiện không có phương thức thanh toán. Vui lòng liên hệ chúng tôi.',
+            'Add a note to your order':'Thêm ghi chú cho đơn hàng',
+            'Note about your order (optional)': 'Ghi chú đơn hàng (tùy chọn)',
+            'Ship to a different address?': 'Giao đến địa chỉ khác?',
+            'Shipping address':        'Địa chỉ giao hàng',
+            'Return to Cart':          'Quay lại giỏ hàng',
+            'Return to cart':          'Quay lại giỏ hàng',
+            'Order notes':             'Ghi chú đơn hàng',
+            'Use same address for billing': 'Dùng địa chỉ này để thanh toán',
+            'State/County':            'Tỉnh/Thành phố',
+            'Continue to payment':     'Tiếp tục thanh toán',
+            'Continue to shipping':    'Tiếp tục vận chuyển',
+            'Express checkout':        'Thanh toán nhanh',
+        };
+
+
+        function translateTextNode(node) {
+            var text = node.textContent;
+            if (!text || !text.trim()) return;
+            var trimmed = text.trim();
+            if (translations[trimmed]) {
+                node.textContent = text.replace(trimmed, translations[trimmed]);
+            }
+        }
+
+        function translateInputs() {
+            document.querySelectorAll('input[placeholder]').forEach(function(el) {
+                var ph = el.placeholder.trim();
+                if (translations[ph]) el.placeholder = translations[ph];
+            });
+            document.querySelectorAll('button').forEach(function(el) {
+                var txt = el.textContent.trim();
+                if (translations[txt]) el.textContent = translations[txt];
+            });
+            document.querySelectorAll('input[type="submit"], input[type="button"]').forEach(function(el) {
+                if (translations[el.value.trim()]) el.value = translations[el.value.trim()];
+            });
+        }
+
+        function translateAll() {
+            var walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: function(node) {
+                        var parent = node.parentElement;
+                        if (!parent) return NodeFilter.FILTER_REJECT;
+                        var tag = parent.tagName;
+                        if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return NodeFilter.FILTER_REJECT;
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                },
+                false
+            );
+            var node;
+            while ((node = walker.nextNode())) {
+                translateTextNode(node);
+            }
+            translateInputs();
+        }
+
+        // Chạy ngay lập tức
+        translateAll();
+
+        // Chạy lại sau khi DOM loaded
+        document.addEventListener('DOMContentLoaded', translateAll);
+
+        // Chạy lại sau 500ms, 1s, 2s để bắt React blocks
+        setTimeout(translateAll, 500);
+        setTimeout(translateAll, 1000);
+        setTimeout(translateAll, 2000);
+
+        // Theo dõi DOM changes (React re-renders)
+        var observer = new MutationObserver(function(mutations) {
+            var changed = false;
+            mutations.forEach(function(m) {
+                if (m.addedNodes.length > 0) changed = true;
+                if (m.type === 'characterData') changed = true;
+            });
+            if (changed) translateAll();
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: false,
+        });
+    })();
+    </script>
+    <?php
+}
+
+
+/**
  * WooCommerce Customizations (Minimalist / Distraction-free)
  */
+
 // Remove WooCommerce Breadcrumbs if custom one is needed
 // remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 
@@ -107,6 +453,44 @@ function sen_viet_tea_trust_badges() {
     echo '<div class="trust-badge-item">Hỗ Trợ Đóng Quà</div>';
     echo '</div>';
 }
+
+/**
+ * Đổi tên Tab WooCommerce sang tiếng Việt
+ */
+add_filter( 'woocommerce_product_tabs', 'sen_viet_tea_rename_tabs', 98 );
+function sen_viet_tea_rename_tabs( $tabs ) {
+    // Đổi tab "Description" → "Mô tả"
+    if ( isset( $tabs['description'] ) ) {
+        $tabs['description']['title'] = __( 'Mô tả', 'sen-viet-tea' );
+    }
+    // Đổi tab "Additional information" → "Thông tin thêm"
+    if ( isset( $tabs['additional_information'] ) ) {
+        $tabs['additional_information']['title'] = __( 'Thông tin thêm', 'sen-viet-tea' );
+    }
+    // Đổi tab "Reviews" → "Đánh giá"
+    if ( isset( $tabs['reviews'] ) ) {
+        $count = $tabs['reviews']['title'];
+        // Thay thế chữ Reviews bằng Đánh giá, giữ nguyên số lượng
+        global $product;
+        $review_count = is_a( $product, 'WC_Product' ) ? $product->get_review_count() : 0;
+        $tabs['reviews']['title'] = sprintf( __( 'Đánh giá (%d)', 'sen-viet-tea' ), $review_count );
+    }
+    return $tabs;
+}
+
+/**
+ * Đổi "Related products" → "Sản phẩm liên quan"
+ */
+add_filter( 'woocommerce_product_related_products_heading', function() {
+    return __( 'Sản phẩm liên quan', 'sen-viet-tea' );
+} );
+
+/**
+ * Đổi tiêu đề "Description" bên trong tab nội dung → "Mô tả sản phẩm"
+ */
+add_filter( 'woocommerce_product_description_heading', function() {
+    return __( 'Mô tả sản phẩm', 'sen-viet-tea' );
+} );
 
 /**
  * Thêm Tab Bảo quản & Lợi ích

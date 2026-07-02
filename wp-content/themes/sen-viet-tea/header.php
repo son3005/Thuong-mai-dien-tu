@@ -22,7 +22,6 @@
         </div>
 
         <!-- Main Navigation -->
-        <?php if ( ! ( function_exists( 'is_checkout' ) && is_checkout() && empty( is_wc_endpoint_url( 'order-received' ) ) ) ) : ?>
         <nav class="main-navigation">
             <?php
             wp_nav_menu( array(
@@ -42,7 +41,7 @@
                 </a>
             <?php endif; ?>
         </div>
-        <?php endif; ?>
+
     </div>
 </header>
 

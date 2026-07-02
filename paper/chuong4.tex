@@ -1,1 +1,70 @@
-\chapter{CẤU HÌNH CÁC TÍNH NĂNG THƯƠNG MẠI ĐIỆN TỬ}
+\chapter{CẤU HÌNH WOOCOMMERCE VÀ CÁC TÍNH NĂNG BÁN HÀNG}
+
+Sau khi cài đặt xong WordPress và chèn giao diện \textbf{Sen Việt Tea}, việc tiếp theo là cấu hình plugin WooCommerce. Đây là phần tốn nhiều thời gian nhất vì nó quyết định website có thực sự bán được hàng hay không, từ việc khách xem sản phẩm, bỏ vào giỏ, tính phí ship cho đến lúc trả tiền. Trong chương này, tôi sẽ trình bày các bước thiết lập dựa trên dữ liệu thật của dự án.
+
+\section{Danh mục và Sản phẩm}
+
+\subsection{Chia danh mục sản phẩm (Categories)}
+Danh mục hàng hóa nếu làm rối rắm thì khách rất lười tìm. Vì vậy, tôi chia các sản phẩm của Sen Việt Tea thành 4 nhóm rõ ràng dựa trên thói quen mua trà của người Việt:
+
+\begin{itemize}
+    \item \textbf{Trà Thái Nguyên:} Dành cho những khách thích uống trà xanh truyền thống, vị chát đậm.
+    \item \textbf{Trà Ướp Hoa:} Gồm trà sen, trà nhài. Dòng này chủ yếu khách mua làm quà biếu hoặc những người thích hương thơm nhẹ nhàng.
+    \item \textbf{Trà Đặc Sản Khác:} Chứa các loại trà vùng miền ít gặp hơn để khách có thêm lựa chọn mới lạ.
+    \item \textbf{Phụ Kiện Trà:} Bán trà thì phải bán kèm ấm chén. Nhóm này (như tống trà, lọc trà) giúp tôi bán chéo (cross-sell) để tăng giá trị cho mỗi đơn hàng.
+\end{itemize}
+
+Tôi cũng chỉnh lại đường dẫn (URL Slug) của từng danh mục cho ngắn gọn và dễ nhớ, ví dụ như \texttt{/danh-muc/tra-thai-nguyen}. Việc này giúp Google dễ đọc cấu trúc trang web hơn.
+
+\subsection{Đưa sản phẩm lên web}
+Nhập tay từng món hàng thì quá lâu. Thay vào đó, tôi dùng plugin \textbf{Product Import Export for WooCommerce} để đẩy toàn bộ danh sách lên từ một file CSV. Công cụ này tự động kéo hình ảnh, mô tả, giá và mã SKU vào đúng chỗ.
+
+Hiện tại, cửa hàng đang có \textbf{chính xác 30 sản phẩm}. Một vài món tiêu biểu bao gồm:
+\begin{itemize}
+    \item \textit{Bộ 4 Ly Trà Thủy Tinh Hai Lớp Cách Nhiệt}
+    \item \textit{Ấm Trà Đất Nung Dáng Tây Thi Cổ Điển}
+    \item \textit{Hũ Đựng Trà Gốm Tử Sa Nắp Kín}
+    \item \textit{Lọc Trà Sứ Viền Inox Siêu Mịn}
+    \item \textit{Tống Trà Thủy Tinh Chịu Nhiệt Cao Cấp}
+\end{itemize}
+
+Tất cả đều được cài đặt là \textbf{Sản phẩm đơn giản (Simple Products)} vì mỗi món chỉ có một giá duy nhất. Kho hàng cũng được tự động cập nhật; hễ số lượng về 0 là nút "Thêm vào giỏ hàng" tự biến mất để khách khỏi đặt nhầm.
+
+\section{Vận chuyển và Thuế (Shipping \& Taxes)}
+
+\subsection{Phí ship (Shipping Zones)}
+Nhiều người bỏ ngang lúc thanh toán chỉ vì tự nhiên lòi ra phí ship quá cao hoặc cách tính quá rắc rối. Nên thay vì chia phí theo từng tỉnh thành, tôi thiết lập một mức giá chung cho mọi nơi (chọn vùng \textit{Rest of the World} trong WooCommerce).
+
+Dù khách nhập địa chỉ ở đâu, họ cũng chỉ thấy 2 tùy chọn đồng giá:
+\begin{enumerate}
+    \item \textbf{Giao hàng tiêu chuẩn (35.000 VNĐ):} Phí mặc định. Thường mất 2-4 ngày hàng sẽ tới.
+    \item \textbf{Giao hàng hỏa tốc (200.000 VNĐ):} Khá cao, nhưng cần thiết cho những ai cần mua trà biếu gấp trong ngày.
+\end{enumerate}
+
+Cách làm này vừa giúp tôi dễ tính toán chi phí với bên giao hàng, vừa làm khách hàng thấy rõ ràng ngay từ đầu, không bắt họ phải đoán xem phí ship tới nhà mình là bao nhiêu.
+
+\subsection{Cấu hình Thuế}
+Người Việt Nam đi mua hàng online rất ghét chuyện giá một đằng, lúc thanh toán lại cộng thêm 8\% hay 10\% thuế (VAT). Vì vậy, tôi chọn tùy chọn \textbf{Giá đã bao gồm thuế (Inclusive)}. WooCommerce vẫn sẽ tính toán và ghi chú rành mạch số tiền thuế trên hóa đơn cho đúng luật, nhưng con số khách phải trả cuối cùng vẫn y nguyên như giá niêm yết ngoài trang chủ.
+
+\section{Cổng thanh toán (Payment Gateways)}
+
+Bước cuối cùng là làm sao để nhận tiền. Tôi đang bật hai phương thức thanh toán chính:
+
+\subsection{Thanh toán khi nhận hàng (COD)}
+Dù ví điện tử phổ biến đến mấy thì mua hàng qua mạng ở Việt Nam vẫn phải có COD. Khách hàng mới biết đến trang web lần đầu, họ cần được cầm hộp trà trên tay, kiểm tra cẩn thận rồi mới yên tâm đưa tiền cho shipper.
+
+\subsection{Thanh toán qua PayPal}
+Tôi cài thêm plugin \textbf{WooCommerce PayPal Payments} để xử lý luôn mảng thanh toán quốc tế. Sau khi kết nối API (nhập Client ID và Secret Key), website có thể nhận thanh toán từ thẻ Visa, Mastercard hoặc tiền trong ví PayPal. Việc này chuẩn bị sẵn cho trường hợp Việt kiều muốn mua trà gửi tặng người thân, hoặc khách nước ngoài muốn mua đặc sản Việt Nam. Mọi giao dịch ngoại tệ đều được WooCommerce tự động chuyển đổi và ghi nhận vào hệ thống.
+
+\section{Khuyến mãi và Mã giảm giá (Coupons)}
+
+Để kích thích khách hàng chốt đơn, tôi đã tận dụng tính năng Coupons có sẵn của WooCommerce thay vì phải cài thêm plugin nặng máy. 
+
+Hiện tại, hệ thống đang chạy 3 mã giảm giá chính:
+\begin{itemize}
+    \item \textbf{FREESHIP:} Khách nhập mã này sẽ được trừ thẳng 35.000đ vào tổng tiền (đúng bằng phí giao hàng tiêu chuẩn). Mã này rất tiện để chạy các chiến dịch quảng cáo "Freeship toàn quốc".
+    \item \textbf{GIAM10:} Mã giảm giá 10\% trên tổng đơn hàng. Thường dùng cho các khách hàng VIP hoặc khách mua sỉ số lượng lớn.
+    \item \textbf{CHAO2026:} Giảm ngay 50.000đ cho đơn hàng. Đây là mã mồi để chào mừng năm mới, giúp khách thấy mình đang được hời to mà lại dễ nhớ.
+\end{itemize}
+
+Khách hàng chỉ việc nhập một trong các mã này ở trang Giỏ hàng hoặc Thanh toán. Hệ thống tự động kiểm tra tính hợp lệ và trừ tiền liền tay, rất mượt và chuyên nghiệp.
