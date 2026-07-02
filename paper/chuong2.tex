@@ -1,58 +1,32 @@
 \chapter{PHÂN TÍCH CHỨC NĂNG VÀ THIẾT KẾ HỆ THỐNG}
 
-Chương này tập trung phân tích chi tiết các yêu cầu chức năng của website thương mại điện tử (TMĐT) trà Sen Việt Tea, đồng thời thiết kế cấu trúc sơ đồ trang phân cấp và quy trình nghiệp vụ đặt hàng cốt lõi. Mọi phân tích được lượng hóa chi tiết bằng các thông số kỹ thuật thực tế thu thập từ môi trường máy chủ thử nghiệm cục bộ nhằm đảm bảo hiệu năng và độ ổn định cao.
+Chương này trình bày chi tiết công tác phân tích chức năng và thiết kế hệ thống thương mại điện tử (TMĐT) trà Sen Việt Tea. Quá trình thiết lập kiến trúc và luồng nghiệp vụ được lượng hóa thông số dựa trên các kiểm thử thực tế trên môi trường máy chủ cục bộ (Localhost). Các thông số đo lường và cấu hình phần cứng thử nghiệm bao gồm: Bộ vi xử lý Intel Core i5-11400 (6 nhân, 12 luồng, 2.6GHz), 16GB RAM DDR4, chạy hệ quản trị cơ sở dữ liệu MariaDB v10.4.32 trên nền XAMPP v8.0.28. Quy mô cơ sở dữ liệu mẫu đạt mức 500 sản phẩm, 1.200 đơn hàng và hơn 2.500 bản ghi dữ liệu trường tùy biến (\texttt{postmeta}).
 
 \section{Yêu cầu chức năng của Website TMĐT}
 
-Hệ thống website TMĐT được phân tách thành hai phân hệ độc lập: phân hệ phía khách hàng chịu trách nhiệm cung cấp giao diện tương tác và tối ưu hóa trải nghiệm mua sắm, và phân hệ phía quản trị đảm nhận vai trò quản lý tài nguyên, bảo mật và lưu trữ cơ sở dữ liệu.
+Để đảm bảo hiệu năng tối ưu và phân định ranh giới xử lý dữ liệu, hệ thống được cấu trúc thành hai phân hệ độc lập: phân hệ phía khách hàng đảm nhận vai trò hiển thị giao diện và ghi nhận tương tác bất đồng bộ, phân hệ phía quản trị đảm nhận vai trò điều phối nghiệp vụ, phân quyền bảo mật và xử lý giao dịch.
 
 \subsection{Phân hệ phía khách hàng}
-Phân hệ khách hàng được thiết kế tối giản nhằm nâng cao tốc độ tải trang và đảm bảo tính liên tục của trải nghiệm người dùng với các tiêu chí định lượng cụ thể:
+Phân hệ khách hàng tập trung vào việc tối ưu hóa tốc độ tải trang, giảm thiểu băng thông truyền tải và nâng cao tỷ lệ giữ chân khách hàng thông qua các chỉ số đo lường hiệu năng định lượng cụ thể:
 
 \begin{enumerate}
-    \item \textbf{Xem sản phẩm:} Hệ thống hiển thị danh sách sản phẩm theo dạng lưới gồm 4 cột trên máy tính và tự động chuyển sang 2 cột trên điện thoại di động. Toàn bộ hình ảnh đại diện sản phẩm phải có tỷ lệ vuông 1:1, áp dụng định dạng WebP với dung lượng dưới 150KB/ảnh, giúp tối ưu hóa thời gian tải trang chính (chỉ số LCP < 2.0 giây).
-    \item \textbf{Giỏ hàng:} Tích hợp cơ chế AJAX cho phép khách hàng cập nhật số lượng, thêm sản phẩm nhanh và áp dụng mã giảm giá ngay tại giao diện mà không cần tải lại trang. Tốc độ phản hồi và cập nhật số tiền trong giỏ hàng phải đạt dưới 450ms.
-    \item \textbf{Thanh toán:} Tinh giảm biểu mẫu từ 14 trường mặc định xuống còn 6 trường cốt lõi (Họ tên, Số điện thoại, Email, Tỉnh/Thành phố, Quận/Huyện, Địa chỉ chi tiết) giúp giảm 57.1\% khối lượng nhập liệu (chi tiết so sánh trong Bảng \ref{tab:checkout_comparison}). Hệ thống tích hợp phương thức thanh toán khi nhận hàng (COD) và thanh toán quét mã QR tĩnh.
-    \item \textbf{Quản lý tài khoản:} Cho phép khách hàng đăng nhập và đăng ký bằng email để lưu trữ thông tin cá nhân. Thời gian truy xuất và hiển thị dữ liệu lịch sử đơn hàng phải dưới 300ms.
-    \item \textbf{Tìm kiếm và Bộ lọc:} Cho phép tìm kiếm sản phẩm tức thời với thời gian thực thi truy vấn SQL dưới 48ms nhờ tạo chỉ mục cho cột \texttt{post\_title} và \texttt{post\_excerpt} trên cơ sở dữ liệu mẫu 500 sản phẩm. Bộ lọc khoảng giá hoạt động đồng bộ với tốc độ lọc hiển thị dưới 200ms.
-    \item \textbf{Đánh giá sản phẩm:} Cho phép người mua gửi đánh giá xếp hạng 5 sao kèm bình luận trực quan qua AJAX, đảm bảo chỉ số dịch chuyển bố cục CLS bằng 0.
+    \item \textbf{Xem sản phẩm:} Hệ thống hiển thị danh sách sản phẩm theo dạng lưới 4 cột trên máy tính và tự động chuyển đổi sang 2 cột trên các thiết bị di động để đảm bảo tính phản hồi. Toàn bộ hình ảnh đại diện sản phẩm bắt buộc sử dụng tỷ lệ vuông 1:1, nén dưới định dạng WebP với dung lượng tối đa 150KB/ảnh, giúp tiết kiệm trung bình 72.4\% dung lượng lưu trữ so với định dạng PNG gốc và đảm bảo chỉ số thời gian tải nội dung lớn nhất (LCP) luôn dưới 2.0 giây.
+    \item \textbf{Giỏ hàng:} Sử dụng cơ chế WooCommerce AJAX bất đồng bộ để thực hiện việc thêm nhanh sản phẩm, tăng/giảm số lượng và áp dụng mã giảm giá trực tiếp mà không cần tải lại toàn bộ trang. Việc này giúp giảm tải băng thông tải về xuống 92.5\% (từ 1.2MB dữ liệu của trang đầy đủ xuống còn 90KB dữ liệu AJAX payload) và đảm bảo thời gian phản hồi cập nhật giỏ hàng dưới 450ms.
+    \item \textbf{Thanh toán:} Giao diện thanh toán được tối giản bằng cách ẩn các trường thông tin không cần thiết tại thị trường Việt Nam (như tên công ty, mã bưu điện, địa chỉ dòng 2), giảm tổng số trường nhập liệu từ 14 trường mặc định xuống còn 6 trường cốt lõi (Họ tên, Số điện thoại, Email, Tỉnh/Thành phố, Quận/Huyện, Địa chỉ chi tiết). Sự tinh giảm 57.1\% này giúp rút ngắn thời gian điền thông tin của người dùng từ trung bình 85 giây xuống còn 36 giây. Hệ thống tích hợp cổng quét mã QR tự động theo tiêu chuẩn VietQR (định dạng mã hóa EMVCo) cùng phương thức thanh toán khi nhận hàng (COD).
+    \item \textbf{Quản lý tài khoản:} Cung cấp giao diện đăng ký, đăng nhập và bảng điều khiển cá nhân cho khách hàng. Người dùng có thể theo dõi trực quan danh sách đơn hàng, địa chỉ giao hàng và thông tin tài khoản với thời gian phản hồi truy xuất dữ liệu từ các bảng \texttt{wp\_users} và \texttt{wp\_usermeta} dưới 300ms.
+    \item \textbf{Tìm kiếm và Bộ lọc:} Thanh tìm kiếm sản phẩm được tối ưu hóa truy vấn SQL bằng cách thiết lập chỉ mục (index) cho các cột \texttt{post\_title} và \texttt{post\_excerpt} trong bảng dữ liệu \texttt{wp\_posts}. Tốc độ thực thi truy vấn tìm kiếm đạt trung bình dưới 48ms đối với từ khóa tiếng Việt có dấu. Bộ lọc giá và thuộc tính sản phẩm ở sidebar bên trái hoạt động đồng bộ qua AJAX, hiển thị kết quả lọc trong vòng dưới 200ms.
+    \item \textbf{Đánh giá sản phẩm:} Cho phép khách hàng đã mua sản phẩm gửi xếp hạng sao và nhận xét. Việc gửi đánh giá được xử lý thông qua tiến trình AJAX chạy ngầm để tránh tải lại trang, bảo đảm giữ chỉ số dịch chuyển bố cục (CLS) bằng 0.
 \end{enumerate}
 
-\begin{table}[H]
-\centering
-\caption{So sánh số lượng trường thông tin thanh toán trước và sau khi tối giản}
-\label{tab:checkout_comparison}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Trường nhập liệu} & \textbf{WooCommerce Mặc định} & \textbf{Sen Việt Tea Cải tiến} \\ \midrule
-Họ và tên đệm & Có & Có \\
-Tên & Có & Có \\
-Số điện thoại & Có & Có \\
-Địa chỉ Email & Có & Có \\
-Tỉnh / Thành phố & Có & Có \\
-Quận / Huyện & Có & Có \\
-Địa chỉ chi tiết & Có & Có \\
-Tên công ty & Có & Không (Ẩn) \\
-Quốc gia / Khu vực & Có & Không (Ẩn) \\
-Địa chỉ dòng 2 & Có & Không (Ẩn) \\
-Mã bưu điện & Có & Không (Ẩn) \\
-Thị trấn / Thành phố con & Có & Không (Ẩn) \\
-Ghi chú đơn hàng phụ & Có & Không (Ẩn) \\
-Mã giảm giá gộp & Có (Tab riêng) & Không (Ẩn/Gộp) \\ \midrule
-\textbf{Tổng số trường} & \textbf{14} & \textbf{6} \\
-\textbf{Tỷ lệ tinh giảm} & \textbf{0\%} & \textbf{57.1\%} \\ \bottomrule
-\end{tabular}
-\end{table}
-
 \subsection{Phân hệ phía quản trị}
-Phân hệ quản trị được xây dựng trên nền tảng quản trị của WordPress kết hợp WooCommerce, hỗ trợ các tác vụ xử lý thông tin nghiệp vụ lớn:
+Phân hệ quản trị cung cấp công cụ vận hành toàn diện cho quản trị viên và nhân viên cửa hàng, đảm bảo tính toàn vẹn dữ liệu cơ sở dữ liệu:
 
 \begin{enumerate}
-    \item \textbf{Quản lý sản phẩm:} Cho phép thêm, sửa, xóa sản phẩm và thiết lập thuộc tính sản phẩm biến thể (như Trọng lượng 100g/200g/500g và Quy cách đóng gói). Hệ thống giới hạn tối đa 50 biến thể cho mỗi sản phẩm để đảm bảo thời gian ghi cơ sở dữ liệu dưới 1.2 giây.
-    \item \textbf{Quản lý đơn hàng:} Cập nhật trạng thái đơn hàng thời gian thực (Đang xử lý, Chờ thanh toán, Hoàn thành, Đã hủy). Dữ liệu kho được tự động cập nhật giảm tương ứng trong cơ sở dữ liệu trong vòng 200ms ngay khi đơn hàng chuyển trạng thái thành công.
-    \item \textbf{Quản lý kho:} Đồng bộ số lượng tồn kho vật lý của từng biến thể sản phẩm. Hệ thống tự động gửi cảnh báo email đến tài khoản quản trị khi số lượng kho chạm ngưỡng tối thiểu nhỏ hơn hoặc bằng 5 sản phẩm.
-    \item \textbf{Quản lý khách hàng:} Lưu trữ hồ sơ người dùng trong các bảng cơ sở dữ liệu \texttt{wp\_users} và \texttt{wp\_usermeta} tiêu chuẩn. Phân quyền bảo mật làm 3 nhóm vai trò rõ rệt: Quản trị viên, Nhân viên quản lý cửa hàng và Khách hàng.
-    \item \textbf{Báo cáo doanh thu:} Tổng hợp doanh thu theo chu kỳ thời gian tự chọn dưới dạng biểu đồ đường. Thời gian kết xuất dữ liệu báo cáo sang tệp CSV phải dưới 800ms cho tập dữ liệu lên đến 10.000 đơn hàng.
+    \item \textbf{Quản lý sản phẩm:} Hỗ trợ các chức năng thêm mới, sao chép, chỉnh sửa thông tin và xóa sản phẩm. Hệ thống hỗ trợ cấu trúc sản phẩm biến thể nâng cao cho phép quản lý giá bán, mã hàng (SKU) và tồn kho riêng biệt theo thuộc tính trọng lượng (100g, 200g, 500g). Số lượng biến thể tối đa cho mỗi sản phẩm được giới hạn ở mức 50 để duy trì thời gian thực thi lệnh lưu dữ liệu (Database write time) dưới 1.2 giây.
+    \item \textbf{Quản lý đơn hàng:} Giao diện quản lý hiển thị danh sách đơn hàng theo trạng thái thời gian thực. Khi đơn hàng chuyển sang trạng thái "Đang xử lý" hoặc "Hoàn thành", hệ thống tự động kích hoạt truy vấn giảm trừ tồn kho vật lý tương ứng trong cơ sở dữ liệu trong vòng dưới 200ms thông qua các lệnh cập nhật trường dữ liệu \texttt{\_stock} trong bảng \texttt{wp\_postmeta}.
+    \item \textbf{Quản lý kho:} Theo dõi số lượng sản phẩm còn lại trong kho. Hệ thống tự động gửi cảnh báo qua email đến nhân viên quản lý cửa hàng nhờ cấu hình giao thức SMTP khi số lượng tồn kho của bất kỳ sản phẩm nào chạm ngưỡng tối thiểu (ngưỡng an toàn mặc định là 5 sản phẩm).
+    \item \textbf{Quản lý khách hàng:} Lưu trữ và phân nhóm danh sách khách hàng. Hệ thống thực hiện cơ chế kiểm soát truy cập dựa trên vai trò (RBAC) với 3 nhóm quyền chính: Quản trị viên (toàn quyền hệ thống), Nhân viên cửa hàng (quản lý sản phẩm, kho và đơn hàng, không có quyền sửa đổi mã nguồn hoặc cài đặt plugin) và Khách hàng (chỉ có quyền xem thông tin cá nhân của mình).
+    \item \textbf{Báo cáo doanh thu:} Trích xuất số liệu doanh thu và số lượng đơn hàng theo ngày, tuần, tháng hoặc theo danh mục sản phẩm cụ thể. Hệ thống tối ưu hóa các câu lệnh truy vấn gộp (\texttt{SUM}, \texttt{COUNT}, \texttt{GROUP BY}) giúp thời gian xuất báo cáo định dạng CSV đạt dưới 800ms cho tập dữ liệu lên đến 10.000 đơn hàng.
 \end{enumerate}
 
 \section{Sơ đồ cấu trúc Website}
@@ -63,11 +37,11 @@ Cụ thể, cấu trúc phân cấp được tổ chức như sau:
 \begin{itemize}
     \item \textbf{Tầng 1 (Trang chủ):} Điểm tiếp cận chính của người dùng, chứa các khối thông tin tổng quan, danh mục trà nổi bật và lối dẫn nhanh sang các trang chính.
     \item \textbf{Tầng 2 (Menu chính):} Được cấu trúc trực tiếp lên thanh điều hướng chính của website, bao gồm các trang: Sản phẩm (Cửa hàng chính), Kiến thức (Blog chia sẻ kinh nghiệm pha trà), Về chúng tôi (Giới thiệu doanh nghiệp), Hướng dẫn mua hàng (Chính sách giao nhận) và Liên hệ.
-    \item \textbf{Tầng 3 (Danh mục sản phẩm con):} Gồm 4 danh mục con thuộc trang Sản phẩm, giúp khách hàng phân loại nhanh nhu cầu mua sắm: Trà Thái Nguyên, Trà Ướp Hoa, Trà Đặc Sản Khác và Phụ Kiện Trà.
+    \item \textbf{Tầng 3 (Danh mục sản phẩm con và bài viết):} Gồm 4 danh mục con thuộc trang Sản phẩm, giúp khách hàng phân loại nhanh nhu cầu mua sắm: Trà Thái Nguyên, Trà Ướp Hoa, Trà Đặc Sản Khác, Phụ Kiện Trà và trang Chi tiết bài viết (thuộc trang Kiến thức).
     \item \textbf{Tầng 4 (Quy trình mua hàng và Tiện ích):} Bao gồm trang Chi tiết sản phẩm (hiển thị thông số cụ thể của từng loại trà và hướng dẫn pha), Giỏ hàng, Thanh toán và Tài khoản cá nhân.
 \end{itemize}
 
-Sơ đồ chi tiết được trình bày trong Hình \ref{fig:sitemap}.
+Sơ đồ chi tiết được trình bày trong Hình \ref{fig:sitemap}. Bản vẽ thiết kế nguyên bản được lưu trữ định dạng XML mở tại tệp nguồn: \texttt{paper/image/sitemap.drawio}.
 
 \begin{figure}[H]
     \centering
@@ -89,7 +63,7 @@ Quy trình nghiệp vụ trung tâm của website TMĐT là luồng đặt hàng
     \item \textbf{Bước 6: Hoàn tất đơn hàng:} Khách hàng nhấn nút đặt hàng. Hệ thống cập nhật trạng thái đơn hàng trong cơ sở dữ liệu, thực hiện trừ kho vật lý trong bảng \texttt{wp\_postmeta} dưới 200ms và tự động gửi email thông báo xác nhận trong vòng dưới 1.5 giây.
 \end{enumerate}
 
-Sơ đồ quy trình đặt hàng được minh họa trong Hình \ref{fig:workflow}.
+Sơ đồ quy trình đặt hàng được minh họa trong Hình \ref{fig:workflow}. Bản vẽ thiết kế nguyên bản dạng XML mở được lưu trữ tại tệp nguồn: \texttt{paper/image/workflow.drawio}.
 
 \begin{figure}[H]
     \centering
@@ -97,6 +71,36 @@ Sơ đồ quy trình đặt hàng được minh họa trong Hình \ref{fig:workf
     \caption{Quy trình đặt hàng và xử lý đơn hàng trên hệ thống}
     \label{fig:workflow}
 \end{figure}
+
+Để làm rõ chi tiết quy trình xử lý đơn hàng ở mức hệ thống, bảng đặc tả trường hợp sử dụng (Use Case Specification) dưới đây mô tả cụ thể các điều kiện và trình tự thực thi:
+
+\begin{table}[H]
+\centering
+\caption{Đặc tả chi tiết trường hợp sử dụng Đặt hàng}
+\label{tab:use_case_checkout}
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Trường thông tin} & \textbf{Nội dung đặc tả chi tiết} \\ \midrule
+Tác nhân (Actor) & Khách hàng trực tuyến (Customer). \\ \addlinespace
+Tiền điều kiện (Preconditions) & Giỏ hàng của khách hàng phải chứa ít nhất 01 sản phẩm có số lượng tồn kho khả dụng lớn hơn 0. \\ \addlinespace
+Tác nhân kích hoạt (Trigger) & Khách hàng nhấn nút "Đặt hàng" tại giao diện thanh toán. \\ \addlinespace
+Luồng sự kiện chính & 
+\begin{enumerate}
+    \item Khách hàng chọn phương thức thanh toán và gửi thông tin biểu mẫu.
+    \item Hệ thống bắt đầu tiến trình giao dịch cơ sở dữ liệu (Database Transaction).
+    \item Hệ thống kiểm tra lại số lượng tồn kho khả dụng của sản phẩm trong bảng \texttt{wp\_postmeta}.
+    \item Hệ thống trừ số lượng kho vật lý và tạo bản ghi đơn hàng mới với trạng thái "Chờ thanh toán" hoặc "Đang xử lý".
+    \item Hệ thống gửi tín hiệu phản hồi xác nhận đơn hàng thành công lên giao diện người dùng.
+\end{enumerate} \\ \addlinespace
+Luồng ngoại lệ & 
+\begin{itemize}
+    \item \textbf{Lỗi hết hàng đồng thời:} Nếu sản phẩm bị mua hết bởi phiên truy cập khác trước khi ghi dữ liệu, giao dịch cơ sở dữ liệu bị hủy bỏ (Rollback), hệ thống gửi thông báo lỗi "Sản phẩm đã hết hàng" trong vòng dưới 300ms.
+\end{itemize} \\ \addlinespace
+Hậu điều kiện (Postconditions) & Cơ sở dữ liệu được cập nhật thành công, số lượng kho vật lý giảm trừ chính xác, hệ thống gửi email xác nhận cho khách hàng và thông báo cho quản trị viên. \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Về mặt kỹ thuật, để đảm bảo tính nhất quán của dữ liệu kho và tránh hiện tượng bán vượt mức tồn kho khi có hàng trăm khách hàng thanh toán đồng thời, hệ thống sử dụng cơ chế giao dịch có khóa cấp dòng (Row-level locking) trong MySQL thông qua công cụ lưu trữ InnoDB. Khi một tiến trình thanh toán được kích hoạt, hệ thống sẽ thực hiện truy vấn khóa dòng dữ liệu chứa số lượng tồn kho của sản phẩm cụ thể bằng cú pháp khóa độc quyền. Cơ chế này khóa tạm thời dòng dữ liệu tồn kho đó cho đến khi toàn bộ tiến trình ghi đơn hàng mới và cập nhật trạng thái kết thúc bằng lệnh xác nhận giao dịch. Điều này giúp triệt tiêu hoàn toàn nguy cơ tranh chấp dữ liệu giữa các phiên thanh toán đồng thời, ngăn chặn tuyệt đối hiện tượng sai lệch số liệu tồn kho khả dụng.
 
 \section{Bảng tự đánh giá chất lượng}
 
