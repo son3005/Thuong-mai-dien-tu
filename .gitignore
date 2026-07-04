@@ -32,9 +32,15 @@ wp-content/backup-db/
 ehthumbs.db
 Thumbs.db
 
-/*.aux
-/*.lot
-/*.out
-/*.pdf
-/*.toc
+# LaTeX auxiliary files
+*.aux
+*.lot
+*.out
+*.pdf
+*.toc
 *.synctex.gz
+*.lof
+*.log
+*.bbl
+*.blg
+*.toc
