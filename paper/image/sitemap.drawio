@@ -46,6 +46,9 @@
         <mxCell id="checkout" value="Thanh toán" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFD54F;strokeWidth=2;fontSize=13;fontColor=#F57F17" parent="1" vertex="1">
           <mxGeometry x="600" y="720" width="160" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="thankyou" value="Hoàn tất đơn hàng" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFD54F;strokeWidth=2;fontSize=13;fontColor=#F57F17" parent="1" vertex="1">
+          <mxGeometry x="600" y="830" width="160" height="60" as="geometry" />
+        </mxCell>
         <mxCell id="account" value="&lt;span style=&quot;color: rgb(13, 71, 161); font-weight: 700;&quot;&gt;Tài khoản cá nhân&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#2196F3;strokeWidth=2;fontSize=13;fontColor=#0000FF;" parent="1" vertex="1">
           <mxGeometry x="1000" y="180" width="160" height="60" as="geometry" />
         </mxCell>
@@ -116,6 +119,9 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge_home_account" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="home" target="account" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_checkout_thankyou" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="checkout" target="thankyou" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>

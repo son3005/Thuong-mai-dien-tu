@@ -22,7 +22,7 @@ This skill is designed to guide the generation of professional, publication-grad
 
 - Use when composing scientific papers, laboratory reports, technical whitepapers, or system performance audits.
 - Use when the user requests logical diagrams or flowcharts that they need to edit, style, or color-customize in Draw.io (diagrams are outputted directly as copy-pasteable Draw.io XML).
-- Use to audit existing reports and score them against a formal **100-point quality scorecard**.
+- Use to write highly detailed reports with a guiding, cohesive academic tone.
 
 ---
 
@@ -41,8 +41,8 @@ The output is systematically organized into four key pillars:
 ### Step 3: Draw.io XML Diagram Generation
 If a diagram or flowchart is needed, the skill generates clean, uncompressed XML structure enclosing nodes and connections, calculated with exact non-overlapping coordinates.
 
-### Step 4: Quality Evaluation
-Each output concludes with a self-assessment based on the **100-Point Scientific Quality Scorecard**.
+### Step 4: Cohesive Narrative Styling
+Ensure the report is composed in a smooth, continuous prose style with clear narrative guidance and transitions, avoiding dry lists or bullet points unless strictly necessary.
 
 ---
 
@@ -114,19 +114,6 @@ XML structure template to populate:
 </mxfile>
 ```
 
-### 5. THE 100-POINT QUALITY SCORECARD
-Every generated report must append a self-scoring scorecard formatted as a table, detailing achievements and deductions:
-
-| Category | Max Score | Score | Criteria / Deductions |
-| :--- | :---: | :---: | :--- |
-| **IMRAD Structure Adherence** | 20 | | Check that Introduction, Methods, Results, and Discussion headings exist and have relevant logical partitions. |
-| **Quantitative Precision & Evidence** | 30 | | Check that there are zero qualitative generalities (e.g., "fast", "huge"). Every claim has data/metrics. |
-| **Writing Flow & Cohesion** | 20 | | Check that transitions are natural and sentences link logically. Maximize prose over bullet points. |
-| **Originality & Plagiarism Compliance** | 15 | | Check that phrasing is original and distinct, with no copy-paste templates from the web. |
-| **Draw.io Diagram Logic & Layout** | 15 | | Check that the XML diagram code has non-overlapping coordinates and correctly mapped IDs. |
-| **TOTAL** | **100** | | **Minimum acceptable score for submission is 95.** |
-
-If the self-score is below 95, rewrite the offending sections until it reaches 95+ before outputting the final report.
 ```
 
 ---

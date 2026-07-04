@@ -28,6 +28,9 @@
         <mxCell id="confirm" value="6. Hoàn tất đặt hàng và Trừ kho" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#FBC02D;strokeWidth=2;fontSize=13;fontColor=#F57F17;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="220" y="515" width="160" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="thankyou_flow" value="7. Trang nhận đơn (Hiển thị VietQR nếu chuyển khoản)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#FBC02D;strokeWidth=2;fontSize=13;fontColor=#F57F17;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="190" y="620" width="220" height="60" as="geometry" />
+        </mxCell>
         <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="browse" target="add_to_cart" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -68,6 +71,9 @@
             <mxPoint x="50" y="-200" as="sourcePoint" />
             <mxPoint x="460" y="530" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A7C59" parent="1" source="confirm" target="thankyou_flow" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
