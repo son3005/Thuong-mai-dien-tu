@@ -31,3 +31,10 @@ wp-content/backup-db/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+/*.aux
+/*.lot
+/*.out
+/*.pdf
+/*.toc
+*.synctex.gz
