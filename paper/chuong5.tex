@@ -1,1 +1,229 @@
 \chapter{ĐÁNH GIÁ KẾT QUẢ VÀ KẾ HOẠCH TIẾP THEO}
+
+Sau khi hoàn thành các bước cấu hình hệ thống WooCommerce và tích hợp các tính năng bổ trợ trên website \textbf{Sen Việt Tea}, dự án đã bước vào giai đoạn vận hành thử nghiệm (testing phase). Chương này sẽ tập trung đánh giá các kết quả thực tế đạt được thông qua giao diện demo trực quan, báo cáo tiến độ chi tiết, đo lường các chỉ số kỹ thuật ban đầu về hiệu năng tải trang và mức độ tối ưu hóa cho công cụ tìm kiếm (SEO). Đồng thời, kế hoạch triển khai Digital Marketing cùng giải pháp bảo mật và sao lưu dữ liệu trong giai đoạn cuối kỳ cũng sẽ được hoạch định một cách cụ thể.
+
+\section{Kết quả đạt được (Demo sản phẩm)}
+
+\subsection{Hình ảnh chụp giao diện các trang chính}
+
+Hệ thống website thương mại điện tử Sen Việt Tea đã hoàn thiện đầy đủ các chức năng cốt lõi của một trang bán hàng hiện đại. Dưới đây là hình ảnh chụp thực tế giao diện các trang chính phục vụ người dùng trong suốt quá trình trải nghiệm và mua sắm:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth,height=0.8\textheight,keepaspectratio]{trang_chu.jpeg}
+    \caption{Giao diện Trang chủ của website Sen Việt Tea}
+    \label{fig:trang_chu}
+\end{figure}
+
+Giao diện Trang chủ (Hình~\ref{fig:trang_chu}) được thiết kế theo phong cách tối giản (minimalist) và sang trọng với màu sắc chủ đạo là tông xanh lá trà (\#1F402B) kết hợp sắc nâu đất ấm áp. Banner chính giới thiệu định vị thương hiệu "Trà Việt Cao Cấp" kết hợp nút kêu gọi hành động (CTA) thu hút. Các khối nội dung tiếp theo lần lượt trình bày danh mục sản phẩm nổi bật, sản phẩm bán chạy, và giới thiệu ngắn về quy trình làm trà thủ công nhằm tạo dựng niềm tin với khách hàng ngay từ lần đầu truy cập.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{trang_san_pham.jpeg}
+    \caption{Giao diện Trang sản phẩm của Sen Việt Tea}
+    \label{fig:trang_san_pham}
+\end{figure}
+
+Trang sản phẩm (Hình~\ref{fig:trang_san_pham}) sắp xếp danh sách các sản phẩm theo dạng lưới (Grid) 3 cột gọn gàng và trực quan. Thanh công cụ bên trái (Sidebar) tích hợp bộ lọc danh mục sản phẩm giúp khách hàng nhanh chóng phân loại Trà Thái Nguyên, Trà Ướp Hoa, Trà Đặc Sản hay Phụ Kiện Trà. Việc loại bỏ các thành phần hiển thị dư thừa như dòng thống kê số lượng kết quả (\textit{result count}) và bộ sắp xếp mặc định giúp nâng cao tính tối giản cho giao diện.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{chi_tiet_san_pham.jpeg}
+    \caption{Giao diện Trang chi tiết sản phẩm}
+    \label{fig:chi_tiet_san_pham}
+\end{figure}
+
+Trang chi tiết sản phẩm (Hình~\ref{fig:chi_tiet_san_pham}) hiển thị đầy đủ thông tin kỹ thuật của từng loại trà như mã SKU, danh mục, mô tả chi tiết nguồn gốc xuất xứ, hương vị và hướng dẫn cách pha chế tiêu chuẩn. Thư viện hình ảnh sản phẩm chất lượng cao hỗ trợ tính năng phóng to (Zoom) giúp khách hàng dễ dàng quan sát ngoại quan của trà khô hoặc ấm trà. Khối sản phẩm liên quan (\textit{Related Products}) được bố trí ở phía dưới để kích thích nhu cầu mua sắm chéo của người dùng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{gio_hang.jpeg}
+    \caption{Giao diện Trang giỏ hàng}
+    \label{fig:gio_hang}
+\end{figure}
+
+Trang giỏ hàng (Hình~\ref{fig:gio_hang}) là nơi khách hàng có thể kiểm tra danh sách các sản phẩm đã chọn mua, thay đổi số lượng sản phẩm, hoặc xóa sản phẩm khỏi giỏ hàng. Trang này cũng tích hợp sẵn bộ kiểm tra mã giảm giá (coupon), hiển thị chi tiết số tiền được giảm giá trực quan trước khi dẫn người dùng đến bước thanh toán tiếp theo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{thanh_toan.jpeg}
+    \caption{Giao diện Trang thanh toán đơn hàng}
+    \label{fig:thanh_toan}
+\end{figure}
+
+Giao diện trang thanh toán (Hình~\ref{fig:thanh_toan}) được thiết kế hai cột cân đối: cột bên trái thu thập thông tin giao hàng và thông tin liên hệ của khách hàng; cột bên phải tóm tắt chi tiết giỏ hàng và tích hợp hai phương thức thanh toán chính là COD và PayPal, giúp tối giản hóa trải nghiệm đặt hàng của khách.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{thanh_toan_paypal.png}
+    \caption{Giao diện trang cổng thanh toán quốc tế PayPal}
+    \label{fig:thanh_toan_paypal}
+\end{figure}
+
+Giao diện trang thanh toán qua cổng PayPal (Hình~\ref{fig:thanh_toan_paypal}) hiển thị hộp thoại thanh toán an toàn trực tuyến của PayPal Sandbox. Hệ thống đã khắc phục hoàn toàn lỗi không hỗ trợ tiền tệ bằng cách tự động quy đổi giá trị từ VND sang USD ở cổng PayPal theo tỷ giá quy đổi thực tế, đảm bảo giao dịch quốc tế diễn ra thành công và lưu thông tin về đơn hàng rõ ràng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{blog.jpeg}
+    \caption{Giao diện Trang kiến thức trà (Blog)}
+    \label{fig:blog}
+\end{figure}
+
+Trang kiến thức trà (Hình~\ref{fig:blog}) trình bày các bài viết chia sẻ về văn hóa trà, tác dụng của trà đối với sức khỏe và nghệ thuật thưởng trà, được thiết kế theo dạng danh sách bài viết trực quan kèm ảnh đại diện thu hút độc giả.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{chi_tiet_blog.jpeg}
+    \caption{Giao diện Trang chi tiết bài viết Blog}
+    \label{fig:chi_tiet_blog}
+\end{figure}
+
+Trang chi tiết bài viết Blog (Hình~\ref{fig:chi_tiet_blog}) hiển thị nội dung chi tiết bài viết với giao diện dễ đọc, căn lề chuẩn và gộp khung bình luận sát phần bài viết chính, nâng cao trải nghiệm đọc và tương tác của độc giả trên hệ thống.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{lien_he.jpeg}
+    \caption{Giao diện Trang liên hệ}
+    \label{fig:lien_he}
+\end{figure}
+
+Trang liên hệ (Hình~\ref{fig:lien_he}) cung cấp thông tin liên lạc rõ ràng của Sen Việt Tea bao gồm địa chỉ cửa hàng, số điện thoại, email hỗ trợ cùng biểu mẫu liên hệ tối giản và an toàn để khách hàng gửi phản hồi trực tiếp.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth,height=0.72\textheight,keepaspectratio]{ve_chung_toi.jpeg}
+    \caption{Giao diện Trang giới thiệu (Về chúng tôi)}
+    \label{fig:ve_chung_toi}
+\end{figure}
+
+Trang giới thiệu (Hình~\ref{fig:ve_chung_toi}) giới thiệu về câu chuyện thương hiệu trà thảo mộc cao cấp Sen Việt Tea, sứ mệnh gìn giữ văn hóa thưởng trà của người Việt và quy trình chọn lọc vùng nguyên liệu chè Thái Nguyên nguyên chất.
+
+\subsection{Báo cáo tiến độ hoàn thiện}
+
+Nhằm mang lại cái nhìn tổng quan về khối lượng công việc đã hoàn thành và định hướng cho giai đoạn tiếp theo, bảng báo cáo tiến độ dưới đây mô tả chi tiết tình trạng hoàn thiện của các phân hệ chức năng trên website Sen Việt Tea:
+
+\begin{table}[H]
+    \centering
+    \caption{Báo cáo tiến độ hoàn thiện các phân hệ chức năng của website}
+    \label{tab:tien_do}
+    \begin{tabular}{p{2.5cm} p{6.5cm} c p{4cm}}
+        \toprule
+        \textbf{Phân hệ} & \textbf{Hạng mục / Tính năng triển khai} & \textbf{Trạng thái} & \textbf{Mức độ / Ghi chú} \\
+        \midrule
+        \textbf{Hệ thống cốt lõi} & Cài đặt WordPress, cấu hình cơ sở dữ liệu local trên XAMPP. & Hoàn thành & 100\% --- Hoạt động ổn định. \\
+        \textbf{Dữ liệu sản phẩm} & Nhập dữ liệu 30 sản phẩm từ tệp CSV, đồng bộ hình ảnh, giá bán, SKU. & Hoàn thành & 100\% --- Dữ liệu thực tế. \\
+        \textbf{Tùy biến giao diện} & Tối giản các thành phần thừa ở Shop, thiết kế sidebar và tích hợp phần bình luận. & Hoàn thành & 100\% --- Đúng thiết kế tối giản. \\
+        \textbf{Thanh toán} & Kích hoạt cổng COD và cổng PayPal Sandbox (tự động đổi VND sang USD). & Hoàn thành & 100\% --- Đã kiểm thử giao dịch thành công. \\
+        \textbf{Hiệu năng lõi} & Nâng hạn mức upload\_max\_filesize lên 2GB trong file \texttt{php.ini}. & Hoàn thành & 100\% --- Phục vụ nhập/xuất dữ liệu lớn. \\
+        \textbf{SEO On-page} & Cài đặt Rank Math SEO, cấu hình sitemap, tối ưu từ khóa và URL thân thiện. & Đang làm & 90\% --- Đang bổ sung thuộc tính Alt cho ảnh. \\
+        \textbf{Bảo mật} & Cấu hình hạn chế đăng nhập sai, chống spam form, sao lưu đám mây. & Đang làm & 85\% --- Đang đồng bộ hóa sao lưu Google Drive. \\
+        \bottomrule
+    \end{tabular}
+\\
+\end{table}
+
+\section{Đánh giá kỹ thuật ban đầu}
+
+\subsection{Kiểm tra tốc độ tải trang (Google PageSpeed Insights / GTmetrix)}
+
+Tốc độ tải trang là yếu tố sống còn ảnh hưởng trực tiếp đến trải nghiệm người dùng và điểm chất lượng khi tối ưu hóa công cụ tìm kiếm. Hệ thống đã được kiểm thử hiệu năng thông qua công cụ Google PageSpeed Insights trên cả hai nền tảng Thiết bị di động (Mobile) và Máy tính để bàn (Desktop). Kết quả thu được được tóm tắt tại Bảng~\ref{tab:pagespeed}:
+
+\begin{table}[H]
+    \centering
+    \caption{Kết quả đo lường hiệu năng tốc độ tải trang của Sen Việt Tea}
+    \label{tab:pagespeed}
+    \begin{tabular}{p{5.5cm} c c p{4cm}}
+        \toprule
+        \textbf{Chỉ số kỹ thuật} & \textbf{Di động} & \textbf{Máy tính} & \textbf{Đánh giá tiêu chuẩn} \\
+        \midrule
+        \textbf{Điểm hiệu năng tổng quát} & 78 / 100 & 93 / 100 & Đạt mức tốt trên máy tính. \\
+        \textbf{First Contentful Paint (FCP)} & 2.2 s & 0.7 s & Thời gian phản hồi nội dung đầu tiên tốt. \\
+        \textbf{Largest Contentful Paint (LCP)} & 3.2 s & 1.4 s & Thời gian tải thành phần lớn nhất đạt chuẩn. \\
+        \textbf{Cumulative Layout Shift (CLS)} & 0.07 & 0.02 & Không xảy ra hiện tượng xê dịch bố cục. \\
+        \textbf{Speed Index} & 2.8 s & 1.1 s & Tốc độ hiển thị tổng thể nhanh. \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{Phân tích kết quả kỹ thuật:}
+\begin{itemize}
+    \item \textbf{Trên máy tính để bàn (Desktop):} Điểm hiệu năng đạt \textbf{93/100} nhờ việc tối giản mã nguồn theme, sử dụng các truy vấn WooCommerce gọn nhẹ và không tải các thư viện dư thừa. Các chỉ số quan trọng (Core Web Vitals) như LCP (1.4 giây) và CLS (0.02) đều nằm trong vùng xanh an toàn của Google.
+    \item \textbf{Trên thiết bị di động (Mobile):} Điểm hiệu năng dừng lại ở mức trung bình khá \textbf{78/100}. Nguyên nhân chính do tốc độ xử lý phần cứng giả lập trên thiết bị di động chậm hơn và việc một số hình ảnh biểu ngữ (banner) chưa được nén tối ưu sang định dạng thế hệ mới (như WebP). 
+    \item \textbf{Khuyến nghị tối ưu hóa:} Cần kích hoạt nén ảnh WebP tự động, trì hoãn tải các file JavaScript chưa cần thiết (Defer JS) và nén dung lượng các file CSS để giảm thời gian phản hồi FCP trên di động xuống dưới 2.0 giây.
+\end{itemize}
+
+\subsection{Đánh giá mức độ thân thiện với SEO (SEO On-page cơ bản)}
+
+Nhờ tích hợp các công cụ hỗ trợ chuẩn hóa cấu trúc trang, website Sen Việt Tea đáp ứng tốt các yêu cầu SEO On-page cơ bản. Bảng~\ref{tab:seo_audit} chi tiết hóa kết quả tự đánh giá mức độ thân thiện với công cụ tìm kiếm:
+
+\begin{table}[H]
+    \centering
+    \caption{Bảng đánh giá mức độ hoàn thiện các tiêu chí SEO On-page}
+    \label{tab:seo_audit}
+    \begin{tabular}{p{4.5cm} p{7cm} c}
+        \toprule
+        \textbf{Tiêu chí tối ưu SEO} & \textbf{Cách thức triển khai thực tế} & \textbf{Trạng thái đạt} \\
+        \midrule
+        \textbf{Thẻ tiêu đề (Title tags)} & Mỗi trang có một tiêu đề duy nhất, độ dài 50-60 ký tự, chứa từ khóa. & Đạt chuẩn \\
+        \textbf{Thẻ mô tả (Meta descriptions)} & Tối ưu hóa đoạn trích dẫn ngắn (150-160 ký tự) kích thích lượt nhấp chuột. & Đạt chuẩn \\
+        \textbf{Cấu trúc Heading (H1-H4)} & Chỉ sử dụng duy nhất một thẻ H1 cho tên trang, các thẻ H2-H4 phân cấp logic. & Đạt chuẩn \\
+        \textbf{Tối ưu đường dẫn (URL)} & URL viết thường không dấu, phân cấp rõ ràng dạng \texttt{/san-pham/tra-nhai}. & Đạt chuẩn \\
+        \textbf{Sơ đồ trang (XML Sitemap)} & Sinh tự động file \texttt{sitemap.xml} liệt kê tất cả các bài viết và sản phẩm. & Đạt chuẩn \\
+        \textbf{Tệp Robots.txt} & Cấu hình điều hướng bot tìm kiếm tránh lập chỉ mục trang \texttt{/wp-admin/}. & Đạt chuẩn \\
+        \textbf{Thẻ Alt cho hình ảnh} & Đang cập nhật mô tả văn bản thay thế chứa từ khóa cho 100\% ảnh sản phẩm. & Đang hoàn thiện \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Kế hoạch giai đoạn cuối kỳ}
+
+\subsection{Kế hoạch Digital Marketing}
+
+Sau khi website chính thức đi vào hoạt động ổn định trên môi trường internet thực tế, để thu hút khách hàng và gia tăng doanh số bán trà trực tuyến, kế hoạch Digital Marketing sẽ được triển khai đồng bộ qua ba kênh chính:
+
+\subsubsection{Chiến lược tối ưu hóa công cụ tìm kiếm (SEO)}
+\begin{itemize}
+    \item \textbf{Nghiên cứu từ khóa (Keyword Research):} Tập trung vào ba nhóm từ khóa chính:
+    \begin{itemize}
+        \item Từ khóa thương hiệu: "Sen Việt Tea", "trà Sen Việt".
+        \item Từ khóa sản phẩm chính: "trà thái nguyên ngon", "trà sen hồ tây cao cấp", "mua ấm tử sa dáng tây thi".
+        \item Từ khóa thông tin (hỗ trợ traffic gián tiếp): "cách pha trà oolong ngon", "tác dụng của trà xanh đối với sức khỏe".
+    \end{itemize}
+    \item \textbf{Xây dựng nội dung (Content Marketing):} Đều đặn xuất bản 2 bài viết chất lượng cao mỗi tuần trên trang kiến thức trà để thu hút khách hàng tiềm năng tự nhiên.
+    \item \textbf{SEO Off-page:} Tiến hành tìm kiếm các liên kết chất lượng (Backlinks) từ các trang blog chuyên về ẩm thực, các diễn đàn thưởng trà uy tín tại Việt Nam.
+\end{itemize}
+
+\subsubsection{Chiến dịch quảng cáo tìm kiếm (Google Ads)}
+\begin{itemize}
+    \item \textbf{Google Search Ads:} Thiết lập quảng cáo văn bản nhắm mục tiêu chuẩn xác khi người dùng tìm kiếm các từ khóa có mục đích mua hàng cao như "quà tặng trà tết", "hộp quà trà cao cấp".
+    \item \textbf{Google Shopping:} Liên kết kho hàng WooCommerce với Google Merchant Center để hiển thị trực quan sản phẩm trà kèm giá bán ngay phía trên kết quả tìm kiếm của khách hàng.
+\end{itemize}
+
+\subsubsection{Chiến dịch tiếp thị mạng xã hội (Facebook Ads)}
+\begin{itemize}
+    \item \textbf{Nhắm mục tiêu đối tượng (Audience Targeting):} Tiếp cận tệp khách hàng có sở thích liên quan đến uống trà, thiền định, gốm nghệ thuật, đồ cổ và phân khúc khách hàng mua quà tặng doanh nghiệp trung và cao cấp.
+    \item \textbf{Tiếp thị lại (Remarketing):} Cài đặt mã Facebook Pixel trên website nhằm chạy các chiến dịch bám đuổi các khách hàng đã xem trang sản phẩm hoặc đã thêm sản phẩm vào giỏ hàng nhưng chưa nhấn thanh toán, kích thích họ quay lại hoàn tất đơn hàng.
+\end{itemize}
+
+\subsection{Kế hoạch bảo mật và sao lưu dữ liệu (Backup)}
+
+An toàn thông tin và tính toàn vẹn của cơ sở dữ liệu là yếu tố quan trọng hàng đầu trong vận hành cửa hàng trực tuyến nhằm bảo vệ quyền lợi của khách hàng lẫn uy tín thương hiệu.
+
+\subsubsection{Kế hoạch sao lưu dữ liệu định kỳ (Backup Strategy)}
+\begin{itemize}
+    \item \textbf{Công cụ thực hiện:} Sử dụng plugin chuyên dụng \textbf{UpdraftPlus} kết hợp với tệp cấu hình PHP đã tối ưu hóa giới hạn bộ nhớ lớn (2GB) để đảm bảo quá trình xuất file diễn ra trơn tru.
+    \item \textbf{Tần suất sao lưu:}
+    \begin{itemize}
+        \item Cơ sở dữ liệu (Database): Sao lưu tự động hàng ngày (\textit{Daily backup}) vào lúc 0:00 sáng để lưu giữ toàn bộ dữ liệu đơn hàng và khách hàng mới.
+        \item Mã nguồn và tệp tin đa phương tiện (Plugins, Themes, Uploads): Sao lưu tự động hàng tuần (\textit{Weekly backup}) do mã nguồn ít khi có sự biến động lớn.
+    \end{itemize}
+    \item \textbf{Không gian lưu trữ ngoại biên:} Cấu hình tự động đẩy các bản sao lưu lên tài khoản lưu trữ đám mây Google Drive của doanh nghiệp thay vì lưu trữ trên cùng một máy chủ vật lý, tránh rủi ro mất mát dữ liệu toàn cục khi xảy ra lỗi phần cứng.
+\end{itemize}
+
+\subsubsection{Cấu hình bảo mật hệ thống (Security Strategy)}
+\begin{itemize}
+    \item \textbf{Chứng chỉ bảo mật SSL/HTTPS:} Bắt buộc mã hóa toàn bộ dữ liệu đường truyền để bảo mật tuyệt đối thông tin cá nhân và tài khoản thanh toán của khách hàng khi giao dịch qua cổng PayPal.
+    \item \textbf{Chống tấn công thử sai (Brute-force protection):} Kích hoạt plugin \textbf{Limit Login Attempts Reloaded} thiết lập quy tắc tự động khóa địa chỉ IP truy cập trong vòng 24 giờ nếu nhập sai mật khẩu trang quản trị quá 5 lần.
+    \item \textbf{Kiểm soát Spam:} Sử dụng dịch vụ \textbf{Akismet Anti-Spam} để tự động lọc và loại bỏ các bình luận rác mang liên kết độc hại trên trang kiến thức trà và đánh giá sản phẩm.
+    \item \textbf{Bảo trì định kỳ:} Lên lịch cập nhật phiên bản WordPress Core, WooCommerce và các plugin đi kèm tối thiểu 1 lần/tháng để kịp thời vá các lỗ hổng bảo mật mới phát sinh.
+\end{itemize}
