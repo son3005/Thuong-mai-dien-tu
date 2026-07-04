@@ -32,7 +32,7 @@ wp-content/backup-db/
 ehthumbs.db
 Thumbs.db
 
-# LaTeX auxiliary files
+# LaTeX and TeXstudio junk files
 *.aux
 *.lot
 *.out
@@ -43,4 +43,15 @@ Thumbs.db
 *.log
 *.bbl
 *.blg
-*.toc
+*.txss
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.brf
+*.gz
+*.pdfsync
+*.nav
+*.snm
+*.vrb
