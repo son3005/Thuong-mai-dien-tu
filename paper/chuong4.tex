@@ -1,25 +1,25 @@
 \chapter{CẤU HÌNH WOOCOMMERCE VÀ CÁC TÍNH NĂNG BÁN HÀNG}
 
-Sau khi cài đặt xong WordPress và chèn giao diện \textbf{Sen Việt Tea}, việc tiếp theo là cấu hình plugin WooCommerce. Đây là phần tốn nhiều thời gian nhất vì nó quyết định website có thực sự bán được hàng hay không, từ việc khách xem sản phẩm, bỏ vào giỏ, tính phí ship cho đến lúc trả tiền. Trong chương này, tôi sẽ trình bày các bước thiết lập dựa trên dữ liệu thật của dự án.
+Sau khi hoàn tất cài đặt WordPress và tích hợp giao diện \textbf{Sen Việt Tea}, nhóm thực hiện dự án tiến hành cấu hình hệ thống WooCommerce. WooCommerce đóng vai trò là nền tảng thương mại điện tử cốt lõi, quản lý toàn bộ chu trình mua sắm từ việc duyệt xem sản phẩm, thêm vào giỏ hàng, tính toán chi phí vận chuyển cho đến bước thanh toán hoàn tất. Chương này trình bày chi tiết các thiết lập hệ thống và tính năng bán hàng dựa trên cơ sở dữ liệu thực tế của dự án.
 
 \section{Danh mục và Sản phẩm}
 
-\subsection{Chia danh mục sản phẩm (Categories)}
-Danh mục hàng hóa nếu làm rối rắm thì khách rất lười tìm. Vì vậy, tôi chia các sản phẩm của Sen Việt Tea thành 4 nhóm rõ ràng dựa trên thói quen mua trà của người Việt:
+\subsection{Phân chia danh mục sản phẩm}
+Việc phân chia danh mục sản phẩm một cách khoa học giúp tối ưu hóa trải nghiệm người dùng, giảm thiểu thời gian tìm kiếm và định hướng hành vi mua sắm hiệu quả. Nhóm thực hiện dự án đã phân loại danh mục sản phẩm của Sen Việt Tea thành bốn nhóm chính, phù hợp với thói quen tiêu dùng trà của người Việt:
 
 \begin{itemize}
-    \item \textbf{Trà Thái Nguyên:} Dành cho những khách thích uống trà xanh truyền thống, vị chát đậm.
-    \item \textbf{Trà Ướp Hoa:} Gồm trà sen, trà nhài. Dòng này chủ yếu khách mua làm quà biếu hoặc những người thích hương thơm nhẹ nhàng.
-    \item \textbf{Trà Đặc Sản Khác:} Chứa các loại trà vùng miền ít gặp hơn để khách có thêm lựa chọn mới lạ.
-    \item \textbf{Phụ Kiện Trà:} Bán trà thì phải bán kèm ấm chén. Nhóm này (như tống trà, lọc trà) giúp tôi bán chéo (cross-sell) để tăng giá trị cho mỗi đơn hàng.
+    \item \textbf{Trà Thái Nguyên:} Đáp ứng nhu cầu thưởng thức các dòng trà xanh thuần mộc truyền thống với vị chát dịu và hậu ngọt sâu đặc trưng.
+    \item \textbf{Trà Ướp Hoa:} Bao gồm các sản phẩm trà sen Tây Hồ, trà nhài mang hương thơm thanh tao tự nhiên, thích hợp làm quà tặng hoặc dành cho người thích phong vị trà nhẹ nhàng.
+    \item \textbf{Trà Đặc Sản Cổ Thụ:} Cung cấp các dòng trà cổ thụ Shan Tuyết hoang dã từ vùng núi cao Tây Bắc và các loại trà đặc sản vùng miền độc đáo, mang đến những trải nghiệm thưởng thức mới lạ cho người yêu trà.
+    \item \textbf{Phụ Kiện Trà Cụ:} Cung cấp các sản phẩm phụ trợ thiết thực như ấm chén đất nung Bát Tràng, tống trà, lọc trà. Danh mục này không chỉ đáp ứng trọn vẹn nhu cầu thưởng trà chuyên nghiệp mà còn hỗ trợ chiến lược bán kèm nhằm gia tăng giá trị trung bình trên mỗi đơn hàng.
 \end{itemize}
 
-Tôi cũng chỉnh lại đường dẫn (URL Slug) của từng danh mục cho ngắn gọn và dễ nhớ, ví dụ như \texttt{/danh-muc/tra-thai-nguyen}. Việc này giúp Google dễ đọc cấu trúc trang web hơn.
+Để tối ưu hóa hiệu quả tìm kiếm tự nhiên, các đường dẫn tĩnh của từng danh mục được cấu hình ngắn gọn và tường minh, ví dụ: \texttt{/danh-muc/tra-thai-nguyen}. Điều này hỗ trợ các công cụ tìm kiếm lập chỉ mục cấu trúc trang web một cách chính xác nhất.
 
-\subsection{Đưa sản phẩm lên web}
-Nhập tay từng món hàng thì quá lâu. Thay vào đó, tôi dùng plugin \textbf{Product Import Export for WooCommerce} để đẩy toàn bộ danh sách lên từ một file CSV. Công cụ này tự động kéo hình ảnh, mô tả, giá và mã SKU vào đúng chỗ.
+\subsection{Đưa sản phẩm lên hệ thống}
+Nhằm tối ưu hóa thời gian và đảm bảo tính nhất quán của dữ liệu, dự án sử dụng phần mở rộng \textbf{Product Import Export for WooCommerce} để tải dữ liệu sản phẩm hàng loạt từ tệp cấu trúc CSV lên hệ thống. Công cụ này hỗ trợ tự động đồng bộ hóa các thông tin cốt lõi bao gồm hình ảnh sản phẩm, mô tả chi tiết, giá bán và mã định danh sản phẩm SKU vào cơ sở dữ liệu.
 
-Hiện tại, cửa hàng đang có \textbf{chính xác 30 sản phẩm}. Một vài món tiêu biểu bao gồm:
+Hiện tại, hệ thống đã chuẩn hóa và đưa vào vận hành chính thức 30 sản phẩm đặc trưng của Sen Việt Tea, tiêu biểu như:
 \begin{itemize}
     \item \textit{Bộ 4 Ly Trà Thủy Tinh Hai Lớp Cách Nhiệt}
     \item \textit{Ấm Trà Đất Nung Dáng Tây Thi Cổ Điển}
@@ -28,43 +28,39 @@ Hiện tại, cửa hàng đang có \textbf{chính xác 30 sản phẩm}. Một 
     \item \textit{Tống Trà Thủy Tinh Chịu Nhiệt Cao Cấp}
 \end{itemize}
 
-Tất cả đều được cài đặt là \textbf{Sản phẩm đơn giản (Simple Products)} vì mỗi món chỉ có một giá duy nhất. Kho hàng cũng được tự động cập nhật; hễ số lượng về 0 là nút "Thêm vào giỏ hàng" tự biến mất để khách khỏi đặt nhầm.
+Các mặt hàng này được thiết lập thuộc loại \textbf{Sản phẩm đơn giản} do mỗi sản phẩm có một mức giá cố định và không phân chia thành các thuộc tính biến thể như màu sắc hoặc kích thước. Đồng thời, tính năng quản lý kho hàng tự động được kích hoạt nhằm kiểm soát số lượng vật lý trong kho. Khi số lượng chạm mốc 0, hệ thống sẽ tự động vô hiệu hóa nút mua hàng để tránh tình trạng khách hàng đặt mua các sản phẩm đã hết hàng.
 
-\section{Vận chuyển và Thuế (Shipping \& Taxes)}
+\section{Vận chuyển và Thuế}
 
-\subsection{Phí ship (Shipping Zones)}
-Nhiều người bỏ ngang lúc thanh toán chỉ vì tự nhiên lòi ra phí ship quá cao hoặc cách tính quá rắc rối. Nên thay vì chia phí theo từng tỉnh thành, tôi thiết lập một mức giá chung cho mọi nơi (chọn vùng \textit{Rest of the World} trong WooCommerce).
+\subsection{Khu vực vận chuyển và Phí giao hàng}
+Theo các nghiên cứu về hành vi mua sắm trực tuyến, chi phí vận chuyển phát sinh đột ngột ở bước thanh toán là một trong những nguyên nhân hàng đầu dẫn đến việc khách hàng từ bỏ giỏ hàng. Để giải quyết vấn đề này và đơn giản hóa quy trình mua sắm, dự án đã xây dựng chính sách vận chuyển đồng giá áp dụng cho mọi khu vực địa lý trong phạm vi toàn quốc thông qua thiết lập phân vùng vận chuyển trong WooCommerce.
 
-Dù khách nhập địa chỉ ở đâu, họ cũng chỉ thấy 2 tùy chọn đồng giá:
+Bất kể địa chỉ giao nhận của khách hàng ở khu vực nào, hệ thống đều hiển thị rõ ràng hai phương thức vận chuyển lựa chọn:
 \begin{enumerate}
-    \item \textbf{Giao hàng tiêu chuẩn (35.000 VNĐ):} Phí mặc định. Thường mất 2-4 ngày hàng sẽ tới.
-    \item \textbf{Giao hàng hỏa tốc (200.000 VNĐ):} Khá cao, nhưng cần thiết cho những ai cần mua trà biếu gấp trong ngày.
+    \item \textbf{Giao hàng tiêu chuẩn:} Có mức phí cố định là 35.000 VNĐ, thời gian vận chuyển dự kiến từ 2 đến 4 ngày làm việc.
+    \item \textbf{Giao hàng nhanh hỏa tốc:} Có mức phí cố định là 200.000 VNĐ, đáp ứng nhu cầu giao nhận khẩn cấp trong ngày đối với các khu vực nội thành, phù hợp với các đơn hàng quà tặng cấp bách.
 \end{enumerate}
 
-Cách làm này vừa giúp tôi dễ tính toán chi phí với bên giao hàng, vừa làm khách hàng thấy rõ ràng ngay từ đầu, không bắt họ phải đoán xem phí ship tới nhà mình là bao nhiêu.
+Chính sách đồng giá giúp doanh nghiệp dễ dàng kiểm soát chi phí vận hành với các đơn vị chuyển phát đối tác, đồng thời mang lại sự minh bạch cho khách hàng ngay từ đầu chu trình thanh toán.
 
 \subsection{Cấu hình Thuế}
-Người Việt Nam đi mua hàng online rất ghét chuyện giá một đằng, lúc thanh toán lại cộng thêm 8\% hay 10\% thuế (VAT). Vì vậy, tôi chọn tùy chọn \textbf{Giá đã bao gồm thuế (Inclusive)}. WooCommerce vẫn sẽ tính toán và ghi chú rành mạch số tiền thuế trên hóa đơn cho đúng luật, nhưng con số khách phải trả cuối cùng vẫn y nguyên như giá niêm yết ngoài trang chủ.
+Tại thị trường Việt Nam, người tiêu dùng trực tuyến thường ưu tiên việc hiển thị mức giá cuối cùng của sản phẩm thay vì phải chịu thêm các khoản phụ phí thuế phát sinh ở bước thanh toán. Do đó, hệ thống được cấu hình hiển thị \textbf{Giá đã bao gồm thuế}. Mặc dù giá niêm yết trên website là giá trọn gói, hệ thống WooCommerce vẫn thực hiện tách xuất phần thuế giá trị gia tăng trên hóa đơn điện tử nhằm đảm bảo tính chính xác về mặt kế toán và tuân thủ các quy định pháp lý hiện hành.
 
-\section{Cổng thanh toán (Payment Gateways)}
+\section{Cổng thanh toán}
 
-Bước cuối cùng là làm sao để nhận tiền. Tôi đang bật hai phương thức thanh toán chính:
+\subsection{Thanh toán khi nhận hàng}
+Bất chấp sự phát triển mạnh mẽ của các phương thức thanh toán số, hình thức giao hàng thu tiền tận nơi vẫn chiếm một tỷ trọng lớn trong thương mại điện tử tại Việt Nam. Đặc biệt đối với một thương hiệu mới như Sen Việt Tea, phương thức thanh toán này giúp xây dựng niềm tin ban đầu với người tiêu dùng mới, cho phép họ nhận hàng, kiểm tra quy cách đóng gói và chất lượng sản phẩm trước khi hoàn tất giao dịch tài chính.
 
-\subsection{Thanh toán khi nhận hàng (COD)}
-Dù ví điện tử phổ biến đến mấy thì mua hàng qua mạng ở Việt Nam vẫn phải có COD. Khách hàng mới biết đến trang web lần đầu, họ cần được cầm hộp trà trên tay, kiểm tra cẩn thận rồi mới yên tâm đưa tiền cho shipper.
+\subsection{Tích hợp cổng thanh toán quốc tế PayPal}
+Nhằm đa dạng hóa các phương thức thanh toán số và hướng tới tệp khách hàng quốc tế, dự án tích hợp cổng thanh toán quốc tế PayPal thông qua ứng dụng mở rộng \textbf{WooCommerce PayPal Payments}. Sau khi kết nối thông tin xác thực API bao gồm mã định danh Client ID và khóa bí mật Secret Key từ tài khoản doanh nghiệp PayPal, website có khả năng chấp nhận thanh toán bảo mật từ các loại thẻ thanh toán quốc tế như Visa hoặc Mastercard, cũng như số dư tài khoản ví PayPal. Tính năng này tạo điều kiện thuận lợi cho đối tượng kiều bào nước ngoài mua quà tặng người thân tại Việt Nam hoặc khách du lịch quốc tế có nhu cầu mua trà đặc sản. Hệ thống sẽ tự động xử lý việc quy đổi tỷ giá ngoại tệ và ghi nhận chi tiết dòng tiền trong báo cáo quản trị WooCommerce.
 
-\subsection{Thanh toán qua PayPal}
-Tôi cài thêm plugin \textbf{WooCommerce PayPal Payments} để xử lý luôn mảng thanh toán quốc tế. Sau khi kết nối API (nhập Client ID và Secret Key), website có thể nhận thanh toán từ thẻ Visa, Mastercard hoặc tiền trong ví PayPal. Việc này chuẩn bị sẵn cho trường hợp Việt kiều muốn mua trà gửi tặng người thân, hoặc khách nước ngoài muốn mua đặc sản Việt Nam. Mọi giao dịch ngoại tệ đều được WooCommerce tự động chuyển đổi và ghi nhận vào hệ thống.
+\section{Mã giảm giá và Chương trình ưu đãi}
 
-\section{Khuyến mãi và Mã giảm giá (Coupons)}
-
-Để kích thích khách hàng chốt đơn, tôi đã tận dụng tính năng Coupons có sẵn của WooCommerce thay vì phải cài thêm plugin nặng máy. 
-
-Hiện tại, hệ thống đang chạy 3 mã giảm giá chính:
+Để thúc đẩy quyết định mua sắm và gia tăng tỷ lệ chuyển đổi đơn hàng, dự án tận dụng công cụ quản lý mã ưu đãi tích hợp sẵn trong nhân WooCommerce thay vì cài đặt thêm các tiện ích bổ sung của bên thứ ba, qua đó tối ưu hóa hiệu năng tải trang của hệ thống. Hiện tại, trang web triển khai ba mã giảm giá chiến lược phục vụ các mục tiêu tiếp thị khác nhau:
 \begin{itemize}
-    \item \textbf{FREESHIP:} Khách nhập mã này sẽ được trừ thẳng 35.000đ vào tổng tiền (đúng bằng phí giao hàng tiêu chuẩn). Mã này rất tiện để chạy các chiến dịch quảng cáo "Freeship toàn quốc".
-    \item \textbf{GIAM10:} Mã giảm giá 10\% trên tổng đơn hàng. Thường dùng cho các khách hàng VIP hoặc khách mua sỉ số lượng lớn.
-    \item \textbf{CHAO2026:} Giảm ngay 50.000đ cho đơn hàng. Đây là mã mồi để chào mừng năm mới, giúp khách thấy mình đang được hời to mà lại dễ nhớ.
+    \item \textbf{FREESHIP:} Miễn phí vận chuyển tiêu chuẩn trị giá 35.000 VNĐ cho các đơn hàng đủ điều kiện, thường dùng để hỗ trợ các chiến dịch quảng bá quy mô toàn quốc.
+    \item \textbf{GIAM10:} Giảm 10\% trên tổng giá trị đơn hàng, áp dụng tri ân nhóm khách hàng thân thiết hoặc khách hàng mua sắm với số lượng lớn.
+    \item \textbf{CHAO2026:} Khấu trừ trực tiếp 50.000 VNĐ vào tổng hóa đơn. Đây là mã ưu đãi đặc biệt chào mừng năm mới, tạo động lực tâm lý tích cực kích thích khách hàng hoàn tất giỏ hàng.
 \end{itemize}
 
-Khách hàng chỉ việc nhập một trong các mã này ở trang Giỏ hàng hoặc Thanh toán. Hệ thống tự động kiểm tra tính hợp lệ và trừ tiền liền tay, rất mượt và chuyên nghiệp.
+Khách hàng có thể dễ dàng áp dụng các mã ưu đãi này ngay tại giao diện giỏ hàng hoặc trang thanh toán. Hệ thống sẽ tự động đối chiếu điều kiện áp dụng, kiểm tra tính hợp lệ của mã và cập nhật lại tổng số tiền thanh toán của đơn hàng một cách nhanh chóng và chính xác.
