@@ -1,99 +1,84 @@
 \chapter{TRIỂN KHAI XÂY DỰNG WEBSITE TRÊN WORDPRESS}
 
-Sau khi đã phân tích chức năng và vẽ được cấu trúc website ở chương trước, bước tiếp theo là bắt tay vào dựng website thật trên WordPress. Đây là phần biến các yêu cầu trên giấy thành một hệ thống có thể mở trong trình duyệt, có giao diện, có trang sản phẩm, có khu vực quản trị và sẵn sàng để cài WooCommerce ở chương sau.
+Sau giai đoạn phân tích yêu cầu và thiết kế sơ đồ luồng dữ liệu, bước tiếp theo mang tính chất quyết định là chuyển đổi các ý tưởng trên lý thuyết thành một hệ thống thông tin thực tế. Chương này tập trung trình bày chuyên sâu toàn bộ quy trình cấu trúc hạ tầng kỹ thuật, lựa chọn công nghệ lõi và đặc biệt là thiết lập hệ thống thiết kế cùng kiến trúc thông tin cho nền tảng thương mại điện tử \textbf{Sen Việt Tea}. 
 
-Trong chương này, tôi trình bày lại quá trình triển khai website \textbf{Sen Việt Tea} theo đúng các bước đã làm: chọn nền tảng, dựng môi trường chạy web, cài WordPress, chỉnh giao diện, tổ chức menu, chuẩn bị dữ liệu ban đầu và kiểm tra các yêu cầu cơ bản của một website thương mại điện tử.
+\section{Chuẩn bị hạ tầng kỹ thuật}
 
-\section{Lựa chọn nền tảng triển khai}
+\subsection{Lựa chọn Tên miền và Hosting}
+Hạ tầng lưu trữ là nền móng quyết định hiệu năng và độ ổn định của toàn bộ hệ thống thương mại điện tử. Quá trình triển khai kỹ thuật được thực hiện xuyên suốt qua hai môi trường khác biệt nhằm tối ưu hóa quy trình phát triển. 
 
-\subsection{Lý do chọn WordPress}
-
-Ở giai đoạn đầu, tôi có ba hướng chính để xây dựng website: dùng WordPress, dùng một nền tảng thương mại điện tử lớn như Magento, hoặc tự lập trình toàn bộ. Nếu xét về độ mạnh và khả năng tùy biến thì tự lập trình là linh hoạt nhất, nhưng cách này tốn rất nhiều thời gian cho các chức năng cơ bản như đăng nhập, quản trị sản phẩm, giỏ hàng và đơn hàng. Magento thì phù hợp với những cửa hàng rất lớn, có nhiều kho, nhiều chi nhánh, nhưng lại khá nặng và không thật sự cần thiết với quy mô của đề tài.
-
-Vì vậy, tôi chọn \textbf{WordPress} làm nền tảng chính. WordPress dễ cài đặt, dễ quản trị, có nhiều plugin hỗ trợ và phù hợp với một cửa hàng trà có quy mô vừa phải. Khi kết hợp thêm WooCommerce, WordPress có thể trở thành một website bán hàng hoàn chỉnh mà không cần phải viết lại mọi chức năng từ đầu.
-
-Một lý do khác khiến tôi chọn WordPress là giao diện quản trị khá trực quan. Người quản lý cửa hàng không cần biết lập trình vẫn có thể đăng sản phẩm, sửa giá, viết bài giới thiệu, thêm hình ảnh hoặc cập nhật nội dung chính sách. Điều này rất hợp với định hướng của Sen Việt Tea, vì sau khi bàn giao thì website cần dễ vận hành chứ không chỉ chạy được trên máy của người làm.
-
-\subsection{Vai trò của WooCommerce}
-
-WordPress ban đầu chỉ là hệ quản trị nội dung, chưa có sẵn các chức năng bán hàng chuyên sâu. Vì vậy, tôi dùng WooCommerce để bổ sung phần thương mại điện tử. WooCommerce sẽ đảm nhiệm các phần quan trọng như danh mục sản phẩm, giỏ hàng, trang thanh toán, đơn hàng, phí vận chuyển, thuế và mã giảm giá.
-
-Trong chương này tôi chỉ trình bày phần dựng nền tảng WordPress và chuẩn bị website. Phần cấu hình WooCommerce chi tiết như danh mục, sản phẩm, vận chuyển, thanh toán và coupon sẽ được trình bày riêng ở Chương 4 để nội dung không bị lẫn nhau.
-
-\section{Chuẩn bị môi trường chạy website}
-
-\subsection{Cài đặt trên XAMPP}
-
-Website được triển khai trên môi trường cục bộ bằng \textbf{XAMPP}. Đây là bộ công cụ có sẵn Apache, PHP và MariaDB, đủ để chạy WordPress trên máy tính cá nhân trước khi đưa lên hosting thật. Cách làm này giúp tôi thử giao diện, sửa lỗi và cấu hình website thoải mái mà không ảnh hưởng đến người dùng bên ngoài.
-
-Quá trình chuẩn bị môi trường gồm các bước chính:
-\begin{enumerate}
-	\item Khởi động Apache và MySQL trong XAMPP.
-	\item Tạo thư mục website trong \texttt{htdocs}.
-	\item Tạo cơ sở dữ liệu mới bằng phpMyAdmin.
-	\item Đưa mã nguồn WordPress vào đúng thư mục chạy web.
-	\item Mở trình duyệt và tiến hành cài đặt WordPress.
-\end{enumerate}
-
-Sau khi cài xong, website có thể chạy trên địa chỉ localhost. Đây là môi trường thử nghiệm, nhưng về cơ bản nó mô phỏng khá giống một web hosting thật: Apache xử lý truy cập, PHP chạy mã nguồn WordPress, còn MariaDB lưu toàn bộ dữ liệu như bài viết, sản phẩm, tài khoản và đơn hàng.
-
-\subsection{Cơ sở dữ liệu ban đầu}
-
-Trong WordPress, dữ liệu không nằm rải rác trong từng file mà được lưu trong cơ sở dữ liệu. Các bảng như \texttt{wp\_posts}, \texttt{wp\_postmeta}, \texttt{wp\_users} và \texttt{wp\_options} giữ vai trò rất quan trọng. Ví dụ, bài viết, trang tĩnh và sản phẩm đều được lưu trong \texttt{wp\_posts}; còn các thông tin phụ như giá, tồn kho, ảnh đại diện hoặc cấu hình plugin thường nằm trong \texttt{wp\_postmeta}.
-
-Việc hiểu sơ bộ cách WordPress lưu dữ liệu giúp tôi cẩn thận hơn khi cài plugin hoặc chỉnh sửa cấu hình. Trước những thay đổi lớn, cần sao lưu cơ sở dữ liệu để tránh mất nội dung. Đây cũng là thói quen cần có khi triển khai website thương mại điện tử, vì dữ liệu sản phẩm và đơn hàng là phần rất quan trọng của cửa hàng.
-
-\section{Cài đặt WordPress}
-
-\subsection{Thiết lập thông tin website}
-
-Sau khi tạo cơ sở dữ liệu, tôi tiến hành cài WordPress bằng trình cài đặt mặc định. Các thông tin cần nhập gồm tên website, tài khoản quản trị, mật khẩu, email và thông tin kết nối cơ sở dữ liệu. Tên website được đặt theo thương hiệu \textbf{Sen Việt Tea} để thống nhất với nội dung đã phân tích ở Chương 1.
-
-Tài khoản quản trị không dùng tên quá dễ đoán như \texttt{admin}. Mật khẩu cũng được đặt đủ mạnh để tránh rủi ro đăng nhập trái phép. Dù đây mới là môi trường localhost, tôi vẫn cấu hình theo thói quen của môi trường thật để khi đưa lên hosting không phải sửa lại quá nhiều.
-
-\subsection{Cấu hình permalink và trang cơ bản}
-
-Sau khi đăng nhập vào trang quản trị, việc đầu tiên tôi làm là chỉnh lại đường dẫn tĩnh (permalink). Nếu để mặc định, đường dẫn bài viết thường có dạng khó nhớ như \texttt{?p=123}. Tôi chuyển sang kiểu đường dẫn theo tên bài viết để URL dễ đọc hơn, ví dụ một trang giới thiệu có thể có dạng \texttt{/ve-chung-toi}. Cách này cũng tốt hơn cho SEO.
-
-Tiếp theo, tôi tạo các trang cơ bản cần có của website:
+Ở giai đoạn đầu tiên, hệ thống được xây dựng trên môi trường máy chủ giả lập cục bộ (Localhost). Giải pháp này cung cấp một môi trường an toàn và linh hoạt để lập trình giao diện với các thành phần cốt lõi:
 \begin{itemize}
-	\item \textbf{Trang chủ:} Giới thiệu thương hiệu, sản phẩm nổi bật và điều hướng người dùng vào cửa hàng.
-	\item \textbf{Sản phẩm:} Là nơi hiển thị danh sách trà và phụ kiện.
-	\item \textbf{Kiến thức:} Dùng để đăng các bài viết chia sẻ về trà, cách pha trà và văn hóa thưởng trà.
-	\item \textbf{Về chúng tôi:} Trình bày câu chuyện thương hiệu Sen Việt Tea.
-	\item \textbf{Liên hệ:} Cung cấp thông tin để khách hàng liên lạc khi cần tư vấn.
+    \item \textbf{Apache và PHP 8.x:} Cung cấp máy chủ phân giải giao thức và trình thông dịch mã nguồn thế hệ mới, mang lại tốc độ xử lý vượt trội và tương thích hoàn hảo với kiến trúc WordPress.
+    \item \textbf{MariaDB:} Hệ quản trị cơ sở dữ liệu quan hệ được sử dụng thay thế cho MySQL truyền thống nhằm tăng tốc độ truy vấn đối với các bảng dữ liệu hàng hóa.
 \end{itemize}
 
-Các trang này chưa phải là toàn bộ website, nhưng chúng tạo ra bộ khung ban đầu để người dùng có thể hiểu website bán gì, thương hiệu là ai và cần đi đâu để mua hàng.
-
-\section{Tổ chức giao diện Sen Việt Tea}
-
-\subsection{Định hướng giao diện}
-
-Vì sản phẩm chính là trà Việt Nam, tôi không chọn kiểu giao diện quá màu mè hoặc quá nhiều hiệu ứng. Website cần tạo cảm giác nhẹ, sạch, dễ đọc và có chút tinh tế. Khách vào trang không nên bị rối bởi quá nhiều banner hoặc nút bấm, mà cần nhìn thấy ngay sản phẩm, thông tin chính và đường dẫn mua hàng.
-
-Giao diện được tổ chức theo hướng tối giản. Các khoảng trắng được giữ tương đối thoáng, ảnh sản phẩm đặt rõ ràng, chữ mô tả không quá dài ở phần đầu. Mục tiêu là để khách hàng có thể xem nhanh sản phẩm, đọc thông tin cần thiết và chuyển sang giỏ hàng mà không phải tìm quá lâu.
-
-\subsection{Menu điều hướng}
-
-Menu chính của website được sắp xếp theo các trang quan trọng nhất. Tôi ưu tiên các mục mà khách hàng thường cần khi mua trà:
+Sau khi hoàn thiện cấu trúc cục bộ, toàn bộ mã nguồn được di chuyển lên máy chủ lưu trữ thực tế. Để đảm bảo hệ thống vận hành mượt mà khi lượng dữ liệu phình to, máy chủ được định hướng theo các tiêu chuẩn khắt khe:
 \begin{itemize}
-	\item Trang chủ.
-	\item Sản phẩm.
-	\item Kiến thức.
-	\item Về chúng tôi.
-	\item Hướng dẫn mua hàng.
-	\item Liên hệ.
+    \item \textbf{Ổ cứng NVMe \(\&\) Máy chủ LiteSpeed:} Giải quyết triệt để nút thắt cổ chai về tốc độ đọc/ghi dữ liệu và cung cấp khả năng chịu tải đồng thời cao hơn nhiều lần so với Apache truyền thống.
+    \item \textbf{Bảo mật SSL/HTTPS:} Tiêu chuẩn bắt buộc nhằm mã hóa toàn bộ dữ liệu giao dịch nhạy cảm giữa trình duyệt của người dùng và máy chủ.
 \end{itemize}
 
-Cách đặt menu này bám theo sơ đồ cấu trúc đã trình bày ở Chương 2. Người muốn mua hàng có thể vào ngay mục Sản phẩm. Người còn đang cân nhắc có thể đọc phần Kiến thức hoặc Về chúng tôi để hiểu thêm về nguồn gốc và phong cách của thương hiệu.
+\subsection{Cài đặt nền tảng WordPress Core}
+WordPress được lựa chọn làm nền tảng phát triển nhờ kiến trúc hướng sự kiện vô cùng linh hoạt. Lõi của nền tảng này cung cấp sẵn các hàm về quản trị người dùng, quản lý phiên làm việc và bảo mật cơ sở dữ liệu. 
 
-\subsection{Chuẩn bị nội dung ban đầu}
+Quá trình cài đặt cơ bản bao gồm việc giải nén mã nguồn và khai báo kết nối cơ sở dữ liệu. Đặc biệt, nhằm thiết lập hàng rào bảo mật ngay từ những bước đầu, tiền tố cơ sở dữ liệu được chủ động đổi thành một chuỗi ký tự ngẫu nhiên để ngăn chặn tiêm nhiễm mã độc. Đồng thời, tài khoản quản trị tối cao được cấu hình với tên đăng nhập phức tạp, loại bỏ hoàn toàn tên mặc định dễ bị dò quét.
 
-Một website thương mại điện tử không thể chỉ có khung giao diện trống. Vì vậy, tôi chuẩn bị trước các nội dung cơ bản như lời giới thiệu thương hiệu, mô tả nhóm sản phẩm, chính sách giao hàng, thông tin liên hệ và một số bài viết kiến thức trà.
+\section{Lựa chọn Giao diện và Tiện ích mở rộng nền tảng}
 
-Với sản phẩm trà, nội dung mô tả rất quan trọng. Khách hàng thường muốn biết trà đến từ đâu, hương vị như thế nào, phù hợp với ai, cách pha ra sao và bảo quản thế nào. Do đó, phần mô tả sản phẩm được viết theo hướng dễ hiểu, tránh chỉ liệt kê thông số khô khan.
+\subsection{Lựa chọn Theme cho website}
+Đối với website thương mại điện tử, Theme chứa đựng hàng ngàn dòng lệnh định dạng ảnh hưởng trực tiếp đến hiệu năng. Sau quá trình so sánh, đề tài quyết định sử dụng giao diện \textbf{Flatsome} với những ưu điểm mang tính lý thuyết:
+\begin{itemize}
+    \item \textbf{Cấu trúc DOM nhẹ \(\&\) Lazy Loading:} Hình ảnh tự động áp dụng cơ chế kết xuất trễ (chỉ tải khi cuộn chuột tới), giúp tiết kiệm đến 60\% băng thông ở lần tải trang đầu tiên.
+    \item \textbf{UX Builder chuyên biệt:} Hệ thống thiết kế kéo thả tối ưu sâu cho nghiệp vụ bán hàng, cho phép can thiệp trực tiếp vào trang Giỏ hàng và Thanh toán mà không làm phá vỡ cấu trúc tổng thể.
+\end{itemize}
 
-\section{Các yêu cầu cần đáp ứng khi dựng website}
+\subsection{Cấu hình hệ sinh thái Plugin}
+Nhằm xây dựng một nền tảng thương mại điện tử đầy đủ tính năng nhưng vẫn tránh được tình trạng phình to mã nguồn, đề tài đã cấu hình một hệ sinh thái gồm 8 tiện ích (plugin) thiết yếu, được chia làm 3 nhóm chức năng cốt lõi:
 
-\subsection{An toàn dữ liệu}
+\textbf{Nhóm 1: Vận hành thương mại và Tối ưu tìm kiếm}
+\begin{itemize}
+    \item \textbf{WooCommerce:} Là bộ mã nguồn hạt nhân cốt lõi của toàn bộ dự án, biến cấu trúc blog thông thường của WordPress thành một hệ thống bán hàng đa năng. Đối với Sen Việt Tea, WooCommerce không chỉ giúp thiết lập danh mục trà phức tạp, quản lý kho hàng và xử lý luồng tính toán giá tiền, thuế quan tự động mà còn tạo nền tảng vững chắc để dễ dàng tích hợp các cổng thanh toán trực tuyến nội địa ở giai đoạn sau.
+    \item \textbf{Rank Math SEO:} Một trong những công cụ tối ưu hóa công cụ tìm kiếm nhẹ và mạnh mẽ nhất. Đối với dự án này, giá trị lớn nhất của Rank Math là khả năng tự động can thiệp mã nguồn HTML để tạo cấu trúc dữ liệu siêu văn bản (Rich Snippets). Điều này giúp các sản phẩm mũi nhọn như "Trà Đinh Thái Nguyên" hiển thị trên kết quả tìm kiếm Google với đầy đủ giá bán, tình trạng còn hàng và số sao đánh giá, qua đó tăng mạnh tỷ lệ nhấp chuột (CTR).
+\end{itemize}
+
+\textbf{Nhóm 2: Bảo mật và Tối ưu hiệu năng}
+\begin{itemize}
+    \item \textbf{Wordfence Security:} Hoạt động như một tường lửa tầng ứng dụng (WAF) và trình quét mã độc chuyên sâu. Trong bối cảnh website thương mại điện tử luôn là mục tiêu của tin tặc, Wordfence liên tục phân tích các gói tin HTTP, tự động chặn các địa chỉ IP có hành vi dò quét lỗ hổng hoặc cố tình nhồi nhét mật khẩu (Brute-force), đảm bảo an toàn tuyệt đối cho cơ sở dữ liệu khách hàng.
+    \item \textbf{LiteSpeed Cache:} Đóng vai trò sống còn trong việc tối ưu tốc độ tải trang thông qua cơ chế lưu đệm đối tượng và xuất HTML tĩnh. Tính năng đắt giá nhất đối với Sen Việt Tea là xử lý phần tử vùng biên (ESI - Edge Side Includes), giúp duy trì sự chính xác tức thời của icon giỏ hàng và trạng thái đăng nhập ngay cả khi toàn bộ giao diện đang bị đóng băng bởi bộ nhớ đệm để tăng tốc độ truy cập.
+    \item \textbf{UpdraftPlus:} Giải pháp sao lưu dữ liệu toàn diện. Toàn bộ mã nguồn, hình ảnh sản phẩm và đặc biệt là cơ sở dữ liệu đơn hàng của hệ thống được tự động sao lưu định kỳ và đồng bộ hóa an toàn lên nền tảng đám mây (Google Drive). Công cụ này đảm bảo khả năng phục hồi thần tốc hệ thống bán hàng nếu chẳng may xảy ra sự cố sập máy chủ vật lý.
+\end{itemize}
+
+\textbf{Nhóm 3: Tương tác khách hàng và Trải nghiệm}
+\begin{itemize}
+    \item \textbf{WP Mail SMTP:} Giải quyết triệt để điểm yếu của hàm gửi thư PHP mặc định bằng cách thiết lập giao thức gửi thư có xác thực. Giá trị thực tiễn cho dự án là đảm bảo 100\% các email giao dịch nhạy cảm như hóa đơn mua trà, mã vận đơn hay liên kết khôi phục mật khẩu được chuyển thẳng vào Hộp thư đến (Inbox) của khách hàng thay vì bị các bộ lọc đánh dấu là Thư rác (Spam).
+    \item \textbf{Contact Form 7:} Tiện ích kiến tạo biểu mẫu linh hoạt và nhẹ nhàng nhất. Công cụ này được ứng dụng để xây dựng các kênh giao tiếp B2B, chẳng hạn như form liên hệ dành cho đối tác mua sỉ hoặc form nhận tư vấn thiết kế quà tặng doanh nghiệp. Các biểu mẫu này đều được tích hợp hệ thống kiểm tra reCAPTCHA ngầm để chống lại nạn gửi tin nhắn rác tự động.
+    \item \textbf{Loco Translate:} Công cụ nội địa hóa ngôn ngữ chuyên sâu can thiệp trực tiếp vào các tập tin nguồn. Rất nhiều chuỗi ký tự cứng trong mã nguồn gốc thường bị bỏ ngỏ hiển thị tiếng Anh (ví dụ: "Add to cart", "Out of stock"). Loco Translate giúp dịch chuẩn xác các thuật ngữ này sang tiếng Việt (như "Thêm vào giỏ", "Tạm hết hàng"), mang lại trải nghiệm mua sắm thuần Việt hoàn hảo và gần gũi cho tập khách hàng nội địa.
+\end{itemize}
+
+\section{Thiết kế giao diện và Trải nghiệm người dùng}
+
+\subsection{Design System và Nghệ thuật chữ}
+Nhằm truyền tải trọn vẹn văn hóa thưởng trà bao gồm sự thanh lịch và an nhiên, hệ thống thiết kế (Design System) tuân thủ theo một bảng màu được tính toán kỹ lưỡng:
+\definecolor{svt_primary}{HTML}{4A7C59}
+\definecolor{svt_secondary}{HTML}{8B5A2B}
+\definecolor{svt_bg}{HTML}{FAF8F5}
+
+\begin{itemize}
+    \item \textbf{Màu chủ đạo (Xanh lục trà - \texttt{\#4A7C59} \fboxsep=0pt\fcolorbox{gray!50}{svt_primary}{\phantom{\rule{10pt}{10pt}}}):} Khác với các đối thủ trên thị trường thường sử dụng sắc xanh lá tươi mang tính công nghiệp, Sen Việt Tea chọn tông xanh lục trầm. Sắc độ này không chỉ là biểu tượng chân thực cho những búp trà Shan Tuyết hoang dã mà còn mang lại hiệu ứng tâm lý sâu sắc, khơi gợi sự tĩnh tại và an nhiên cho nhóm khách hàng đô thị. Về mặt giao diện (UI), tông màu trầm này vừa đủ độ tương phản để định hướng sự chú ý vào các nút kêu gọi hành động (Thêm vào giỏ, Mua ngay) mà không gây gắt mắt.
+    \item \textbf{Màu phụ trợ (Nâu đất nung - \texttt{\#8B5A2B} \fboxsep=0pt\fcolorbox{gray!50}{svt_secondary}{\phantom{\rule{10pt}{10pt}}}):} Trong khi phần lớn website hiện đại lạm dụng màu đen hoặc xám lạnh, dự án sử dụng sắc nâu đại diện cho nghệ thuật gốm sứ và ấm tử sa truyền thống. Sự kết hợp giữa xanh lục trà và nâu đất nung tạo ra một hệ quy chiếu màu sắc (Color Palette) mộc mạc, mang đậm tính thiên nhiên. Quyết định này giúp bộ nhận diện của Sen Việt Tea trở nên tách biệt hoàn toàn so với các đối thủ, mang hơi thở văn hóa phương Đông rõ nét.
+    \item \textbf{Màu nền (Trắng ngà - \texttt{\#FAF8F5} \fboxsep=0pt\fcolorbox{gray!50}{svt_bg}{\phantom{\rule{10pt}{10pt}}}):} Một lỗi thiết kế phổ biến của các trang thương mại điện tử là sử dụng màu nền trắng tinh toát (\texttt{\#FFFFFF}), tạo cảm giác vô cơ và gây mỏi mắt khi nhìn lâu. Để khắc phục, hệ thống áp dụng màu trắng ngà mô phỏng màu trang giấy dó cổ và nước trà pha loãng. Màu nền này không chỉ bảo vệ thị giác người dùng khi đọc các bài viết dài, mà còn kiến tạo một không gian số ấm cúng, thư thái tựa như một trà thất thực thụ.
+\end{itemize}
+
+Về nghệ thuật chữ (Typography), hệ thống kết hợp phông chữ có chân Playfair Display cho các tiêu đề nhằm tôn lên vẻ đẹp sang trọng, trong khi văn bản diễn giải sử dụng phông chữ Inter hoặc Roboto để đảm bảo độ sắc nét trên mọi độ phân giải.
+
+\subsection{Thiết kế Trang chủ và luồng điều hướng}
+Thanh điều hướng được tổ chức khoa học theo mô hình đa tầng. Cấp điều hướng đầu tiên bao gồm các trang lõi (Trang chủ, Sản phẩm, Kiến thức). Từ đó, các trình đơn thả xuống sẽ phân nhánh thành các danh mục chủ lực (Trà Truyền Thống, Trà Thảo Mộc, Trà Cụ), giúp người dùng định vị nội dung nhanh chóng.
+
+Giao diện trang chủ áp dụng nguyên tắc quét thị giác mô hình chữ F. Khu vực danh sách sản phẩm nổi bật được thiết kế tối giản, tận dụng nhiều khoảng trống (white-space) để mỗi sản phẩm trông cao cấp tựa như trưng bày trong lồng kính. Riêng với khu vực Giỏ hàng và Thanh toán, hệ thống áp dụng triệt để nguyên tắc loại bỏ sự xao nhãng bằng cách ẩn đi các thanh điều hướng phức tạp, dồn sự tập trung vào việc hoàn tất đặt hàng.
+
+\subsection{Tối ưu hóa thiết kế Responsive}
+Với hơn 70\% lưu lượng truy cập đến từ di động, các điểm dừng hiển thị (breakpoints) được tự động nhận diện và tái cấu trúc giao diện linh hoạt. Thanh điều hướng ngang được thu gọn vào biểu tượng menu ba gạch tĩnh. Khu vực lưới sản phẩm tự động co giãn từ 4 cột (máy tính) xuống 2 cột để hình ảnh không bị thu nhỏ quá mức. Đặc biệt, theo nguyên lý vùng tiếp cận ngón cái, các nút bấm thêm vào giỏ được tăng diện tích cảm ứng lên tối thiểu 44x44 pixel và ghim cố định ở phần biên dưới màn hình, giúp người dùng dễ dàng thao tác bằng một tay.
+
+\section*{Tiểu kết chương 3}
+Việc kết hợp giữa kiến trúc máy chủ mạnh mẽ, mã nguồn WordPress linh hoạt và sức mạnh của WooCommerce cùng Flatsome đã tạo ra một bộ khung kỹ thuật hoàn hảo. Quan trọng hơn, việc ứng dụng bài bản một hệ thống thiết kế tinh tế với luồng điều hướng thân thiện đã thực sự thổi hồn văn hóa trà đạo vào một nền tảng công nghệ khô khan, tạo bước đệm vững chắc để tiến hành thiết lập các nghiệp vụ kinh doanh thực tế trong những phần tiếp theo.

@@ -10,29 +10,31 @@ Nhằm mô tả trực quan cách thức phân bổ và mối quan hệ giữa c
 
 \begin{figure}[H]
     \centering
+    \resizebox{\textwidth}{!}{%
     \begin{tikzpicture}[
         edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)},
-        level 1/.style={sibling distance=2.5cm, level distance=1.5cm},
-        level 2/.style={sibling distance=2.2cm, level distance=1.8cm},
-        every node/.style={draw, rounded corners, align=center, fill=green!5, font=\small, inner sep=5pt},
+        level 1/.style={sibling distance=3.2cm, level distance=1.8cm},
+        level 2/.style={sibling distance=3.8cm, level distance=2.2cm},
+        every node/.style={draw, rounded corners, align=center, fill=green!5, font=\small, inner sep=6pt},
         root/.style={fill=green!25, font=\bfseries\small},
         level1/.style={fill=blue!5, font=\bfseries\small},
         level2/.style={fill=yellow!5, font=\footnotesize}
     ]
     \node [root] {Sen Việt Tea}
         child { node [level1] {Trang chủ} }
-        child { node [level1] {Sản phẩm} [sibling distance=3.2cm]
+        child { node [level1] {Sản phẩm}
             child { node [level2] {Chi tiết sản phẩm\\ và Giỏ hàng} }
             child { node [level2] {Thanh toán} }
         }
         child { node [level1] {Về chúng tôi} }
         child { node [level1] {Kiến thức trà} }
         child { node [level1] {Liên hệ} }
-        child { node [level1] {Tài khoản} [sibling distance=5.2cm]
-            child { node [level2] {Đăng nhập\\ và Đăng ký} }
-            child { node [level2] {Bảng điều khiển\\ (Tổng quan, Hồ sơ,\\ Đơn hàng, Mã giảm giá)} }
+        child { node [level1] {Tài khoản} 
+            child[sibling distance=4.2cm] { node [level2] {Đăng nhập\\ và Đăng ký} }
+            child[sibling distance=4.2cm] { node [level2] {Bảng điều khiển\\ (Tổng quan, Hồ sơ,\\ Đơn hàng, Mã giảm giá)} }
         };
-    \end{tikzpicture}
+    \end{tikzpicture}%
+    }
     \caption{Sơ đồ phân cấp cấu trúc chức năng hệ thống website Sen Việt Tea}
     \label{fig:sitemap_structure}
 \end{figure}
@@ -400,3 +402,6 @@ An toàn thông tin và tính toàn vẹn của cơ sở dữ liệu là yếu t
 \subsubsection{Cấu hình bảo mật hệ thống}
 
 Song song với việc sao lưu phòng ngừa sự cố, các giải pháp bảo mật chủ động được triển khai đa lớp nhằm giảm thiểu tối đa nguy cơ bị xâm nhập trái phép. Trước hết, việc cài đặt chứng chỉ bảo mật SSL/HTTPS bắt buộc mã hóa toàn bộ dữ liệu truyền tải giữa trình duyệt của khách hàng và máy chủ, đảm bảo thông tin đăng nhập và thông tin giao dịch qua cổng PayPal được bảo vệ an toàn tuyệt đối. Bên cạnh đó, để chống lại các cuộc tấn công dò mật khẩu tự động (Brute-force), hệ thống tích hợp công cụ chuyên biệt thiết lập quy tắc tự động khóa địa chỉ IP truy cập trong vòng 24 giờ nếu phát hiện hành vi nhập sai mật khẩu tài khoản quản trị quá 5 lần liên tiếp. Đối với vấn đề thư rác, công cụ Akismet Anti-Spam được cấu hình để kiểm duyệt và tự động loại bỏ các bình luận rác mang liên kết độc hại trên trang chia sẻ kiến thức và đánh giá sản phẩm. Cuối cùng, một lịch trình bảo trì định kỳ được thiết lập tối thiểu một lần mỗi tháng nhằm cập nhật các bản vá lỗi bảo mật cho nhân hệ thống mã nguồn chính WordPress, phân hệ WooCommerce và tất cả các tiện ích bổ sung, bảo vệ website trước các lỗ hổng bảo mật mới công bố.
+
+\section*{Tiểu kết chương 5}
+Chương 5 đã đánh giá toàn diện kết quả thực nghiệm hệ thống, từ giao diện hiển thị cho đến sự ổn định của luồng xử lý đơn hàng. Đồng thời, chương cũng đề xuất các chiến lược tiếp thị đa kênh thiết thực (SEO, Google Ads, Facebook Ads) cùng hệ thống bảo mật tự động hóa. Đây là giai đoạn cuối cùng, minh chứng dự án đã hoàn toàn sẵn sàng vượt qua môi trường thử nghiệm để đáp ứng nhu cầu kinh doanh thực tế, mang lại giá trị bền vững cho thương hiệu Sen Việt Tea.
