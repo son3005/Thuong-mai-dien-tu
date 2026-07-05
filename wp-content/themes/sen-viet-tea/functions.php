@@ -664,3 +664,132 @@ add_action('wp', function() {
     remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
     remove_action( 'woocommerce_before_shop_loop', 'sen_viet_tea_add_search_to_shop', 15 );
 });
+
+/**
+ * ===================================================
+ * DASHBOARD HELPER FUNCTIONS
+ * ===================================================
+ */
+
+/**
+ * Get user's order count
+ */
+function get_user_order_count() {
+    if ( ! is_user_logged_in() ) return 0;
+    
+    $orders = wc_get_orders( array(
+        'customer_id' => get_current_user_id(),
+        'limit' => -1,
+        'return' => 'ids',
+    ) );
+    
+    return count( $orders );
+}
+add_shortcode( 'user_order_count', 'get_user_order_count' );
+
+/**
+ * Get user's pending orders count
+ */
+function get_user_pending_orders() {
+    if ( ! is_user_logged_in() ) return 0;
+    
+    $orders = wc_get_orders( array(
+        'customer_id' => get_current_user_id(),
+        'status' => array( 'pending', 'processing', 'on-hold' ),
+        'limit' => -1,
+        'return' => 'ids',
+    ) );
+    
+    return count( $orders );
+}
+add_shortcode( 'user_pending_orders', 'get_user_pending_orders' );
+
+/**
+ * Get user's voucher count
+ */
+function get_user_voucher_count() {
+    if ( ! is_user_logged_in() ) return 0;
+    
+    // Get store coupons
+    $args = array(
+        'post_type'      => 'shop_coupon',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'fields'         => 'ids',
+    );
+    
+    $coupons = get_posts( $args );
+    return count( $coupons );
+}
+add_shortcode( 'user_voucher_count', 'get_user_voucher_count' );
+
+/**
+ * Get user's loyalty points (custom meta)
+ */
+function get_user_points() {
+    if ( ! is_user_logged_in() ) return 0;
+    
+    $points = get_user_meta( get_current_user_id(), 'loyalty_points', true );
+    return $points ? intval( $points ) : 0;
+}
+add_shortcode( 'user_points', 'get_user_points' );
+
+/**
+ * Get user's vouchers list
+ */
+function get_user_vouchers() {
+    if ( ! is_user_logged_in() ) return array();
+    
+    $vouchers = array();
+    
+    // Get store coupons
+    $args = array(
+        'post_type'      => 'shop_coupon',
+        'post_status'    => 'publish',
+        'posts_per_page' => 10,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+    
+    $coupons = get_posts( $args );
+    
+    foreach ( $coupons as $coupon ) {
+        $discount_type = get_post_meta( $coupon->ID, 'discount_type', true );
+        $amount = get_post_meta( $coupon->ID, 'coupon_amount', true );
+        $expiry_date = get_post_meta( $coupon->ID, 'date_expires', true );
+        $minimum_amount = get_post_meta( $coupon->ID, 'minimum_amount', true );
+        
+        // Format discount
+        if ( $discount_type === 'percent' ) {
+            $discount = $amount . '%';
+        } else {
+            $discount = number_format( intval( $amount ), 0, ',', '.' ) . 'K';
+        }
+        
+        // Format expiry
+        $expiry = $expiry_date ? date( 'd/m/Y', $expiry_date ) : 'Không giới hạn';
+        
+        $vouchers[] = array(
+            'id'          => $coupon->ID,
+            'code'        => $coupon->post_title,
+            'title'       => $coupon->post_title,
+            'description' => $coupon->post_content ? $coupon->post_content : 'Áp dụng cho đơn hàng',
+            'discount'    => $discount,
+            'expiry'      => $expiry,
+            'minimum'     => $minimum_amount ? 'Đơn từ ' . number_format( intval( $minimum_amount ), 0, ',', '.' ) . 'đ' : '',
+        );
+    }
+    
+    return $vouchers;
+}
+add_shortcode( 'user_vouchers', 'get_user_vouchers' );
+
+/**
+ * Enqueue dashboard scripts
+ */
+function sen_viet_tea_dashboard_scripts() {
+    if ( is_page_template( 'template-dashboard.php' ) ) {
+        wp_enqueue_style( 'sen-viet-tea-dashboard', get_template_directory_uri() . '/assets/css/dashboard.css', array(), '1.0.0' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'sen_viet_tea_dashboard_scripts' );
