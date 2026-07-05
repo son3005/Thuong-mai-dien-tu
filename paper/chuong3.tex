@@ -1,1 +1,99 @@
 \chapter{TRIỂN KHAI XÂY DỰNG WEBSITE TRÊN WORDPRESS}
+
+Sau khi đã phân tích chức năng và vẽ được cấu trúc website ở chương trước, bước tiếp theo là bắt tay vào dựng website thật trên WordPress. Đây là phần biến các yêu cầu trên giấy thành một hệ thống có thể mở trong trình duyệt, có giao diện, có trang sản phẩm, có khu vực quản trị và sẵn sàng để cài WooCommerce ở chương sau.
+
+Trong chương này, tôi trình bày lại quá trình triển khai website \textbf{Sen Việt Tea} theo đúng các bước đã làm: chọn nền tảng, dựng môi trường chạy web, cài WordPress, chỉnh giao diện, tổ chức menu, chuẩn bị dữ liệu ban đầu và kiểm tra các yêu cầu cơ bản của một website thương mại điện tử.
+
+\section{Lựa chọn nền tảng triển khai}
+
+\subsection{Lý do chọn WordPress}
+
+Ở giai đoạn đầu, tôi có ba hướng chính để xây dựng website: dùng WordPress, dùng một nền tảng thương mại điện tử lớn như Magento, hoặc tự lập trình toàn bộ. Nếu xét về độ mạnh và khả năng tùy biến thì tự lập trình là linh hoạt nhất, nhưng cách này tốn rất nhiều thời gian cho các chức năng cơ bản như đăng nhập, quản trị sản phẩm, giỏ hàng và đơn hàng. Magento thì phù hợp với những cửa hàng rất lớn, có nhiều kho, nhiều chi nhánh, nhưng lại khá nặng và không thật sự cần thiết với quy mô của đề tài.
+
+Vì vậy, tôi chọn \textbf{WordPress} làm nền tảng chính. WordPress dễ cài đặt, dễ quản trị, có nhiều plugin hỗ trợ và phù hợp với một cửa hàng trà có quy mô vừa phải. Khi kết hợp thêm WooCommerce, WordPress có thể trở thành một website bán hàng hoàn chỉnh mà không cần phải viết lại mọi chức năng từ đầu.
+
+Một lý do khác khiến tôi chọn WordPress là giao diện quản trị khá trực quan. Người quản lý cửa hàng không cần biết lập trình vẫn có thể đăng sản phẩm, sửa giá, viết bài giới thiệu, thêm hình ảnh hoặc cập nhật nội dung chính sách. Điều này rất hợp với định hướng của Sen Việt Tea, vì sau khi bàn giao thì website cần dễ vận hành chứ không chỉ chạy được trên máy của người làm.
+
+\subsection{Vai trò của WooCommerce}
+
+WordPress ban đầu chỉ là hệ quản trị nội dung, chưa có sẵn các chức năng bán hàng chuyên sâu. Vì vậy, tôi dùng WooCommerce để bổ sung phần thương mại điện tử. WooCommerce sẽ đảm nhiệm các phần quan trọng như danh mục sản phẩm, giỏ hàng, trang thanh toán, đơn hàng, phí vận chuyển, thuế và mã giảm giá.
+
+Trong chương này tôi chỉ trình bày phần dựng nền tảng WordPress và chuẩn bị website. Phần cấu hình WooCommerce chi tiết như danh mục, sản phẩm, vận chuyển, thanh toán và coupon sẽ được trình bày riêng ở Chương 4 để nội dung không bị lẫn nhau.
+
+\section{Chuẩn bị môi trường chạy website}
+
+\subsection{Cài đặt trên XAMPP}
+
+Website được triển khai trên môi trường cục bộ bằng \textbf{XAMPP}. Đây là bộ công cụ có sẵn Apache, PHP và MariaDB, đủ để chạy WordPress trên máy tính cá nhân trước khi đưa lên hosting thật. Cách làm này giúp tôi thử giao diện, sửa lỗi và cấu hình website thoải mái mà không ảnh hưởng đến người dùng bên ngoài.
+
+Quá trình chuẩn bị môi trường gồm các bước chính:
+\begin{enumerate}
+	\item Khởi động Apache và MySQL trong XAMPP.
+	\item Tạo thư mục website trong \texttt{htdocs}.
+	\item Tạo cơ sở dữ liệu mới bằng phpMyAdmin.
+	\item Đưa mã nguồn WordPress vào đúng thư mục chạy web.
+	\item Mở trình duyệt và tiến hành cài đặt WordPress.
+\end{enumerate}
+
+Sau khi cài xong, website có thể chạy trên địa chỉ localhost. Đây là môi trường thử nghiệm, nhưng về cơ bản nó mô phỏng khá giống một web hosting thật: Apache xử lý truy cập, PHP chạy mã nguồn WordPress, còn MariaDB lưu toàn bộ dữ liệu như bài viết, sản phẩm, tài khoản và đơn hàng.
+
+\subsection{Cơ sở dữ liệu ban đầu}
+
+Trong WordPress, dữ liệu không nằm rải rác trong từng file mà được lưu trong cơ sở dữ liệu. Các bảng như \texttt{wp\_posts}, \texttt{wp\_postmeta}, \texttt{wp\_users} và \texttt{wp\_options} giữ vai trò rất quan trọng. Ví dụ, bài viết, trang tĩnh và sản phẩm đều được lưu trong \texttt{wp\_posts}; còn các thông tin phụ như giá, tồn kho, ảnh đại diện hoặc cấu hình plugin thường nằm trong \texttt{wp\_postmeta}.
+
+Việc hiểu sơ bộ cách WordPress lưu dữ liệu giúp tôi cẩn thận hơn khi cài plugin hoặc chỉnh sửa cấu hình. Trước những thay đổi lớn, cần sao lưu cơ sở dữ liệu để tránh mất nội dung. Đây cũng là thói quen cần có khi triển khai website thương mại điện tử, vì dữ liệu sản phẩm và đơn hàng là phần rất quan trọng của cửa hàng.
+
+\section{Cài đặt WordPress}
+
+\subsection{Thiết lập thông tin website}
+
+Sau khi tạo cơ sở dữ liệu, tôi tiến hành cài WordPress bằng trình cài đặt mặc định. Các thông tin cần nhập gồm tên website, tài khoản quản trị, mật khẩu, email và thông tin kết nối cơ sở dữ liệu. Tên website được đặt theo thương hiệu \textbf{Sen Việt Tea} để thống nhất với nội dung đã phân tích ở Chương 1.
+
+Tài khoản quản trị không dùng tên quá dễ đoán như \texttt{admin}. Mật khẩu cũng được đặt đủ mạnh để tránh rủi ro đăng nhập trái phép. Dù đây mới là môi trường localhost, tôi vẫn cấu hình theo thói quen của môi trường thật để khi đưa lên hosting không phải sửa lại quá nhiều.
+
+\subsection{Cấu hình permalink và trang cơ bản}
+
+Sau khi đăng nhập vào trang quản trị, việc đầu tiên tôi làm là chỉnh lại đường dẫn tĩnh (permalink). Nếu để mặc định, đường dẫn bài viết thường có dạng khó nhớ như \texttt{?p=123}. Tôi chuyển sang kiểu đường dẫn theo tên bài viết để URL dễ đọc hơn, ví dụ một trang giới thiệu có thể có dạng \texttt{/ve-chung-toi}. Cách này cũng tốt hơn cho SEO.
+
+Tiếp theo, tôi tạo các trang cơ bản cần có của website:
+\begin{itemize}
+	\item \textbf{Trang chủ:} Giới thiệu thương hiệu, sản phẩm nổi bật và điều hướng người dùng vào cửa hàng.
+	\item \textbf{Sản phẩm:} Là nơi hiển thị danh sách trà và phụ kiện.
+	\item \textbf{Kiến thức:} Dùng để đăng các bài viết chia sẻ về trà, cách pha trà và văn hóa thưởng trà.
+	\item \textbf{Về chúng tôi:} Trình bày câu chuyện thương hiệu Sen Việt Tea.
+	\item \textbf{Liên hệ:} Cung cấp thông tin để khách hàng liên lạc khi cần tư vấn.
+\end{itemize}
+
+Các trang này chưa phải là toàn bộ website, nhưng chúng tạo ra bộ khung ban đầu để người dùng có thể hiểu website bán gì, thương hiệu là ai và cần đi đâu để mua hàng.
+
+\section{Tổ chức giao diện Sen Việt Tea}
+
+\subsection{Định hướng giao diện}
+
+Vì sản phẩm chính là trà Việt Nam, tôi không chọn kiểu giao diện quá màu mè hoặc quá nhiều hiệu ứng. Website cần tạo cảm giác nhẹ, sạch, dễ đọc và có chút tinh tế. Khách vào trang không nên bị rối bởi quá nhiều banner hoặc nút bấm, mà cần nhìn thấy ngay sản phẩm, thông tin chính và đường dẫn mua hàng.
+
+Giao diện được tổ chức theo hướng tối giản. Các khoảng trắng được giữ tương đối thoáng, ảnh sản phẩm đặt rõ ràng, chữ mô tả không quá dài ở phần đầu. Mục tiêu là để khách hàng có thể xem nhanh sản phẩm, đọc thông tin cần thiết và chuyển sang giỏ hàng mà không phải tìm quá lâu.
+
+\subsection{Menu điều hướng}
+
+Menu chính của website được sắp xếp theo các trang quan trọng nhất. Tôi ưu tiên các mục mà khách hàng thường cần khi mua trà:
+\begin{itemize}
+	\item Trang chủ.
+	\item Sản phẩm.
+	\item Kiến thức.
+	\item Về chúng tôi.
+	\item Hướng dẫn mua hàng.
+	\item Liên hệ.
+\end{itemize}
+
+Cách đặt menu này bám theo sơ đồ cấu trúc đã trình bày ở Chương 2. Người muốn mua hàng có thể vào ngay mục Sản phẩm. Người còn đang cân nhắc có thể đọc phần Kiến thức hoặc Về chúng tôi để hiểu thêm về nguồn gốc và phong cách của thương hiệu.
+
+\subsection{Chuẩn bị nội dung ban đầu}
+
+Một website thương mại điện tử không thể chỉ có khung giao diện trống. Vì vậy, tôi chuẩn bị trước các nội dung cơ bản như lời giới thiệu thương hiệu, mô tả nhóm sản phẩm, chính sách giao hàng, thông tin liên hệ và một số bài viết kiến thức trà.
+
+Với sản phẩm trà, nội dung mô tả rất quan trọng. Khách hàng thường muốn biết trà đến từ đâu, hương vị như thế nào, phù hợp với ai, cách pha ra sao và bảo quản thế nào. Do đó, phần mô tả sản phẩm được viết theo hướng dễ hiểu, tránh chỉ liệt kê thông số khô khan.
+
+\section{Các yêu cầu cần đáp ứng khi dựng website}
+
+\subsection{An toàn dữ liệu}
