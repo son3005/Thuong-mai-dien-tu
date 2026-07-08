@@ -13,25 +13,24 @@ Nhằm mô tả trực quan cách thức phân bổ và mối quan hệ giữa c
     \resizebox{\textwidth}{!}{%
     \begin{tikzpicture}[
         edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)},
-        level 1/.style={sibling distance=3.2cm, level distance=1.8cm},
-        level 2/.style={sibling distance=3.8cm, level distance=2.2cm},
+        level 1/.style={sibling distance=3.3cm, level distance=1.8cm},
+        level 2/.style={sibling distance=3.3cm, level distance=2.2cm},
         every node/.style={draw, rounded corners, align=center, fill=green!5, font=\small, inner sep=6pt},
         root/.style={fill=green!25, font=\bfseries\small},
         level1/.style={fill=blue!5, font=\bfseries\small},
         level2/.style={fill=yellow!5, font=\footnotesize}
     ]
-    \node [root] {Sen Việt Tea}
-        child { node [level1] {Trang chủ} }
+    \node [root] {Trang chủ (Sen Việt Tea)}
         child { node [level1] {Sản phẩm}
-            child { node [level2] {Chi tiết sản phẩm\\ và Giỏ hàng} }
-            child { node [level2] {Thanh toán} }
+            child { node [level2] {Chi tiết sản phẩm\\ \& Giỏ hàng} }
+            child { node [level2] {Thanh toán \&\\ Hoàn tất đơn} }
         }
         child { node [level1] {Về chúng tôi} }
         child { node [level1] {Kiến thức trà} }
         child { node [level1] {Liên hệ} }
         child { node [level1] {Tài khoản} 
-            child[sibling distance=4.2cm] { node [level2] {Đăng nhập\\ và Đăng ký} }
-            child[sibling distance=4.2cm] { node [level2] {Bảng điều khiển\\ (Tổng quan, Hồ sơ,\\ Đơn hàng, Mã giảm giá)} }
+            child[sibling distance=3.5cm] { node [level2] {Đăng nhập/Ký} }
+            child[sibling distance=3.5cm] { node [level2] {Bảng điều khiển} }
         };
     \end{tikzpicture}%
     }
@@ -39,7 +38,7 @@ Nhằm mô tả trực quan cách thức phân bổ và mối quan hệ giữa c
     \label{fig:sitemap_structure}
 \end{figure}
 
-Sơ đồ trên làm rõ các phân hệ chức năng chính được phân bổ trực tiếp trên thanh điều hướng của website: Trang chủ, Sản phẩm, Về chúng tôi, Kiến thức trà, Liên hệ và Tài khoản. Trong đó, phân hệ Sản phẩm chịu trách nhiệm điều hướng khách hàng từ bước xem chi tiết sản phẩm, quản lý giỏ hàng đến thanh toán đơn hàng. Phân hệ Tài khoản giúp khách hàng thực hiện đăng nhập, đăng ký và truy cập vào bảng điều khiển cá nhân để cập nhật hồ sơ, theo dõi đơn hàng và sử dụng mã giảm giá. Việc thiết kế cấu trúc này đồng bộ hoàn toàn với thanh điều hướng thực tế trên website, tạo nên luồng trải nghiệm người dùng mạch lạc và tối ưu.
+Sơ đồ trên làm rõ các phân hệ chức năng chính được phân bổ trực tiếp trên thanh điều hướng của website: Trang chủ, Sản phẩm, Về chúng tôi, Kiến thức trà, Liên hệ và Tài khoản. Trong đó, phân hệ Sản phẩm chịu trách nhiệm điều hướng khách hàng từ bước xem chi tiết sản phẩm, quản lý giỏ hàng, thanh toán cho đến khi hoàn tất đơn hàng. Phân hệ Tài khoản giúp khách hàng thực hiện đăng nhập, đăng ký và truy cập vào bảng điều khiển cá nhân để cập nhật hồ sơ, theo dõi đơn hàng và sử dụng mã giảm giá. Việc thiết kế cấu trúc này đồng bộ hoàn toàn với thanh điều hướng thực tế trên website, tạo nên luồng trải nghiệm người dùng mạch lạc và tối ưu.
 
 \subsection{Hình ảnh chụp giao diện các trang chính}
 
