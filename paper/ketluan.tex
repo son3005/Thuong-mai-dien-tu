@@ -37,19 +37,29 @@ Dự án xây dựng website thương mại điện tử \textbf{Sen Việt Tea}
 
 Bảng dưới đây liệt kê chi tiết danh mục các công cụ nền tảng, tài nguyên thiết kế và các tiện ích mở rộng (Plugin) đã được nghiên cứu, cấu hình và kích hoạt sử dụng trong toàn bộ hệ thống bán hàng của dự án:
 
-\begin{table}[H]
-\centering
-\caption{Danh mục công cụ và tiện ích mở rộng trong dự án}
-\label{tab:project_tools}
-\begin{tabular}{p{4.5cm}p{10.5cm}}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4.5cm}>{\raggedright\arraybackslash}p{10.5cm}}
+\caption{Danh mục công cụ và tiện ích mở rộng trong dự án}\label{tab:project_tools} \\
 \toprule
 \textbf{Tên công cụ/Plugin} & \textbf{Vai trò và chức năng chính trong hệ thống} \\ \midrule
+\endfirsthead
+\caption[]{Danh mục công cụ và tiện ích mở rộng trong dự án (tiếp theo)} \\
+\toprule
+\textbf{Tên công cụ/Plugin} & \textbf{Vai trò và chức năng chính trong hệ thống} \\ \midrule
+\endhead
 WordPress & Hệ quản trị nội dung nền tảng, chịu trách nhiệm lưu trữ cấu trúc bài viết, trang tĩnh và điều phối cơ sở dữ liệu. \\ \addlinespace
-WooCommerce & Công cụ cốt lõi thiết lập các tính năng thương mại điện tử như giỏ hàng, trang chi tiết sản phẩm và luồng thanh toán đơn hàng. \\ \addlinespace
-Contact Form 7 & Tiện ích hỗ trợ thiết kế biểu mẫu thu thập thông tin khách hàng và nhận yêu cầu báo giá quà tặng doanh nghiệp số lượng lớn. \\ \addlinespace
-Rank Math SEO & Công cụ phân tích, tối ưu hóa các thẻ tiêu đề, mô tả và cấu trúc bài viết nhằm tăng thứ hạng tự nhiên trên công cụ tìm kiếm. \\ \addlinespace
-WebP Converter for Media & Tiện ích tự động xử lý, nén dung lượng và chuyển đổi toàn bộ thư viện hình ảnh sang định dạng ảnh nén thế hệ mới WebP để tăng tốc độ tải trang. \\ \addlinespace
-WP Mail SMTP & Công cụ cấu hình gửi email tự động (email xác nhận đơn hàng, email báo động hết hàng) thông qua máy chủ gửi thư an toàn. \\ \addlinespace
-Google Fonts & Thư viện phông chữ trực tuyến cung cấp các bộ phông chữ hệ thống hiện đại, sang trọng cho giao diện website. \\ \bottomrule
-\end{tabular}
-\end{table}
+XAMPP & Phần mềm giả lập môi trường máy chủ cục bộ (Apache, MariaDB, PHP) để lập trình và kiểm thử. \\ \addlinespace
+Giao diện Flatsome \cite{theme_flatsome} & Giao diện chuyên nghiệp tích hợp trình kéo thả UX Builder, tối ưu hóa triệt để cho trải nghiệm thương mại điện tử. \\ \addlinespace
+WooCommerce \cite{plugin_woocommerce} & Công cụ cốt lõi thiết lập các tính năng thương mại điện tử như giỏ hàng, danh mục sản phẩm và luồng thanh toán. \\ \addlinespace
+WooCommerce PayPal Payments \cite{plugin_paypal} & Tiện ích cổng thanh toán kết nối trực tiếp với API của PayPal, hỗ trợ giao dịch và quy đổi ngoại tệ tự động. \\ \addlinespace
+Product Import Export for WooCommerce \cite{plugin_product_import} & Công cụ hỗ trợ nhập và xuất dữ liệu sản phẩm hàng loạt (tên, giá, hình ảnh, biến thể) thông qua tệp cấu trúc CSV. \\ \addlinespace
+Rank Math SEO \cite{plugin_rankmath} & Công cụ phân tích, tối ưu hóa các thẻ tiêu đề, cấu trúc siêu văn bản và Schema để tăng thứ hạng tự nhiên. \\ \addlinespace
+Wordfence Security \cite{plugin_wordfence} & Tường lửa ứng dụng web bảo vệ website khỏi các đợt tấn công dò mật khẩu và đánh cắp dữ liệu khách hàng. \\ \addlinespace
+LiteSpeed Cache \cite{plugin_litespeed} & Giải pháp lưu đệm cấp độ máy chủ giúp tối ưu hóa băng thông và giảm mạnh thời gian chờ tải trang (TTFB). \\ \addlinespace
+UpdraftPlus \cite{plugin_updraftplus} & Hệ thống tự động sao lưu mã nguồn và đồng bộ cơ sở dữ liệu bán hàng lên nền tảng lưu trữ đám mây định kỳ. \\ \addlinespace
+Loco Translate \cite{plugin_loco_translate} & Công cụ nội địa hóa can thiệp mã nguồn để dịch các chuỗi văn bản kỹ thuật sang tiếng Việt thuần thục. \\ \addlinespace
+WebP Converter for Media \cite{plugin_webp} & Tiện ích tự động xử lý, nén dung lượng và chuyển đổi toàn bộ thư viện hình ảnh sang định dạng WebP. \\ \addlinespace
+WP Mail SMTP \cite{plugin_wp_mail_smtp} & Công cụ cấu hình gửi thư điện tử giao dịch (hóa đơn, xác nhận đơn hàng) tự động thông qua giao thức có xác thực. \\ \addlinespace
+Contact Form 7 \cite{plugin_contact_form_7} & Tiện ích hỗ trợ thiết kế biểu mẫu thu thập thông tin người dùng và tiếp nhận yêu cầu báo giá doanh nghiệp. \\ \addlinespace
+Google Fonts & Thư viện phông chữ trực tuyến cung cấp các bộ chữ thiết kế hiển thị sắc nét trên giao diện web. \\
+\bottomrule
+\end{longtable}

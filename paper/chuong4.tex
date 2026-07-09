@@ -17,7 +17,7 @@ Việc phân chia danh mục sản phẩm một cách khoa học giúp tối ưu
 Để tối ưu hóa hiệu quả tìm kiếm tự nhiên, các đường dẫn tĩnh của từng danh mục được cấu hình ngắn gọn và tường minh, ví dụ: \texttt{/danh-muc/tra-thai-nguyen}. Điều này hỗ trợ các công cụ tìm kiếm lập chỉ mục cấu trúc trang web một cách chính xác nhất.
 
 \subsection{Đưa sản phẩm lên hệ thống}
-Nhằm tối ưu hóa thời gian và đảm bảo tính nhất quán của dữ liệu, dự án sử dụng phần mở rộng \textbf{Product Import Export for WooCommerce} để tải dữ liệu sản phẩm hàng loạt từ tệp cấu trúc CSV lên hệ thống. Công cụ này hỗ trợ tự động đồng bộ hóa các thông tin cốt lõi bao gồm hình ảnh sản phẩm, mô tả chi tiết, giá bán và mã định danh sản phẩm SKU vào cơ sở dữ liệu.
+Nhằm tối ưu hóa thời gian và đảm bảo tính nhất quán của dữ liệu, dự án sử dụng phần mở rộng \textbf{Product Import Export for WooCommerce} \cite{plugin_product_import} để tải dữ liệu sản phẩm hàng loạt từ tệp cấu trúc CSV lên hệ thống. Công cụ này hỗ trợ tự động đồng bộ hóa các thông tin cốt lõi bao gồm hình ảnh sản phẩm, mô tả chi tiết, giá bán và mã định danh sản phẩm SKU vào cơ sở dữ liệu.
 
 Hiện tại, hệ thống đã chuẩn hóa và đưa vào vận hành chính thức 30 sản phẩm đặc trưng của Sen Việt Tea, tiêu biểu như:
 \begin{itemize}
@@ -52,11 +52,11 @@ Tại thị trường Việt Nam, người tiêu dùng trực tuyến thường 
 Bất chấp sự phát triển mạnh mẽ của các phương thức thanh toán số, hình thức giao hàng thu tiền tận nơi vẫn chiếm một tỷ trọng lớn trong thương mại điện tử tại Việt Nam. Đặc biệt đối với một thương hiệu mới như Sen Việt Tea, phương thức thanh toán này giúp xây dựng niềm tin ban đầu với người tiêu dùng mới, cho phép họ nhận hàng, kiểm tra quy cách đóng gói và chất lượng sản phẩm trước khi hoàn tất giao dịch tài chính.
 
 \subsection{Tích hợp cổng thanh toán quốc tế PayPal}
-Nhằm đa dạng hóa các phương thức thanh toán số và hướng tới tệp khách hàng quốc tế, dự án tích hợp cổng thanh toán quốc tế PayPal thông qua ứng dụng mở rộng \textbf{WooCommerce PayPal Payments}. Sau khi kết nối thông tin xác thực API bao gồm mã định danh Client ID và khóa bí mật Secret Key từ tài khoản doanh nghiệp PayPal, website có khả năng chấp nhận thanh toán bảo mật từ các loại thẻ thanh toán quốc tế như Visa hoặc Mastercard, cũng như số dư tài khoản ví PayPal. Tính năng này tạo điều kiện thuận lợi cho đối tượng kiều bào nước ngoài mua quà tặng người thân tại Việt Nam hoặc khách du lịch quốc tế có nhu cầu mua trà đặc sản. Hệ thống sẽ tự động xử lý việc quy đổi tỷ giá ngoại tệ và ghi nhận chi tiết dòng tiền trong báo cáo quản trị WooCommerce.
+Nhằm đa dạng hóa các phương thức thanh toán số và hướng tới tệp khách hàng quốc tế, dự án tích hợp cổng thanh toán quốc tế PayPal thông qua ứng dụng mở rộng \textbf{WooCommerce PayPal Payments} \cite{plugin_paypal}. Sau khi kết nối thông tin xác thực API bao gồm mã định danh Client ID và khóa bí mật Secret Key từ tài khoản doanh nghiệp PayPal \cite{paypal_docs}, website có khả năng chấp nhận thanh toán bảo mật từ các loại thẻ thanh toán quốc tế như Visa hoặc Mastercard, cũng như số dư tài khoản ví PayPal. Tính năng này tạo điều kiện thuận lợi cho đối tượng kiều bào nước ngoài mua quà tặng người thân tại Việt Nam hoặc khách du lịch quốc tế có nhu cầu mua trà đặc sản. Hệ thống sẽ tự động xử lý việc quy đổi tỷ giá ngoại tệ và ghi nhận chi tiết dòng tiền trong báo cáo quản trị WooCommerce.
 
 \section{Mã giảm giá và Chương trình ưu đãi}
 
-Để thúc đẩy quyết định mua sắm và gia tăng tỷ lệ chuyển đổi đơn hàng, dự án tận dụng công cụ quản lý mã ưu đãi tích hợp sẵn trong nhân WooCommerce thay vì cài đặt thêm các tiện ích bổ sung của bên thứ ba, qua đó tối ưu hóa hiệu năng tải trang của hệ thống. Hiện tại, trang web triển khai ba mã giảm giá chiến lược phục vụ các mục tiêu tiếp thị khác nhau:
+Để thúc đẩy quyết định mua sắm và gia tăng tỷ lệ chuyển đổi đơn hàng, dự án tận dụng công cụ quản lý mã ưu đãi tích hợp sẵn trong nhân WooCommerce \cite{woocommerce_docs} thay vì cài đặt thêm các tiện ích bổ sung của bên thứ ba, qua đó tối ưu hóa hiệu năng tải trang của hệ thống. Hiện tại, trang web triển khai ba mã giảm giá chiến lược phục vụ các mục tiêu tiếp thị khác nhau:
 \begin{itemize}
     \item \textbf{FREESHIP:} Miễn phí vận chuyển tiêu chuẩn trị giá 35.000 VNĐ cho các đơn hàng đủ điều kiện, thường dùng để hỗ trợ các chiến dịch quảng bá quy mô toàn quốc.
     \item \textbf{GIAM10:} Giảm 10\% trên tổng giá trị đơn hàng, áp dụng tri ân nhóm khách hàng thân thiết hoặc khách hàng mua sắm với số lượng lớn.
