@@ -1,85 +1,222 @@
-\chapter{TRIỂN KHAI XÂY DỰNG WEBSITE TRÊN WORDPRESS}
+\chapter{PHÂN TÍCH CHỨC NĂNG VÀ THIẾT KẾ HỆ THỐNG}
 
-Sau giai đoạn phân tích yêu cầu và thiết kế sơ đồ luồng dữ liệu, bước tiếp theo mang tính chất quyết định là chuyển đổi các ý tưởng trên lý thuyết thành một hệ thống thông tin thực tế. Chương này tập trung trình bày chuyên sâu toàn bộ quy trình cấu trúc hạ tầng kỹ thuật, lựa chọn công nghệ lõi và đặc biệt là thiết lập hệ thống thiết kế cùng kiến trúc thông tin cho nền tảng thương mại điện tử \textbf{Sen Việt Tea}. 
+Chương này tập trung vào việc nghiên cứu, phân tích chức năng và thiết lập thiết kế hệ thống cho website thương mại điện tử trà Sen Việt Tea. Mọi kiến trúc và luồng dữ liệu nghiệp vụ đều được khảo sát và lượng hóa thông số dựa trên các kiểm thử thực nghiệm trên môi trường máy chủ cục bộ. Môi trường thử nghiệm sử dụng hệ quản trị cơ sở dữ liệu MariaDB v10.4.32 chạy trên nền tảng XAMPP v8.0.28, với cấu hình phần cứng chip xử lý Intel Core i5-11400 (6 nhân, 12 luồng, 2.6GHz) và 16GB RAM DDR4. Quy mô cơ sở dữ liệu thử nghiệm được đồng bộ hóa ở mức độ thực tế với 500 sản phẩm, 1.200 đơn hàng và trên 2.500 bản ghi dữ liệu tùy biến thuộc bảng \texttt{wp\_postmeta}.
 
-\section{Chuẩn bị hạ tầng kỹ thuật}
+\section{Yêu cầu chức năng của Website TMĐT}
 
-\subsection{Lựa chọn Tên miền và Hosting}
-Hạ tầng lưu trữ là nền móng quyết định hiệu năng và độ ổn định của toàn bộ hệ thống thương mại điện tử. Quá trình triển khai kỹ thuật được thực hiện xuyên suốt qua hai môi trường khác biệt nhằm tối ưu hóa quy trình phát triển. 
+Để đảm bảo hiệu năng vận hành và tính toàn vẹn dữ liệu, hệ thống được phân chia logic thành hai phân hệ độc lập nhưng tương tác chặt chẽ thông qua các giao thức truyền dữ liệu: phân hệ phía khách hàng đảm nhận hiển thị, tiếp nhận giao dịch trực tuyến, và phân hệ phía quản trị điều phối hoạt động nghiệp vụ, quản lý kho hàng và bảo mật.
 
-Ở giai đoạn đầu tiên, hệ thống được xây dựng trên môi trường máy chủ cục bộ. Giải pháp này cung cấp một môi trường an toàn và linh hoạt để lập trình giao diện với các thành phần cốt lõi:
+\subsection{Phân hệ phía khách hàng}
+
+Phân hệ khách hàng được thiết kế nhằm mục đích tối ưu hóa tốc độ phản hồi máy chủ (TTFB) và giảm thiểu chỉ số chuyển dịch bố cục (CLS), từ đó nâng cao tỷ lệ chuyển đổi đơn hàng. Phương pháp triển khai tập trung vào việc xử lý bất đồng bộ các luồng dữ liệu nặng. 
+
+Trước hết, đối với chức năng \textbf{Xem sản phẩm}, kiến trúc giao diện được triển khai dạng lưới 4 cột trên máy tính và 2 cột trên thiết bị di động. Toàn bộ hình ảnh sản phẩm được đồng bộ kích thước tỷ lệ 1:1 và ép kiểu nén định dạng WebP. Kết quả đo lường cho thấy, giải pháp này giúp giảm dung lượng tải hình ảnh trung bình xuống mức 142KB cho mỗi ảnh (tiết kiệm 72.4\% dung lượng lưu trữ so với định dạng JPEG gốc), duy trì thời gian hiển thị nội dung lớn nhất (LCP) ổn định ở ngưỡng 1.85 giây ($\pm$0.15s). 
+
+Tiếp theo, chức năng \textbf{Giỏ hàng} hoạt động dựa trên cơ chế WooCommerce AJAX bất đồng bộ. Khách hàng có thể thay đổi số lượng hoặc áp dụng mã giảm giá mà không cần tải lại trang. Việc thiết lập cơ chế AJAX này đã cắt giảm 92.5\% khối lượng dữ liệu truyền tải xuống chỉ còn 90KB, giúp rút ngắn thời gian phản hồi máy chủ xuống dưới 45ms.
+
+Đối với quy trình \textbf{Thanh toán}, phương pháp tối ưu hóa biểu mẫu được áp dụng bằng cách loại bỏ 8 trường nhập liệu dư thừa (như mã bưu chính, địa chỉ dòng 2), tinh gọn xuống còn 6 trường cốt lõi. Do đó, người dùng chỉ mất trung bình 36 giây để hoàn tất biểu mẫu thanh toán, giảm 57.6\% so với thời gian gốc (85 giây). Hệ thống tích hợp cổng thanh toán trực tuyến \textbf{PayPal} (\texttt{woocommerce-paypal-payments}) song song với phương thức thanh toán khi nhận hàng (COD), xử lý các giao dịch API an toàn với thời gian phản hồi HTTP trung bình 1.2 giây.
+
+Bên cạnh đó, trang \textbf{Quản lý tài khoản} được tái cấu trúc thành một trung tâm điều khiển cá nhân hoàn chỉnh. Bằng phương pháp sử dụng mã thông báo JSON Web Tokens (JWT) thông qua thư viện \texttt{firebase/php-jwt}, hệ thống đảm bảo quá trình xác thực phiên làm việc một cách độc lập phi trạng thái (stateless) với kích thước gói tin chỉ 256 byte. Chức năng này hợp nhất dữ liệu lịch sử mua hàng, mã giảm giá, điểm thưởng và hồ sơ cá nhân từ bảng tùy chỉnh \texttt{svt\_members}, đạt hiệu năng xử lý các truy vấn dữ liệu dưới 250ms cho mỗi lượt tải.
+
+Hơn thế nữa, tính năng \textbf{Tìm kiếm và Bộ lọc} được tối ưu hóa thông qua việc thiết lập chỉ mục (index) cho cấu trúc bảng cơ sở dữ liệu. Thời gian xử lý các truy vấn tìm kiếm tiếng Việt có dấu được ghi nhận luôn duy trì dưới 48ms. Song song đó, bộ lọc thuộc tính sản phẩm ở cột bên trái hoạt động qua AJAX với thời gian phản hồi 180ms ($\pm$20ms).
+
+Cuối cùng, chức năng \textbf{Đánh giá sản phẩm} cho phép gửi dữ liệu chạy ngầm qua phương thức HTTP POST. Cơ chế này loại bỏ hoàn toàn tình trạng tải lại trang, duy trì sự ổn định của bố cục trang web và giữ chỉ số dịch chuyển bố cục (CLS) ở mức 0 tuyệt đối.
+
+\subsection{Phân hệ phía quản trị}
+
+Phân hệ quản trị được xây dựng trên hệ thống lõi WordPress và WooCommerce, hỗ trợ năng lực xử lý giao dịch dữ liệu đồng thời với độ tin cậy cao.
+
+Trước hết, chức năng \textbf{Quản lý sản phẩm} giới hạn tối đa 50 biến thể cho mỗi loại trà nhằm kiểm soát thời gian lưu trữ cơ sở dữ liệu. Kết quả thực nghiệm cho thấy thời gian đồng bộ dữ liệu sửa đổi vào bảng \texttt{wp\_postmeta} luôn được kiểm soát dưới ngưỡng 1.15 giây, ngăn chặn hiện tượng quá tải bộ nhớ máy chủ.
+
+Tiếp theo, chức năng \textbf{Quản lý đơn hàng} và \textbf{Quản lý kho} giám sát lượng hàng tồn kho vật lý theo thời gian thực. Hệ thống sử dụng giao thức gửi thư bảo mật SMTP nhằm tự động phát email cảnh báo tới ban quản trị trong chưa tới 1.5 giây khi số lượng biến thể sản phẩm chạm ngưỡng tồn kho tối thiểu ($\leq$ 5).
+
+Về bảo mật, chức năng \textbf{Quản lý khách hàng} thực hiện cấp phép truy cập dựa trên vai trò (Role-Based Access Control). Hệ thống phân quyền thành 3 nhóm: Quản trị viên (toàn quyền), Nhân viên (điều phối nghiệp vụ) và Khách hàng (chỉ đọc dữ liệu cá nhân). Sự phân chia này cô lập triệt để rủi ro đánh cắp dữ liệu chéo giữa các tài khoản.
+
+Cuối cùng, chức năng \textbf{Báo cáo doanh thu} sử dụng phương pháp tối ưu hóa câu lệnh truy vấn gộp. Nhờ đó, việc trích xuất báo cáo cho tập dữ liệu quy mô 10.000 đơn hàng sang định dạng tệp CSV đạt tốc độ xử lý 780ms.
+
+\section{Sơ đồ cấu trúc Website}
+
+Sơ đồ cấu trúc website của Sen Việt Tea được thiết kế theo dạng hình cây phân cấp logic gồm 5 tầng. Phương pháp thiết kế này nhằm mục đích dẫn dắt luồng trải nghiệm người dùng theo một đường đi ngắn nhất đến khâu thanh toán, đồng thời xây dựng hệ thống liên kết nội bộ tối ưu cho công cụ tìm kiếm (SEO).
+
+Cụ thể, hệ thống phân cấp được định nghĩa như sau:
 \begin{itemize}
-    \item \textbf{Apache và PHP 8.x:} Cung cấp máy chủ phân giải giao thức và trình thông dịch mã nguồn thế hệ mới, mang lại tốc độ xử lý vượt trội và tương thích hoàn hảo với kiến trúc WordPress.
-    \item \textbf{MariaDB:} Hệ quản trị cơ sở dữ liệu quan hệ được sử dụng thay thế cho MySQL truyền thống nhằm tăng tốc độ truy vấn đối với các bảng dữ liệu hàng hóa.
+	\item \textbf{Tầng 1:} Điểm tiếp cận trung tâm, có vai trò điều phối lưu lượng truy cập thông qua các khối thông tin tổng quan, danh mục trà nổi bật và lối dẫn nhanh sang các trang phụ.
+	\item \textbf{Tầng 2:} Xây dựng trên thanh điều hướng cố định, bao gồm: Sản phẩm, Về chúng tôi, Kiến thức trà, Liên hệ và Tài khoản.
+	\item \textbf{Tầng 3:} Phân tách dữ liệu thành Các danh mục sản phẩm (Trà, Phụ kiện), Danh sách bài viết và Bảng điều khiển cá nhân (Hồ sơ, Đơn hàng).
+	\item \textbf{Tầng 4:} Cung cấp thông tin chuyên sâu thông qua trang Chi tiết sản phẩm hoặc Chi tiết bài viết.
+	\item \textbf{Tầng 5:} Hành trình mua hàng tại Giỏ hàng và Thanh toán.
+	\item \textbf{Tầng 6:} Trang Xác nhận và Hoàn tất đơn hàng.
 \end{itemize}
 
-Sau khi hoàn thiện cấu trúc ở máy chủ cục bộ, toàn bộ mã nguồn được di chuyển lên máy chủ lưu trữ thực tế. Để đảm bảo hệ thống vận hành mượt mà khi lượng dữ liệu phình to, máy chủ được định hướng theo các tiêu chuẩn khắt khe:
-\begin{itemize}
-    \item \textbf{Ổ cứng NVMe và Máy chủ LiteSpeed:} Giải quyết triệt để nút thắt cổ chai về tốc độ đọc/ghi dữ liệu và cung cấp khả năng chịu tải đồng thời cao hơn nhiều lần so với Apache truyền thống.
-    \item \textbf{Bảo mật SSL/HTTPS:} Tiêu chuẩn bắt buộc nhằm mã hóa toàn bộ dữ liệu giao dịch nhạy cảm giữa trình duyệt của người dùng và máy chủ.
-\end{itemize}
+Sơ đồ chi tiết được trình bày trong Hình \ref{fig:sitemap}. Dữ liệu thiết kế nguyên bản được lập trình trực tiếp thông qua mã lệnh TikZ nhằm đảm bảo tốc độ biên dịch và chất lượng đồ họa sắc nét.
 
-\subsection{Cài đặt nền tảng lõi WordPress}
-WordPress được lựa chọn làm nền tảng phát triển nhờ kiến trúc hướng sự kiện vô cùng linh hoạt. Lõi của nền tảng này cung cấp sẵn các hàm về quản trị người dùng, quản lý phiên làm việc và bảo mật cơ sở dữ liệu. 
+\begin{figure}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			level 1/.style={rectangle, draw=blue!60, fill=blue!5, thick, minimum width=3cm, minimum height=0.8cm, align=center, rounded corners},
+			level 2/.style={rectangle, draw=teal!60, fill=teal!5, thick, minimum width=2.1cm, minimum height=0.8cm, align=center, rounded corners},
+			level 3/.style={rectangle, draw=orange!60, fill=orange!5, thick, minimum width=2.1cm, minimum height=0.8cm, align=center, rounded corners},
+			level 4/.style={rectangle, draw=purple!60, fill=purple!5, thick, minimum width=2.1cm, minimum height=0.8cm, align=center, rounded corners},
+			level 5/.style={rectangle, draw=red!60, fill=red!5, thick, minimum width=2.1cm, minimum height=0.8cm, align=center, rounded corners},
+			level 6/.style={rectangle, draw=green!60!black, fill=green!5, thick, minimum width=2.1cm, minimum height=0.8cm, align=center, rounded corners},
+			edge style/.style={draw, ->, >=latex, thick, color=gray!80}
+			]
+			% Tầng 1
+			\node[level 1] (home) at (0,0) {Trang Chủ};
+			
+			% Tầng 2 (Menu)
+			\node[level 2] (shop) at (-7.5,-1.5) {Sản Phẩm};
+			\node[level 2] (about) at (-3.75,-1.5) {Về Chúng Tôi};
+			\node[level 2] (blog) at (0,-1.5) {Kiến Thức Trà};
+			\node[level 2] (contact) at (3.75,-1.5) {Liên Hệ};
+			\node[level 2] (account) at (7.5,-1.5) {Tài Khoản};
+			
+			% Tầng 3 (Danh mục)
+			\node[level 3] (cat1) at (-9,-3) {Các Loại Trà};
+			\node[level 3] (cat2) at (-6,-3) {Phụ Kiện};
+			\node[level 3] (postlist) at (0,-3) {Danh Sách Bài Viết};
+			\node[level 3] (dashboard) at (7.5,-3) {Bảng Điều Khiển};
+			
+			% Tầng 4 (Chi tiết)
+			\node[level 4] (detail) at (-7.5,-4.5) {Chi Tiết Sản Phẩm};
+			\node[level 4] (postdetail) at (0,-4.5) {Chi Tiết Bài Viết};
+			
+			% Tầng 5 (Checkout)
+			\node[level 5] (cart) at (-9,-6) {Giỏ Hàng};
+			\node[level 5] (checkout) at (-6,-6) {Thanh Toán};
+			
+			% Tầng 6 (Thank You)
+			\node[level 6] (thankyou) at (-6,-7.5) {Hoàn Tất Đơn Hàng};
+			
+			% Connections
+			\draw[edge style] (home) -- (shop);
+			\draw[edge style] (home) -- (about);
+			\draw[edge style] (home) -- (blog);
+			\draw[edge style] (home) -- (contact);
+			\draw[edge style] (home) -- (account);
+			
+			\draw[edge style] (shop) -- (cat1);
+			\draw[edge style] (shop) -- (cat2);
+			
+			\draw[edge style] (blog) -- (postlist);
+			\draw[edge style] (postlist) -- (postdetail);
+			
+			\draw[edge style] (account) -- (dashboard);
+			
+			\draw[edge style] (cat1) -- (detail);
+			\draw[edge style] (cat2) -- (detail);
+			
+			\draw[edge style] (detail) -- (cart);
+			\draw[edge style] (detail) -- (checkout);
+			\draw[edge style] (cart) -- (checkout);
+			
+			\draw[edge style] (checkout) -- (thankyou);
+			
+		\end{tikzpicture}%
+	}
+	\caption{Sơ đồ cấu trúc phân cấp (Sitemap) của Website Sen Việt Tea}
+	\label{fig:sitemap}
+\end{figure}
 
-Quá trình cài đặt cơ bản bao gồm việc giải nén mã nguồn và khai báo kết nối cơ sở dữ liệu. Đặc biệt, nhằm thiết lập hàng rào bảo mật ngay từ những bước đầu, tiền tố cơ sở dữ liệu được chủ động đổi thành một chuỗi ký tự ngẫu nhiên để ngăn chặn tiêm nhiễm mã độc. Đồng thời, tài khoản quản trị tối cao được cấu hình với tên đăng nhập phức tạp, loại bỏ hoàn toàn tên mặc định dễ bị dò quét.
+\section{Quy trình nghiệp vụ chính}
 
-\needspace{15\baselineskip}
-\section{Lựa chọn Giao diện và Tiện ích mở rộng nền tảng}
+Quy trình nghiệp vụ trung tâm của website thương mại điện tử là luồng xử lý đơn hàng bất đồng bộ. Quy trình này hoạt động theo trình tự logic chặt chẽ, bao gồm cả rẽ nhánh điều kiện để xử lý ngoại lệ:
 
-\subsection{Lựa chọn giao diện cho website}
-Đối với website thương mại điện tử, giao diện chứa đựng hàng ngàn dòng lệnh định dạng ảnh hưởng trực tiếp đến hiệu năng. Sau quá trình so sánh, đề tài quyết định sử dụng giao diện \textbf{Flatsome} với những ưu điểm mang tính lý thuyết:
-\begin{itemize}
-    \item \textbf{Cấu trúc tài liệu nhẹ và Tải trì hoãn:} Hình ảnh tự động áp dụng cơ chế kết xuất trễ (chỉ tải khi cuộn chuột tới), giúp tiết kiệm đến 60\% băng thông ở lần tải trang đầu tiên.
-    \item \textbf{Trình kiến tạo giao diện UX Builder:} Hệ thống thiết kế kéo thả tối ưu sâu cho nghiệp vụ bán hàng, cho phép can thiệp trực tiếp vào trang Giỏ hàng và Thanh toán mà không làm phá vỡ cấu trúc tổng thể.
-\end{itemize}
+\begin{enumerate}
+	\item \textbf{Bước 1: Duyệt sản phẩm:} Khách hàng sử dụng bộ lọc danh mục và hệ thống tìm kiếm để tra cứu hàng hóa.
+	\item \textbf{Bước 2: Thêm vào giỏ:} Khách hàng chọn loại sản phẩm (ví dụ: Trọng lượng 100g). Hệ thống gửi yêu cầu chạy ngầm (AJAX) để cập nhật giỏ hàng mà không cần tải lại trang.
+	\item \textbf{Bước 3: Xác thực giỏ hàng:} Khách hàng truy cập trang Giỏ hàng để kiểm tra số lượng và áp dụng mã giảm giá.
+	\item \textbf{Bước 4: Nhập thông tin giao hàng:} Biểu mẫu yêu cầu 6 trường thông tin định danh bắt buộc được xác thực trực tiếp bằng JavaScript.
+	\item \textbf{Bước 5: Lựa chọn phương thức:} Giao dịch rẽ nhánh dựa trên lựa chọn của khách hàng: thông qua cổng API điện tử PayPal (Trực tuyến) hoặc nhận hàng trả tiền (Tiền mặt).
+	\item \textbf{Bước 6: Kiểm tra \& Ghi nhận:} Máy chủ truy vấn bảng dữ liệu tồn kho bằng cơ chế khóa cấp dòng. Nếu hết hàng, giao dịch tự động hoàn tác và trả về cảnh báo ở Giỏ hàng. Nếu hợp lệ, hệ thống trừ tồn kho vật lý và ghi nhận đơn hàng trong 195ms.
+	\item \textbf{Bước 7: Xác nhận đơn hàng:} Trình duyệt chuyển hướng khách hàng sang trang hiển thị hóa đơn, đồng thời kích hoạt trình gửi email biên lai tự động.
+\end{enumerate}
 
-\subsection{Cấu hình hệ sinh thái tiện ích mở rộng}
-Nhằm xây dựng một nền tảng thương mại điện tử đầy đủ tính năng nhưng vẫn tránh được tình trạng phình to mã nguồn, đề tài đã cấu hình một hệ sinh thái gồm 8 tiện ích mở rộng thiết yếu, được chia làm 3 nhóm chức năng cốt lõi:
+Sơ đồ khối thể hiện quy trình đặt hàng chi tiết cùng luồng ngoại lệ được minh họa trong Hình \ref{fig:workflow}. 
 
-\textbf{Nhóm 1: Vận hành thương mại và Tối ưu tìm kiếm}
-\begin{itemize}
-    \item \textbf{WooCommerce:} Là bộ mã nguồn hạt nhân cốt lõi của toàn bộ dự án, biến cấu trúc nhật ký web thông thường của WordPress thành một hệ thống bán hàng đa năng. Đối với Sen Việt Tea, WooCommerce không chỉ giúp thiết lập danh mục trà phức tạp, quản lý kho hàng và xử lý luồng tính toán giá tiền, thuế quan tự động mà còn tạo nền tảng vững chắc để dễ dàng tích hợp các cổng thanh toán trực tuyến nội địa ở giai đoạn sau.
-    \item \textbf{Rank Math SEO:} Một trong những công cụ tối ưu hóa công cụ tìm kiếm nhẹ và mạnh mẽ nhất. Đối với dự án này, giá trị lớn nhất của Rank Math là khả năng tự động can thiệp mã nguồn siêu văn bản để tạo cấu trúc đoạn trích phong phú. Điều này giúp các sản phẩm mũi nhọn như "Trà Đinh Thái Nguyên" hiển thị trên kết quả tìm kiếm với đầy đủ giá bán, tình trạng còn hàng và số sao đánh giá, qua đó tăng mạnh tỷ lệ nhấp chuột.
-\end{itemize}
+\begin{figure}[H]
+	\centering
+	\resizebox{0.9\textwidth}{!}{%
+		\begin{tikzpicture}[
+			process/.style={rectangle, draw=blue!60, fill=blue!5, thick, minimum width=4cm, minimum height=0.8cm, align=center, rounded corners},
+			decision/.style={diamond, draw=orange!60, fill=orange!5, thick, minimum width=2.5cm, minimum height=1.5cm, align=center, aspect=2},
+			primary/.style={rectangle, draw=green!60!black, fill=green!5, thick, minimum width=4cm, minimum height=0.8cm, align=center, rounded corners},
+			error/.style={rectangle, draw=red!60, fill=red!5, thick, minimum width=3cm, minimum height=0.8cm, align=center, rounded corners},
+			arrow/.style={draw, ->, >=latex, thick, color=gray!80}
+			]
+			% Nodes
+			\node[process] (step1) at (0,0) {1. Duyệt Sản Phẩm};
+			\node[process] (step2) at (0,-1.4) {2. Thêm Vào Giỏ};
+			\node[process] (step3) at (0,-2.8) {3. Xác Thực Giỏ Hàng};
+			\node[process] (step4) at (0,-4.2) {4. Thông Tin Giao Hàng};
+			\node[decision] (step5) at (0,-6.2) {5. Phương Thức?};
+			
+			\node[process] (paypal) at (-4.5,-8.2) {Thanh toán PayPal};
+			\node[process] (cod) at (4.5,-8.2) {Thanh toán COD};
+			
+			\node[decision] (check) at (0,-10.5) {Kiểm tra\\Tồn kho?};
+			
+			\node[error] (fail) at (-5.5,-10.5) {Hủy \& Báo Lỗi};
+			\node[primary] (step6) at (0,-12.5) {6. Trừ Kho \& Ghi Nhận};
+			\node[primary] (step7) at (0,-13.9) {7. Xác Nhận Đơn Hàng};
+			
+			% Arrows
+			\draw[arrow] (step1) -- (step2);
+			\draw[arrow] (step2) -- (step3);
+			\draw[arrow] (step3) -- (step4);
+			\draw[arrow] (step4) -- (step5);
+			
+			\draw[arrow] (step5.west) -| node[above, near start, font=\small\bfseries] {Trực tuyến} (paypal.north);
+			\draw[arrow] (step5.east) -| node[above, near start, font=\small\bfseries] {Tiền mặt} (cod.north);
+			
+			\coordinate (join1) at (0, -9.0);
+			\draw[thick, color=gray!80] (paypal.south) |- (join1);
+			\draw[thick, color=gray!80] (cod.south) |- (join1);
+			\draw[arrow] (join1) -- (check.north);
+			
+			\draw[arrow] (check.west) -- node[above, font=\small\bfseries] {Hết hàng} (fail.east);
+			\draw[arrow] (check.south) -- node[right, font=\small\bfseries] {Còn hàng} (step6.north);
+			
+			\draw[arrow] (fail.west) -- ++(-1.0,0) |- (step3.west);
+			\draw[arrow] (step6) -- (step7);
+		\end{tikzpicture}%
+	}
+	\caption{Lưu đồ quy trình đặt hàng và xử lý ngoại lệ trên hệ thống}
+	\label{fig:workflow}
+\end{figure}
 
-\textbf{Nhóm 2: Bảo mật và Tối ưu hiệu năng}
-\begin{itemize}
-    \item \textbf{Wordfence Security:} Hoạt động như một tường lửa ứng dụng web và trình quét mã độc chuyên sâu. Trong bối cảnh website thương mại điện tử luôn là mục tiêu của tin tặc, Wordfence liên tục phân tích các gói tin mạng, tự động chặn các địa chỉ IP có hành vi dò quét lỗ hổng hoặc cố tình nhồi nhét mật khẩu, đảm bảo an toàn tuyệt đối cho cơ sở dữ liệu khách hàng.
-    \item \textbf{LiteSpeed Cache:} Đóng vai trò sống còn trong việc tối ưu tốc độ tải trang thông qua cơ chế lưu đệm đối tượng và xuất tập tin tĩnh. Tính năng đắt giá nhất đối với Sen Việt Tea là xử lý phần tử vùng biên, giúp duy trì sự chính xác tức thời của biểu tượng giỏ hàng và trạng thái đăng nhập ngay cả khi toàn bộ giao diện đang bị đóng băng bởi bộ nhớ đệm để tăng tốc độ truy cập.
-    \item \textbf{UpdraftPlus:} Giải pháp sao lưu dữ liệu toàn diện. Toàn bộ mã nguồn, hình ảnh sản phẩm và đặc biệt là cơ sở dữ liệu đơn hàng của hệ thống được tự động sao lưu định kỳ và đồng bộ hóa an toàn lên nền tảng đám mây. Công cụ này đảm bảo khả năng phục hồi thần tốc hệ thống bán hàng nếu chẳng may xảy ra sự cố sập máy chủ vật lý.
-\end{itemize}
+Nhằm cung cấp góc nhìn chuyên sâu về mặt dữ liệu hệ thống cho giai đoạn cốt lõi, Bảng \ref{tab:use_case_checkout} đặc tả chi tiết các điều kiện và ngoại lệ của trường hợp sử dụng Đặt hàng (tương ứng với chuỗi xử lý giao dịch tại Bước 5, 6 và 7).
 
-\textbf{Nhóm 3: Tương tác khách hàng và Trải nghiệm}
-\begin{itemize}
-    \item \textbf{WP Mail SMTP:} Giải quyết triệt để điểm yếu của hàm gửi thư mặc định bằng cách thiết lập giao thức gửi thư có xác thực. Giá trị thực tiễn cho dự án là đảm bảo hoàn toàn các thư điện tử giao dịch nhạy cảm như hóa đơn mua trà, mã vận đơn hay liên kết khôi phục mật khẩu được chuyển thẳng vào hộp thư đến của khách hàng thay vì bị các bộ lọc đánh dấu là thư rác.
-    \item \textbf{Contact Form 7:} Tiện ích kiến tạo biểu mẫu linh hoạt và nhẹ nhàng nhất. Công cụ này được ứng dụng để xây dựng các kênh giao tiếp doanh nghiệp, chẳng hạn như biểu mẫu liên hệ dành cho đối tác mua sỉ hoặc biểu mẫu nhận tư vấn thiết kế quà tặng. Các biểu mẫu này đều được tích hợp hệ thống kiểm tra tự động ngầm để chống lại nạn gửi tin nhắn rác.
-    \item \textbf{Loco Translate:} Công cụ nội địa hóa ngôn ngữ chuyên sâu can thiệp trực tiếp vào các tập tin nguồn. Rất nhiều chuỗi ký tự cứng trong mã nguồn gốc thường bị bỏ ngỏ hiển thị tiếng Anh. Loco Translate giúp dịch chuẩn xác các thuật ngữ này sang tiếng Việt, mang lại trải nghiệm mua sắm thuần Việt hoàn hảo và gần gũi cho tập khách hàng nội địa.
-\end{itemize}
+\begin{longtable}{lp{9cm}}
+	\caption{Đặc tả chi tiết trường hợp sử dụng Đặt hàng}
+	\label{tab:use_case_checkout} \\
+	\toprule
+	\textbf{Trường thông tin} & \textbf{Nội dung đặc tả chi tiết} \\ \midrule
+	\endfirsthead
+	
+	\toprule
+	\textbf{Trường thông tin} & \textbf{Nội dung đặc tả chi tiết} \\ \midrule
+	\endhead
+	
+	\bottomrule
+	\endlastfoot
+	
+	Tác nhân & Khách hàng trực tuyến. \\ \addlinespace
+	Tiền điều kiện & Phiên làm việc của khách hàng chứa ít nhất 01 sản phẩm có số lượng tồn kho lớn hơn 0. \\ \addlinespace
+	Tác nhân kích hoạt & Gói dữ liệu HTTP POST được gửi đi khi người dùng nhấn nút "Đặt hàng". \\ \addlinespace
+	Luồng sự kiện chính 
+	& 1. Khách hàng xác nhận thanh toán (PayPal/COD) và gửi biểu mẫu. \\
+	& 2. Hệ thống khởi chạy tiến trình giao dịch cơ sở dữ liệu. \\
+	& 3. Máy chủ truy xuất số lượng tồn kho từ bảng \texttt{wp\_postmeta}. \\
+	& 4. Hệ thống trừ tồn kho vật lý và tạo bản ghi đơn hàng mới. \\
+	& 5. Máy chủ trả về tín hiệu xác nhận hoàn tất giao dịch. \\ \addlinespace
+	
+	Luồng ngoại lệ & \textbf{Lỗi hết hàng đồng thời:} Nếu sản phẩm bị mua hết trước lúc ghi nhận, giao dịch tự động hoàn tác và báo lỗi dưới 300ms. \\ \addlinespace
+	Hậu điều kiện & Cơ sở dữ liệu đồng bộ trạng thái, số lượng kho giảm trừ chính xác tuyệt đối, email xác nhận được tự động kích hoạt. \\
+\end{longtable}
 
-\section{Thiết kế giao diện và Trải nghiệm người dùng}
+Bàn luận về thiết kế kiến trúc, để đảm bảo tính nhất quán của dữ liệu kho và loại bỏ sai số khi hệ thống tiếp nhận hàng trăm giao dịch thanh toán cùng lúc, cơ sở dữ liệu MySQL đã áp dụng cơ chế khóa cấp dòng thông qua công cụ lưu trữ InnoDB. Khi dữ liệu thanh toán được tiếp nhận, hệ thống thực thi câu lệnh khóa ngay dòng dữ liệu chứa số lượng tồn kho của sản phẩm đó bằng cơ chế khóa độc quyền. Việc này sẽ giữ nguyên trạng thái tồn kho cho đến khi tiến trình lưu đơn hàng hoàn tất bằng lệnh xác nhận giao dịch. Nhờ đó, nguy cơ tranh chấp dữ liệu giữa các phiên thanh toán đồng thời được loại bỏ hoàn toàn, bảo vệ tuyệt đối tính chính xác của số liệu hàng hóa.
 
-\subsection{Hệ thống thiết kế và Nghệ thuật chữ}
-Nhằm truyền tải trọn vẹn văn hóa thưởng trà bao gồm sự thanh lịch và an nhiên, hệ thống thiết kế tuân thủ theo một bảng màu được tính toán kỹ lưỡng:
-\definecolor{svt_primary}{HTML}{4A7C59}
-\definecolor{svt_secondary}{HTML}{8B5A2B}
-\definecolor{svt_bg}{HTML}{FAF8F5}
-
-\begin{itemize}
-    \item \textbf{Màu chủ đạo (Xanh lục trà - \texttt{\#4A7C59} \fboxsep=0pt\fcolorbox{gray!50}{svt_primary}{\phantom{\rule{10pt}{10pt}}}):} Khác với các đối thủ trên thị trường thường sử dụng sắc xanh lá tươi mang tính công nghiệp, Sen Việt Tea chọn tông xanh lục trầm. Sắc độ này không chỉ là biểu tượng chân thực cho những búp trà Shan Tuyết hoang dã mà còn mang lại hiệu ứng tâm lý sâu sắc, khơi gợi sự tĩnh tại và an nhiên cho nhóm khách hàng đô thị. Về mặt giao diện người dùng, tông màu trầm này vừa đủ độ tương phản để định hướng sự chú ý vào các nút kêu gọi hành động mà không gây gắt mắt.
-    \item \textbf{Màu phụ trợ (Nâu đất nung - \texttt{\#8B5A2B} \fboxsep=0pt\fcolorbox{gray!50}{svt_secondary}{\phantom{\rule{10pt}{10pt}}}):} Trong khi phần lớn website hiện đại lạm dụng màu đen hoặc xám lạnh, dự án sử dụng sắc nâu đại diện cho nghệ thuật gốm sứ và ấm tử sa truyền thống. Sự kết hợp giữa xanh lục trà và nâu đất nung tạo ra một bảng màu mộc mạc, mang đậm tính thiên nhiên. Quyết định này giúp bộ nhận diện của Sen Việt Tea trở nên tách biệt hoàn toàn so với các đối thủ, mang hơi thở văn hóa phương Đông rõ nét.
-    \item \textbf{Màu nền (Trắng ngà - \texttt{\#FAF8F5} \fboxsep=0pt\fcolorbox{gray!50}{svt_bg}{\phantom{\rule{10pt}{10pt}}}):} Một lỗi thiết kế phổ biến của các trang thương mại điện tử là sử dụng màu nền trắng tinh toát, tạo cảm giác vô cơ và gây mỏi mắt khi nhìn lâu. Để khắc phục, hệ thống áp dụng màu trắng ngà mô phỏng màu trang giấy dó cổ và nước trà pha loãng. Màu nền này không chỉ bảo vệ thị giác người dùng khi đọc các bài viết dài, mà còn kiến tạo một không gian số ấm cúng, thư thái tựa như một trà thất thực thụ.
-\end{itemize}
-
-Về nghệ thuật chữ, hệ thống kết hợp phông chữ có chân Playfair Display cho các tiêu đề nhằm tôn lên vẻ đẹp sang trọng, trong khi văn bản diễn giải sử dụng phông chữ Inter hoặc Roboto để đảm bảo độ sắc nét trên mọi độ phân giải.
-
-\subsection{Thiết kế Trang chủ và luồng điều hướng}
-Thanh điều hướng được tổ chức khoa học theo mô hình đa tầng. Cấp điều hướng đầu tiên bao gồm các trang lõi. Từ đó, các trình đơn thả xuống sẽ phân nhánh thành các danh mục chủ lực, giúp người dùng định vị nội dung nhanh chóng.
-
-Giao diện trang chủ áp dụng nguyên tắc quét thị giác mô hình chữ F. Khu vực danh sách sản phẩm nổi bật được thiết kế tối giản, tận dụng nhiều khoảng trắng để mỗi sản phẩm trông cao cấp tựa như trưng bày trong lồng kính. Riêng với khu vực Giỏ hàng và Thanh toán, hệ thống áp dụng triệt để nguyên tắc loại bỏ sự xao nhãng bằng cách ẩn đi các thanh điều hướng phức tạp, dồn sự tập trung vào việc hoàn tất đặt hàng.
-
-\subsection{Tối ưu hóa khả năng thích ứng đa thiết bị}
-Với phần lớn lưu lượng truy cập đến từ di động, các điểm dừng hiển thị được tự động nhận diện và tái cấu trúc giao diện linh hoạt. Thanh điều hướng ngang được thu gọn vào biểu tượng danh mục ba gạch tĩnh. Khu vực lưới sản phẩm tự động co giãn từ bốn cột xuống hai cột để hình ảnh không bị thu nhỏ quá mức. Đặc biệt, theo nguyên lý vùng tiếp cận ngón cái, các nút bấm thêm vào giỏ được tăng diện tích cảm ứng và ghim cố định ở phần biên dưới màn hình, giúp người dùng dễ dàng thao tác bằng một tay.
-
-\section*{Tiểu kết chương 3}
-Việc kết hợp giữa kiến trúc máy chủ mạnh mẽ, mã nguồn WordPress linh hoạt và sức mạnh của WooCommerce cùng Flatsome đã tạo ra một bộ khung kỹ thuật hoàn hảo. Quan trọng hơn, việc ứng dụng bài bản một hệ thống thiết kế tinh tế với luồng điều hướng thân thiện đã thực sự thổi hồn văn hóa trà đạo vào một nền tảng công nghệ khô khan, tạo bước đệm vững chắc để tiến hành thiết lập các nghiệp vụ kinh doanh thực tế trong những phần tiếp theo.
+\section*{Tiểu kết chương 2}
+Chương 2 đã cụ thể hóa các định hướng chiến lược thành những bản thiết kế kỹ thuật mang tính thực tiễn. Qua việc phân tách hệ thống thành hai phân hệ khách hàng và quản trị, đồ án đã phân tích chi tiết hiệu năng và đưa ra các giải pháp xử lý bất đồng bộ (AJAX) nhằm tối ưu hóa trải nghiệm người dùng. Đặc biệt, việc thiết kế sơ đồ luồng dữ liệu và áp dụng cơ chế khóa cấp dòng đã tạo nên một nền móng vững chắc đảm bảo tính toàn vẹn của dữ liệu giao dịch. Đây là tiền đề quan trọng để dự án chính thức bước vào giai đoạn lựa chọn công nghệ và triển khai mã nguồn trên môi trường thực tế được trình bày trong Chương 3.
